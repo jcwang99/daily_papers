@@ -1,6 +1,100 @@
-<div id="news-summary-container" style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;"><h2><b>Distributionally Robust K-Means Clustering（分布鲁棒K均值聚类）</b></h2>
-<h4>传统K均值聚类对异常值、分布偏移和有限样本量敏感。本文将其视为经验分布的量化问题，提出一种分布鲁棒的变体。该方法假设真实总体分布位于经验分布的Wasserstein-2球内，通过极小化该模糊集内的最坏情况期望平方距离，得到一个极小极大优化问题。其可处理的对偶形式产生了一种软聚类方案，以平滑加权分配替代硬分配。本文提出了一种高效且具有可证明单调下降及局部线性收敛性的块坐标下降算法。在标准基准和大规模合成数据上的实验表明，该方法在异常值检测和噪声鲁棒性方面有显著提升。</h4>
+<div id="news-summary-container" style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;"><h2><b>SceneCritic: A Symbolic Evaluator for 3D Indoor Scene Synthesis（SceneCritic：一种用于3D室内场景合成的符号化评估器）</b></h2>
+<h4>当前，大型语言模型和视觉语言模型常通过布局、场景图等中间结构生成室内场景，但其评估仍依赖基于渲染视图打分的模型评判器，导致评估结果易受视角、提示词表述和幻觉影响，稳定性不足，难以区分得分反映的是场景的空间合理性还是渲染等外部因素。本文提出的SceneCritic是一种针对平面布局的符号化评估器。其约束基于我们构建的结构化空间本体库SceneOnto（整合了3D-FRONT、ScanNet和Visual Genome的先验知识）。SceneCritic遍历该本体库，联合验证物体关系的语义、朝向和几何一致性，提供物体级和关系级评估，能具体指出违规和成功的放置。此外，我们将其与一个迭代优化测试平台结合，探究模型在不同评估模式（基于碰撞约束的规则评估器、基于文本布局的LLM评估器、基于渲染观察的VLM评估器）下如何构建和修正空间结构。大量实验表明：(a) SceneCritic比基于VLM的评估器更符合人类判断；(b) 纯文本LLM在语义布局质量评估上可超越VLM；(c) 基于图像的VLM优化模式在语义和朝向修正上最为有效。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><b>Development and evaluation of CADe systems in low-prevalence setting: The RARE25 challenge for early detection of Barrett's neoplasia（CADe系统在低患病率环境下的开发与评估：针对巴雷特瘤变早期检测的RARE25挑战）</b></h2>
-<h4>本文聚焦于巴雷特食管早期瘤变的计算机辅助检测（CADe），这是一个目标病变极为罕见的低患病率监测难题。研究指出，尽管许多CADe系统在平衡或富集数据集上表现优异，但其在真实患病率下的性能仍未得到充分评估。为此，RARE25挑战引入了一个大规模、考虑患病率的基准测试，包含反映真实世界发病率的公开训练集和隐藏测试集。</h4>
-<h4>评估强调高灵敏度并考虑患病率。来自七国的团队提交了多种方案，结果显示，尽管部分方法判别性能良好，但阳性预测值普遍较低，这凸显了低患病率检测的困难以及忽略患病率会高估临床实用性的风险。所有方法均依赖于全监督分类，缺乏如异常检测等与患病率无关的方法。RARE25通过发布公共数据集和可复现评估框架，旨在推动开发对患病率变化稳健且适用于临床监测流程的CADe系统。</h4></div>
+<h2><b>PromptEcho: Annotation-Free Reward from Vision-Language Models for Text-to-Image Reinforcement Learning（PromptEcho：从视觉语言模型中获取免标注奖励用于文生图强化学习）</b></h2>
+<h4>强化学习（RL）能提升文生图（T2I）模型的提示词遵循能力，但获取高质量奖励信号仍是挑战：CLIP分数过于粗粒度，而基于视觉语言模型（VLM）的奖励模型需要昂贵的人工标注偏好数据和额外微调。本文提出PromptEcho，一种无需人工标注且无需训练奖励模型的奖励构建方法。给定生成图像和引导查询，PromptEcho直接利用冻结的VLM，以原始提示词为标签计算其标记级交叉熵损失，从而直接提取VLM预训练阶段编码的图像-文本对齐知识。该奖励确定性强、计算高效，并能随开源VLM能力增强而自动提升。为评估，我们开发了DenseAlignBench基准，包含概念丰富的密集描述，用于严格测试提示词遵循能力。在两个前沿T2I模型上的实验表明，PromptEcho在DenseAlignBench上取得显著提升，并在多个基准上获得一致增益，且无需任何任务特定训练。消融研究证实，PromptEcho全面优于使用相同VLM的基于推理的评分方法，且奖励质量随VLM规模扩大而提升。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><b>MAST: Mask-Guided Attention Mass Allocation for Training-Free Multi-Style Transfer（掩码引导的注意力质量分配用于免训练多风格迁移）</b></h2>
+<h4>风格迁移旨在将参考图像的视觉风格迁移到内容图像上，同时保持内容图像的语义布局和结构几何。现有基于扩散的模型虽能实现单风格迁移，但在处理多风格场景时，常因风格间干扰导致边界伪影、风格化不稳定和结构不一致。为此，本文提出MAST，一个免训练框架，通过在扩散注意力机制中显式控制内容与风格的交互来解决上述问题。MAST包含四个核心模块：1）布局保持查询锚定，防止全局布局崩溃；2）逻辑级注意力质量分配，无边界伪影地融合多风格；3）锐度感知温度缩放，恢复因多风格扩展而降低的注意力锐度；4）差异感知细节注入，自适应补偿局部高频细节损失。大量实验表明，MAST能有效减轻边界伪影，保持结构一致性和纹理保真度，即使应用风格数量增加也能维持空间连贯性。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><b>Modeling Co-Pilots for Text-to-Model Translation（面向文本到模型转换的协同建模助手）</b></h2>
+<h4>本文旨在利用大语言模型（LLMs）推进文本到模型转换与优化任务的研究。核心贡献是提出了<b>Text2Model</b>和<b>Text2Zinc</b>。<b>Text2Model</b>是一套基于多种复杂度LLM策略的协同建模助手及在线排行榜。<b>Text2Zinc</b>则是一个用于捕获自然语言描述的优化与满足问题的跨领域数据集，并附带一个集成AI助手的交互式编辑器。</h4>
+<h4>本研究的<b>关键创新点</b>在于：首次在<b>统一架构和数据集</b>中同时集成满足问题与优化问题；采用<b>求解器无关</b>的方法，利用MiniZinc的建模能力来表述组合问题，而非绑定到特定求解器。</h4>
+<h4>研究通过综合实验比较了多种策略（如零样本提示、思维链推理、基于知识图谱的中间表示、语法编码及代理分解方法）的执行与求解精度。结果表明，所提出的协同助手策略具有竞争力，部分优于现有研究，但也指出LLMs尚未成为组合建模的“一键式”技术。</h4>
+<h4>作者将<b>Text2Model</b>、<b>Text2Zinc</b>及相关工具开源，以支持缩小当前性能差距。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><b>GF-Score: Certified Class-Conditional Robustness Evaluation with Fairness Guarantees（GF-Score：具有公平性保证的认证类条件鲁棒性评估）</b></h2>
+<h4>本文针对神经网络在安全关键应用中的对抗鲁棒性评估，指出现有方法存在成本高昂或掩盖不同类别间鲁棒性差异的问题。为此，作者提出了GF-Score框架，其核心是将认证的GREAT分数分解为每个类别的鲁棒性剖面图，并引入基于福利经济学的四个指标来量化类别间的不公平性。该框架通过自校准程序摆脱了对对抗性攻击的依赖。在多个数据集和模型上的评估表明，分解精确有效，能揭示一致的脆弱性模式（例如“猫”类在多数模型中最为脆弱），且更鲁棒的模型往往表现出更大的类别间差异。该研究为诊断认证鲁棒性未能平等保护所有类别的问题，提供了一种实用、无需攻击的审计流程。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><b>Enhance-then-Balance Modality Collaboration for Robust Multimodal Sentiment Analysis（增强与平衡的模态协作：面向鲁棒性多模态情感分析）</b></h2>
+<h4>多模态情感分析旨在融合文本、音频和视觉信号以推断情感。现有方法常因强势模态主导而未能充分利用弱势模态，导致模态竞争、融合性能下降及鲁棒性不足。为此，本文提出增强与平衡的模态协作框架。该框架首先通过语义解耦和跨模态增强提升弱势模态的表征质量；其次，引入能量引导的模态协调机制，通过可微分的均衡目标实现隐式梯度再平衡，防止模态压制；此外，采用实例感知的模态信任蒸馏技术，自适应调整融合权重以确保鲁棒性。实验表明，本模型在完整及缺失模态场景下均达到了先进性能。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><b>Habitat-GS: A High-Fidelity Navigation Simulator with Dynamic Gaussian Splatting（Habitat-GS：基于动态高斯泼溅的高保真导航模拟器）</b></h2>
+<h4>本文针对现有具身AI模拟器视觉保真度低、动态人体建模能力受限的问题，提出了Habitat-GS。该系统基于Habitat-Sim构建，核心创新在于集成了<strong>3D高斯泼溅（3DGS）渲染技术</strong>以实现实时照片级真实感渲染，并引入了<strong>可驱动的“高斯数字人”模块</strong>。这些数字人既能作为高保真视觉实体，也能作为有效的导航障碍物，从而在逼真环境中训练智能体学习人类感知行为。实验表明，在3DGS场景中训练的智能体具有更强的跨领域泛化能力，且混合领域训练策略效果最佳。性能基准测试验证了系统在不同场景复杂度和数字人数量下的良好扩展性。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><b>LLM-Enhanced Log Anomaly Detection: A Comprehensive Benchmark of Large Language Models for Automated System Diagnostics（大语言模型增强的日志异常检测：面向自动化系统诊断的大语言模型综合基准研究）</b></h2>
+<h4>系统日志异常检测对保障大规模软件系统的可靠性至关重要，但传统方法难以应对现代日志数据的异构性和动态演变特性。大语言模型（LLMs）为日志理解提供了新途径，但目前缺乏对基于LLM的方法与传统技术的系统性比较。本文针对HDFS、BGL、Thunderbird和Spirit四个常用公开数据集，对日志异常检测方法进行了全面的基准测试，评估了三类方法：1）经典日志解析器结合机器学习分类器；2）微调的Transformer模型；3）基于提示的LLM在零样本和少样本场景下的表现。实验表明，微调的Transformer模型获得了最高的F1分数（0.96-0.99），而基于提示的LLM展现出卓越的零样本能力（F1: 0.82-0.91），且无需任何标注训练数据——这在标注异常稀缺的实际部署中具有显著优势。研究进一步分析了各方法在成本-精度权衡、延迟特性和失败模式上的差异，为从业者根据精度、延迟、成本和标签可用性等具体约束选择方法提供了实用指南。所有代码与实验配置均已公开以确保可复现性。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><strong>DeferredSeg: A Multi-Expert Deferral Framework for Trustworthy Medical Image Segmentation（DeferredSeg：用于可信医学图像分割的多专家延迟决策框架）</strong></h2>
+<h4>基于深度神经网络的医学图像分割模型泛化能力强，但其置信度评分常不可靠，影响临床部署的可信度。本文受“学习延迟”范式启发，提出DeferredSeg框架，构建人机协作系统，动态决定是否将特定区域预测交由人类专家处理。</h4>
+<h4>该框架通过聚合延迟预测器和路由通道扩展基础分割器，逐像素路由至模型或专家。训练中引入像素级代理协作损失监督延迟决策，并提出空间一致性损失以确保延迟区域的平滑性，从而提升可靠性。</h4>
+<h4>框架进一步扩展至多专家场景，引入多个差异专家进行协作决策，并设计负载均衡惩罚机制以均衡各专家工作量。在三个具有挑战性的医学数据集上，以MedSAM和CENet为基础分割器的实验表明，DeferredSeg性能持续优于基线方法，有效提升了密集医学分割的可信度。该框架与模型无关，可轻松应用于其他分割架构。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><b>Beyond Single-Dimension Novelty: How Combinations of Theory, Method, and Results-based Novelty Shape Scientific Impact（超越单一维度新颖性：理论、方法与结果新颖性的组合如何塑造科学影响力）</b></h2>
+<h4>科学新颖性推动前沿研究，但也伴随不确定性和现有范式的阻力，导致其与科学影响力的关系复杂。以往研究多聚焦于理论、方法或结果等单一维度新颖性的影响。然而，科学新颖性本质是多维的，孤立分析可能掩盖不同类型新颖性共同塑造影响力的方式。为此，本研究基于《自然-通讯》的15,322篇论文，利用DeepSeek-V3模型根据引言内容将文章划分为理论、方法和结果三个新颖性维度。这些维度可在同一文章中并存，形成不同的新颖性组合。研究使用五年引用次数及是否进入高被引前1%/10%来衡量影响力。描述性结果显示，仅具结果新颖性及同时具备三种新颖性的组合是样本中的主导模式。回归分析进一步表明，与同时具备三种新颖性的文章相比，仅具结果新颖性的文章获得了显著更多的引用，且更可能进入高被引前1%和10%。这些发现深化了我们对多维新颖性组合如何影响知识扩散的理解。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><b>Cross-Attentive Multiview Fusion of Vision-Language Embeddings（跨注意力多视角视觉-语言嵌入融合）</b></h2>
+<h4>视觉语言模型是开放词汇2D语义分割发展的关键，但将其从2D图像提升到3D场景仍具挑战。现有方法通常将2D描述符跨视图反向投影并平均，或启发式选择单一代表性视图，这常导致次优的3D表示。</h4>
+<h4>本文提出一种新颖的多视角Transformer架构，它通过跨注意力机制处理来自多个视角的视觉-语言描述符，并将其融合为统一的每个3D实例的嵌入。第二个贡献是利用多视角一致性作为该融合过程的自监督信号，结合标准的有监督目标类别损失，显著提升了性能。</h4>
+<h4>我们提出的方法（简称CAMFusion）不仅持续优于简单的平均或单视角描述符选择，还在3D语义和实例分类基准测试中取得了最先进的结果，包括在领域外数据集上的零样本评估。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><b>Transformer Based Machine Fault Detection From Audio Input（基于Transformer的音频输入机器故障检测）</b></h2>
+<h4>近年来，声音AI越来越多地用于预测机器故障。传统方法通常使用卷积神经网络分析声音频谱图，但其固有的局部性和参数共享等归纳偏置可能不完全适用于频谱图分析。随着Transformer模型在图像处理领域的成功应用，其在声音AI领域的潜力受到关注。由于Transformer的归纳偏置显著更低，在数据充足的情况下，预计其在频谱图分析任务上能超越CNN。本文验证了Transformer架构在声音数据分析上的有效性，并在机器故障检测任务中，将其生成的嵌入表示与CNN进行了对比。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><b>Causal Diffusion Models for Counterfactual Outcome Distributions in Longitudinal Data（纵向数据中反事实结果分布的因果扩散模型）</b></h2>
+<h4>本文针对纵向数据中反事实结果的预测难题，首次提出了因果扩散模型。该模型旨在解决现有方法在处理复杂时间依赖性混杂因素和不确定性量化方面的不足。CDM采用创新的残差去噪架构与关系自注意力机制，无需依赖逆概率加权等显式去混杂调整，即可捕获复杂的时间依赖性与多模态结果轨迹。在权威的药代动力学-药效学肿瘤生长模拟器上的评估表明，CDM在分布准确性上显著优于现有最优方法，相对提升达15-30%，同时在高混杂场景下保持了具有竞争力的点估计精度。CDM将不确定性量化与稳健的反事实预测统一于复杂的序列混杂环境中，为医学、政策评估等纵向领域的决策支持提供了一个灵活且高效的工具。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><b>DeepTest Tool Competition 2026: Benchmarking an LLM-Based Automotive Assistant（DeepTest 工具竞赛 2026：基于大语言模型的汽车助手基准测试）</b></h2>
+<h4>本报告总结了在 ICSE 2026 的 DeepTest 研讨会上举办的首届大语言模型测试竞赛的结果。竞赛聚焦于对一个基于大语言模型的汽车手册信息检索应用进行基准测试，核心目标是找出那些导致系统未能恰当提及手册中所含警告信息的用户输入。四款参赛工具在暴露系统故障的有效性以及所发现故障测试用例的多样性方面接受了评估。报告详细阐述了实验方法、参赛工具及最终结果。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><b>Beyond Output Correctness: Benchmarking and Evaluating Large Language Model Reasoning in Coding Tasks（超越输出正确性：编码任务中大语言模型推理的基准测试与评估）</b></h2>
+<h4>当前对大语言模型（LLM）在编码任务中推理能力的评估存在局限：现有评估器并非为编码设计，且主流基准测试仅关注代码生成，忽略了其他任务类型。</h4>
+<h4>本文贡献在于：1）提出了首个综合性基准测试CodeRQ-Bench，用于评估LLM在代码生成、总结和分类三类任务中的推理质量；2）通过分析现有评估器的1069个错误案例，总结了五大常见缺陷并提炼出四项设计洞见；3）基于洞见开发了新型两阶段评估器VERA，它结合了基于证据的验证和歧义感知的分数校正。</h4>
+<h4>实验证明，VERA在四个数据集上均显著优于基线模型，最高将AUCROC提升0.26，AUPRC提升0.21。相关资源已开源，以支持未来研究。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><strong>Lyra 2.0: Explorable Generative 3D Worlds（可探索的生成式3D世界：Lyra 2.0）</strong></h2>
+<h4>近期视频生成技术的进步催生了一种新的3D场景创建范式：首先生成模拟场景漫游的相机控制视频，再通过前馈重建技术将其提升为3D模型。这一方法结合了视频模型的视觉保真度、创造能力与可实时渲染的3D输出优势。然而，要生成大规模复杂环境，需在长相机轨迹（伴随大视角变化和位置重访）下保持3D一致性，当前视频模型在此类任务中性能会迅速下降。现有方法主要受限于两种退化问题：<strong>空间遗忘</strong>（先前观察的区域超出模型上下文，导致重访时结构幻觉）和<strong>时间漂移</strong>（自回归生成累积合成误差，逐渐扭曲场景）。本文提出Lyra 2.0框架，旨在生成大规模、持久且可探索的3D世界。为解决空间遗忘，我们维护每帧的3D几何信息，仅将其用于信息路由（检索相关历史帧并与目标视角建立密集对应），而外观合成仍依赖生成先验。针对时间漂移，我们采用自增强历史数据进行训练，使模型接触自身退化输出，从而学会纠正而非传播漂移。这些技术共同实现了显著更长且3D一致的视频轨迹，并以此微调前馈重建模型，最终可靠地生成高质量3D场景。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><b>Relaxing Anchor-Frame Dominance for Mitigating Hallucinations in Video Large Language Models（缓解视频大语言模型中的幻觉：放松锚帧主导性）</b></h2>
+<h4>当前视频大语言模型在视频理解方面表现出色，但仍受幻觉问题困扰。现有方法多关注训练或输入调整，而忽略了一个更根本的挑战：模型在生成回答时，倾向于过度依赖视频中有限的时序证据，导致证据聚合在时间上不平衡。本文研究发现，解码器侧存在一种时序不平衡的注意力集中模式，其中注意力质量最高的帧被称为“锚帧”。这种偏差与输入视频内容无关，更多反映了模型自身固有的结构性或位置性偏见，其过度主导与幻觉生成密切相关。基于此，我们提出了一种无需训练的解码器侧时序再平衡方法。该方法通过自适应校准解码器中后期层的视觉注意力，缓解时序不平衡的集中现象，促使未被充分关注的帧更有效地参与响应生成，从而引导模型将输出建立在更广泛、更平衡的视频证据之上。大量实验表明，该方法能持续提升不同视频大语言模型的抗幻觉鲁棒性，同时保持有竞争力的视频理解性能和高推理效率。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><b>On Higher-Order Geometric Refinements of Classical Covariance Asymptotics: An Approach via Intrinsic and Extrinsic Information Geometry（经典协方差渐近性的高阶几何修正：基于内蕴与外蕴信息几何的途径）</b></h2>
+<h4>经典费希尔信息渐近理论仅通过局部二次近似捕捉对数似然的一阶几何，描述正则有效估计量的协方差。在包含混合模型、弯曲指数族、潜变量模型及流形约束参数空间等弯曲模型中，有限样本行为会系统性地偏离这些预测。本研究提出一种坐标不变且曲率感知的修正方法：将正则参数族视为具有Fisher-Rao度量的黎曼流形，并通过平方根密度映射浸入L^2空间。在适当的正则性和矩假设下，我们推导了得分根一阶有效估计量协方差主项n^{-1}I(θ)^{-1}的n^{-2}阶修正项。该修正项由张量P_{ij}主导，可规范分解为三部分：Fisher-Rao曲率张量的内蕴Ricci型收缩、第二基本形式的外蕴Gram型收缩，以及编码浸入几何无法单独确定的高阶概率信息的Hellinger差异张量。外蕴项半正定，完整修正项在光滑重参数化下不变，且在完整指数族中恒为零。随后，我们将框架扩展至费希尔信息退化的奇异模型。基于加法正规交叉假设下的奇点分解，我们描述了化解后的度量、实对数典范阈值在学习速率与后验均方误差中的作用，以及在化解空间上基于曲率的协方差展开——该展开将正则理论恢复为特例。此框架还为弱可识别性的几何诊断以及曲率感知的正则化与优化原则提供了启示。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><b>KG-Reasoner: A Reinforced Model for End-to-End Multi-Hop Knowledge Graph Reasoning（KG-Reasoner：用于端到端多跳知识图谱推理的强化模型）</b></h2>
+<h4>大语言模型在自然语言理解与生成方面表现出色，但在知识密集型推理任务上存在不足。知识图谱作为一种有效的外部知识表示形式，常被用于增强传统知识库问答任务的性能，但对复杂查询进行精确的多跳推理仍极具挑战。现有方法多将推理过程分解为多个孤立步骤，限制了推理的灵活性并可能导致信息丢失。本文提出的KG-Reasoner是一个端到端框架，它将多步推理整合到大语言模型的统一“思考”阶段。通过强化学习训练，模型能够内化知识图谱的遍历过程，动态探索推理路径并在必要时进行回溯。在八个多跳与知识密集型推理基准测试上的实验表明，KG-Reasoner达到了与当前最优方法相当或更优的性能。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><b>VideoFlexTok: Flexible-Length Coarse-to-Fine Video Tokenization（VideoFlexTok：从粗到细的灵活长度视频分词）</b></h2>
+<h4>视觉分词器将高维原始像素映射为压缩表示以供下游建模。现有主流方法将视频表示为时空3D令牌网格，迫使下游模型（如文生视频模型）必须学习预测所有低层细节，导致学习复杂度极高。</h4>
+<h4>本文提出的VideoFlexTok，采用从粗到细的变长令牌序列表示视频：前序令牌（自发地）捕获抽象信息（如语义和运动），后续令牌补充细粒度细节。其生成流解码器支持从任意令牌数量重建真实视频，允许根据下游需求调整令牌数量，或在相同预算下编码更长的视频。</h4>
+<h4>在类别和文生视频任务上的评估表明，相比3D网格令牌，VideoFlexTok实现了更高效的训练：使用小5倍的模型（11亿 vs 52亿参数）即可达到相当的生成质量（gFVD和ViCLIP分数）。此外，它仅用672个令牌即可处理10秒81帧的长视频进行训练，令牌数量比同类3D网格分词器少8倍，从而以可控计算成本实现长视频生成。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><strong>BID-LoRA: A Parameter-Efficient Framework for Continual Learning and Unlearning（BID-LoRA：用于持续学习与机器遗忘的参数高效框架）</strong></h2>
+<h4>本文针对深度学习系统需同时具备<strong>持续学习</strong>新知识和<strong>机器遗忘</strong>过时、敏感信息的能力这一需求，提出了统一范式。现有方法简单结合会导致知识泄露与基础性能衰退。为此，研究正式定义了<strong>持续学习与遗忘</strong>这一统一范式，其核心目标为：精确删除目标知识、高效整合新知识并保留旧知识、以及最小化跨周期知识泄露。为解决此问题，作者提出了<strong>双向低秩适应框架</strong>。该框架创新性地在注意力层引入三个专用适配器路径，并结合“逃离遗忘”机制，仅需更新<strong>5%的参数</strong>即可将待遗忘类别的表征推离已保留知识。在CIFAR-100和CASIA-Face100数据集上的实验表明，BID-LoRA在多个适应周期中均优于基线方法，并在现实身份管理等场景中展现出实用潜力。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><b>StructDiff: A Structure-Preserving and Spatially Controllable Diffusion Model for Single-Image Generation（StructDiff：用于单图像生成的结构保持与空间可控扩散模型）</b></h2>
+<h4>本文提出了StructDiff，一个基于单尺度扩散模型的单图像生成框架。该任务旨在利用源图像内部统计信息，无需外部数据即可生成视觉内容相似的多样样本。针对现有方法难以保持结构布局（尤其对于包含大型刚性物体或严格空间约束的图像）且缺乏空间可控性的问题，StructDiff通过引入自适应感受野模块来同时维持全局与局部分布。在此基础上，模型结合3D位置编码作为空间先验，实现了对生成物体位置、尺度及局部细节的灵活控制，此为基于位置编码操控在单图像生成领域的首次探索。此外，本文提出了一种基于大语言模型的新评估标准，以克服现有客观指标的局限性和用户研究的高成本。实验表明，StructDiff在结构一致性、视觉质量和空间可控性上优于现有方法，并在文本引导生成、图像编辑、外绘和绘画到图像合成等下游任务中展现出广泛适用性。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><b>Distorted or Fabricated? A Survey on Hallucination in Video LLMs（失真还是捏造？视频大语言模型中的幻觉问题综述）</b></h2>
+<h4>尽管视频-语言建模取得了显著进展，但幻觉问题——即输出看似合理但与输入视频内容相矛盾——仍是视频大语言模型面临的主要挑战。本综述系统分析了Vid-LLMs中的幻觉现象，并将其核心类型归纳为<strong>动态失真</strong>与<strong>内容捏造</strong>两大类，每类下又细分两个子类并附有典型案例。基于此分类，文章回顾了幻觉评估与缓解方法的最新进展，涵盖了关键基准、度量指标及干预策略。研究进一步分析了幻觉的根源，指出<strong>时序表征能力不足</strong>和<strong>视觉基础不充分</strong>是导致上述两类问题的主要原因。这些分析为未来研究方向提供了启示，包括开发运动感知的视觉编码器以及整合反事实学习技术等。本综述整合了该领域的分散进展，旨在推动对Vid-LLMs幻觉问题的系统性理解，为构建鲁棒可靠的视频-语言系统奠定基础。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><b>A Scoping Review of Large Language Model-Based Pedagogical Agents（基于大语言模型的教学代理范围综述）</b></h2>
+<h4>本范围综述探讨了教育领域中新兴的基于大语言模型的教学代理。相较于传统教学代理，LLM的集成带来了变革性进步，具备前所未有的自然语言理解、推理与适应能力。通过对2022年11月至2025年1月间52项研究的分析，综述揭示了这些代理在K-12、高等教育及非正式学习等多学科领域的广泛应用。研究提炼出界定此类代理的四个关键设计维度：交互方式（反应式与主动式）、领域范围（特定领域与通用）、角色复杂度（单一角色与多重角色）以及系统集成度（独立与集成）。新兴趋势包括模拟自然学习环境的多代理系统、用于代理评估的虚拟学生模拟、与沉浸式技术的结合以及与学习分析学的融合。综述同时指出了重要的研究空白，并讨论了关于隐私、准确性和学生自主性等方面的伦理考量，为该快速演进领域的未来发展指明了关键方向。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><b>Boosting Robust AIGI Detection with LoRA-based Pairwise Training（基于LoRA的成对训练提升鲁棒性AI生成图像检测）</b></h2>
+<h4>高度逼真的AI生成图像（AIGI）的泛滥使得开发实用的检测方法变得必要。现有检测器在干净数据集上表现良好，但在面对不可预测的复杂失真时，其“在野”检测性能常会下降。为解决这一关键缺陷，本文提出了一种新颖的基于LoRA的成对训练策略，专门用于在严重失真下实现鲁棒的AIGI检测。该策略的核心包括：对视觉基础模型进行针对性微调、在训练阶段刻意模拟数据分布，以及独特的成对训练过程。具体而言，我们引入了失真和尺寸模拟以更好地拟合验证集和测试集的分布。基于视觉基础模型的强大表征能力，我们对其进行微调以实现AIGI检测。成对训练则通过解耦泛化性与鲁棒性优化来提升检测性能。实验表明，我们的方法在NTIRE“在野”鲁棒AI生成图像检测挑战赛中获得了第三名。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><b>GCA Framework: A Gulf-Grounded Dataset and Agentic Pipeline for Climate Decision Support（GCA框架：一个基于海湾地区的数据集与智能体流程，用于气候决策支持）</b></h2>
+<h4>本文针对海湾地区气候决策中，通用大语言模型缺乏区域知识和工具交互能力的问题，提出了GCA框架。该框架整合了两个核心部分：一是精心构建的、专注于海湾地区的多模态数据集GCA-DS；二是用于气候分析的、具备工具调用能力的智能体Gulf Climate Agent。GCA-DS数据集包含约20万条涵盖政策、学术、灾害事件等多源的问答对，并融合了遥感图像与文本证据。基于此数据集构建的GCA智能体，能够调度一个基于实时/历史数据与地理空间处理的模块化工具流程，以生成衍生指标和可解释的可视化结果。实验表明，针对海湾气候任务进行领域微调并结合工具集成，能显著提升模型可靠性，优于通用基线模型。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><b>Evaluating Relational Reasoning in LLMs with REL（利用REL评估大语言模型的关系推理能力）</b></h2>
+<h4>关系推理是指推断多个实体、属性或变量之间联合关系的能力，这对科学推理至关重要。现有评估多关注表格、图表等结构化输入，未能分离出由更高元关系绑定带来的固有难度。本文通过“关系复杂度”来研究此问题，它定义为应用一个关系所需同时绑定的独立实体的最小数量。基于此，我们提出了REL基准框架，涵盖代数、化学和生物学领域。实验发现，即使实体总数固定，前沿大语言模型的性能也随着关系复杂度增加而持续、单调下降。这种失败模式无法通过增加推理计算量或上下文学习来克服，表明问题根源于模型处理高元关系绑定的能力不足。本研究揭示了当前模型在高元关系推理上的局限，并主张从关系复杂度的角度重新审视现有基准。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><b>Forecasting the Past: Gradient-Based Distribution Shift Detection in Trajectory Prediction（预测过去：基于梯度的轨迹预测分布偏移检测）</b></h2>
+<h4>现实中的轨迹预测模型常因训练与测试数据间的分布偏移而失效，带来安全风险。本文提出一种自监督后处理方法：训练解码器根据轨迹前半段预测其后半段，并利用此预测损失对解码器最后一层的梯度L2范数作为分布偏移的检测分数。该方法不影响原预测模型的性能，并在多个数据集上显著提升了偏移检测效果，同时也能用于早期检测运动规划器的碰撞风险。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><b>Unlocking the Potential of Grounding DINO in Videos: Parameter-Efficient Adaptation for Limited-Data Spatial-Temporal Localization（解锁Grounding DINO在视频中的潜力：面向有限数据时空定位的参数高效适配）</b></h2>
+<h4>本文针对时空视频定位任务面临的数据稀缺挑战，提出了一种名为ST-GD的数据高效框架。该框架的核心创新在于，通过冻结预训练的2D视觉-语言基础模型（如Grounding DINO）的参数以保留其先验知识，并策略性地注入轻量级适配器（约1000万可训练参数）来赋予模型时空感知能力，同时引入一个新颖的时间解码器进行边界预测。这种方法有效缓解了因数据有限导致的过拟合问题，并在多个小规模基准数据集上取得了极具竞争力的性能，证明了其在严格数据限制下进行复杂视频理解的强大潜力。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><b>Grasp in Gaussians: Fast Monocular Reconstruction of Dynamic Hand-Object Interactions（高斯场中的抓握：动态手物交互的单目快速重建）</b></h2>
+<h4>本文提出了Grasp in Gaussians (GraG)方法，用于从单目视频中快速、鲁棒地重建动态3D手物交互。其核心在于摒弃优化重型神经表示的传统思路，转而采用轻量化的高斯和表示进行高效跟踪。方法首先利用预训练大模型初始化手部和物体姿态，其中物体通过视频适配的SAM3D流程初始化并转换为紧凑的高斯和表示，以实现快速跟踪并保持几何保真度；手部则从现成的单目姿态估计出发，通过简单的2D关节点和深度对齐损失进行运动优化，避免了复杂的逐帧3D外观模型细化。实验表明，GraG在长序列上的重建速度比现有方法快6.4倍，同时物体重建精度提升13.4%，手部关节点位置误差降低超过65%。</h4></div>
