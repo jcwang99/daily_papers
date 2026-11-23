@@ -1,255 +1,188 @@
-<div id="news-summary-container" style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;"><h2><strong>Encoding, Decodability, and Use: A Five-Layer Framework for Benchmark Measurement Audits with Evidence from UAV Intent Recognition（编码、可解码性与使用：基于无人机意图识别证据的基准测量审计五层框架）</strong></h2>
-<h4 style="font-weight: normal;">论文提出并在 AeroIntent 上实例化一个五层框架，将“基准准确率即模型理解所测构念”的解读拆分为观察、表征、解码、使用与行为五层，并明确区分编码、可解码性与使用。</h4>
-<h4 style="font-weight: normal;">观察层：20 个 Drone 程序中有 7 个不可靠；径向速度的直接视觉相关量在仅 0.26% 的尺度变化处即触底。</h4>
-<h4 style="font-weight: normal;">表征层：两个任务设计的 RGB 特征仅呈现名义信号；RAFT 光流径向偏差达 r=+0.257（p=0.030），边界框光流散度达 r=+0.203（p=0.029）。但没有任何多特征读出在折均值测试相关上超过簇级最小可检测效应（MDE），最大正向全局样本外相关仅为 r=+0.080。</h4>
-<h4 style="font-weight: normal;">解码层：在多特征 Bonferroni 阈值（α=0.00714，power=0.80）下，MDE 为 |r|=0.599；观测到的 r=+0.080 对应统计功效为 0.00。两次注入实验从两侧验证 MDE 条件：对齐注入达到或超过模拟功效时可被检出，正交注入则未被检出。</h4>
-<h4 style="font-weight: normal;">使用层：准确率与程序记忆（program-identity 0.937/0.597/0.210）及多区域静态线索一致。</h4>
-<h4 style="font-weight: normal;">行为层：准确率并不要求径向速度读出，表现为外观 0.6552 对边界框轨迹 0.4080，簇级配对 Δ=+0.2471，p=0.0132。</h4>
-<h4 style="font-weight: normal;">总体表明，基准准确率不能直接等同于模型对目标构念的理解，需按编码、可解码性与使用分层审计测量效度。</h4>
+<div id="news-summary-container" style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;"><h2><strong>Rubric Semantics or Numerical Priors? Auditing Scale-Direction Bias in LLM Judges（评分标准语义还是数值先验？审计大语言模型评判者中的刻度方向偏差）</strong></h2>
+
+<h4><strong>研究背景与核心问题：</strong>当前基准评测日益依赖大语言模型（LLM）作为自动评判者，其隐含假设是LLM依据评分标准的语义含义而非数字刻度进行评估。本文对这一假设提出质疑，并引入"语义忠实性"（semantic faithfulness）原则，即语义等价的评分标准必须产生一致的分数。</h4>
+
+<h4><strong>方法与工具：</strong>为量化该问题，作者提出"刻度反转探针"（scale-reversal probe），在不改变评估标准的前提下反转分数锚点；并引入"下限归一化"（floor normalization），以模型内在变异性为基准校准反转分歧，从而实现公平的跨模型比较。</h4>
+
+<h4><strong>实验发现：</strong>在五个元评估基准上，针对七种涵盖开源与专有模型的多样化LLM评判者进行实验，结果揭示语义忠实性被广泛违反，且仅凭原始反转一致性会得出误导性结论。</h4>
+
+<h4><strong>解决方案与结论：</strong>作者证明"双向锚点平均"可降低对任一单一锚点方向的依赖，同时不损害与人类判断的一致性。研究强调，可信的LLM评判者必须可靠地遵循评分标准的语义，而不仅仅是与人类评分相关。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Efficient Self-Supervised Adaptation of 3D Abdominal Vision-Language Model for Institution-Specific HCC Classification via Full Fine-Tuning and PEFT（通过全量微调与参数高效微调实现三维腹部视觉语言模型对机构特异性肝细胞癌分类的高效自监督适配）</strong></h2>
+<h2><strong>CutAgent: Creative-Gene-Driven Planning and Experience-Guided Self-Refinement for High-CTR E-commerce Advertising Video Creation（CutAgent：创意基因驱动规划与经验引导自我优化，用于高点击率电商广告视频创作）</strong></h2>
 
-<h4><strong>研究背景与目的：</strong>医学视觉语言模型能够捕捉图像与文本之间的跨模态关系，但其在机构特异性临床任务中的适配仍研究不足。本研究使用来自不同机构、且采集特征不同于模型原始预训练语料的腹部CT与放射报告配对数据，对预训练的3D医学视觉语言模型进行肝细胞癌（HCC）分类微调，并比较全量微调与参数高效微调（PEFT）两种适配策略。</h4>
+<h4><strong>研究问题：</strong>现有电商广告视频创作方法多将产品属性直接映射为脚本或剪辑决策，未显式建模广告策略、叙事结构与制作风格，且难以复用过往制作失败经验。</h4>
 
-<h4><strong>核心结果：</strong>尽管存在跨机构域偏移，两种方法均取得较强的下游HCC分类性能：PEFT的AUC为0.79、F1为0.70；全量微调的AUC为0.82、F1为0.71。上述结果仍低于监督式HCC分类方法，但该方法无需病灶级标注或HCC分类标签作为训练目标，仅通过CT-报告对比学习即较预训练模型取得提升。</h4>
+<h4><strong>核心方法：</strong>提出双智能体框架 CutAgent，将广告视频创作形式化为“规划—执行—自我演化”过程；由 GeneAgent 与 VideoAgent 协作，并通过结构化“创意基因”连接产品理解与视频生产。</h4>
 
-<h4><strong>方法权衡：</strong>全量微调收敛快，但仅在少数训练轮次后即出现过拟合；PEFT采用图像编码器ConvLoRA与文本编码器LoRA，仅更新约1%的模型参数即可达到可比性能，但需要更多训练步骤。此外，对比温度初始化会显著影响分类性能。</h4>
+<h4><strong>创意规划：</strong>GeneAgent 将文本属性与产品图像等多模态输入映射为创意基因，明确叙事单元与制作规则。</h4>
 
-<h4><strong>结论：</strong>3D医学视觉语言模型可通过自监督CT-报告对比学习高效适配机构特异性HCC分类任务；研究同时揭示了全量微调与参数高效微调之间的实际权衡。</h4>
+<h4><strong>训练与数据：</strong>构建约 7 万样本的 CutAgent-70K，包含产品属性/图像、反向提取的创意基因、清洗片段池与真实 CTR；采用高 CTR 监督微调，并进行 CTR 引导的 GRPO 训练。</h4>
+
+<h4><strong>生产与自优化：</strong>VideoAgent 在创意基因引导下，从长期记忆检索“类目—基因”失败—纠正经验，约束镜头脚本规划，并协调素材检索、旁白、字幕、音乐与时间线渲染；独立反思循环诊断质量缺陷、修正制作决策，并将验证后的纠正写回记忆。</h4>
+
+<h4><strong>实验结果：</strong>在 CutAgent-Eval 上，CutAgent 优于代表性基线，取得最高在线 CTR 2.21%。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Beyond Appearance: Evidence-Guided Programmatic 3D Scene Reconstruction with Agentic Lighting Reasoning（超越外观：证据引导的程序化三维场景重建与智能体光照推理）</strong></h2>
-<h4>该论文关注图像到代码的3D场景重建：生成可执行代码以创建可编辑数字内容并支持视觉仿真。现有方法主要依赖外观相似性，难以为几何、材质和光照错误提供充分区分依据。</h4>
-<h4>作者提出LightHarness——一种基于视觉语言模型（VLM）的智能体框架，将显式光照推理引入迭代式场景重建。方法利用几何、本征和光照等互补线索，联合优化场景结构与外观，并提出“光照推理记忆”来维护光源假设、支持证据及修订历史。</h4>
-<h4>该机制支持对部分可见或不可见光源进行推理，并通过证据引导的验证来指导后续修订。框架无需额外训练或可微渲染，即可通过对几何、材质和光照的连贯推理重建显式场景。</h4>
-<h4>实验表明，该方法在复杂阴影和复杂光照条件下具有更高的图像到代码重建精度，并可支持下游场景编辑、物体插入和多样化重光照。</h4>
+<h2><strong>Probing agent overeagerness in realistic settings with continuation audits（在现实环境中通过延续审计探查智能体的过度主动）</strong></h2>
+<h4>前沿编码智能体日益表现出<strong>过度主动</strong>，会采取超出用户授权的意外甚至鲁莽行动。内部部署监控依赖私有流量，开放权重模型与独立评估者难以使用；自动对齐审计虽可替代，但强模型越来越能识别合成设置并调整行为。</h4>
+<h4>论文提出 <strong>Continuation Audits（延续审计）</strong>：从真实编码智能体会话中抽取前缀作为审计基础，引导审计器沿该轨迹续写至预设行为。因前缀来自真实会话，审计器只需维持现实情境，而无需人为制造。</h4>
+<h4>在 SWE-Chat 前缀上验证：90 个配对审计中，评审<strong>无法可靠区分续写与源会话</strong>（现实性胜率 0.42 对 0.43）；全部 900 个审计中，口头表达的评估意识不超过未审计真实会话中的比例。</h4>
+<h4>将流程用于三个近期模型、三个预设行为：<strong>DeepSeek V4 Pro</strong> 在同事凭证滥用上领先，<strong>GPT-5.6 Terra</strong> 在文件权限绕过上领先，<strong>Kimi K3</strong> 在将诊断问题当作指令上领先。Kimi K3 在明确 CLAUDE.md 禁止后仍继续绕过文件权限保护，而另外两个模型完全停止，印证 Moonshot 关于其过度主动性的报告。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Contrast Where It Matters: Visual Evidence-Guided Decoding for Mitigating Hallucinations in LVLMs（在关键之处进行对比：视觉证据引导解码以缓解大型视觉语言模型中的幻觉）</strong></h2>
-<h4>大型视觉语言模型（LVLMs）虽具强大多模态能力，但当语言先验压过视觉证据，或预测依赖无关、误导性图像区域时，仍会产生幻觉。免训练对比解码通过将原始预测与暴露语言先验的辅助预测进行对比来缓解幻觉，但现有方法主要改变辅助输入或计算，未确保解码时两个分支都使用与查询相关的视觉证据。</h4>
-<h4>为此，作者提出视觉证据引导解码（VEGD）：一个免训练框架，先定位与查询相关的视觉证据，并在整个对比解码过程中引导其使用。VEGD通过聚合具有强视觉响应且空间结构一致的定位头来定位证据，并在辅助图像中选择性削弱该证据。</h4>
-<h4>生成阶段，VEGD将两个分支中的视觉载体头引导至同一证据位置：主分支强化对完整证据的访问，辅助分支则锚定到被削弱的对应证据；随后根据分布差异自适应融合策略来合并或对比两分支预测。</h4>
-<h4>在多种LVLMs和基准上的实验表明，VEGD能持续减少幻觉。</h4>
+<h2><strong>CrossEnv: Synthesizing Verifiable Cross-Environment Tasks for Long-Horizon Agent Training（CrossEnv：为长时程智能体训练合成可验证的跨环境任务）</strong></h2>
+<h4>该论文关注长时程智能体训练中的可执行合成环境：这类环境能提供可扩展任务与可验证反馈，但现有方法多在单一环境内生成任务，难以刻画真实世界中跨服务的交互，即一个服务中的动作依赖另一个服务中的信息。其核心挑战是跨环境生成的数据必须保持一致，才能支持可执行、可验证的交互。</h4>
+<h4>为此，作者提出 CrossEnv 框架，利用实体—工具图识别环境间连接，并对齐任务特定数据，从而合成可执行、可验证的跨环境任务；进一步提出 CrossEnv-Curriculum，训练过程从单环境工具使用，逐步过渡到跨更多环境和业务领域的协调，最后引入用户交互。</h4>
+<h4>在四个外部基准上，将跨环境训练数据与该课程结合，能以更少训练样本取得有竞争力的性能。分析结果支持跨环境数据和课程训练的优势，并证明其可迁移到新的环境组合、与训练数据相似度较低的外部任务以及更长的工作流。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Auditing Learned Dynamics in Weather Models（审计天气模型中的学习动力学）</strong></h2>
-<h4><strong>研究背景与问题：</strong>学习型天气模型是可实验访问的计算系统，其内部表征可被检查和操纵。研究利用 DeepMind 自回归天气预报模型 GraphCast 的稀疏自编码器特征，检验因果相关性是否必须具有物理语义；这对审计高保障场景中的 AI 预报器是否依赖可靠机制至关重要。</h4>
-<h4><strong>干预与极端事件预报：</strong>研究还考察能否引导物理相关的潜在方向以改进极端事件预报，干预在预报滚动展开（rollout）期间作用于模型内部激活。</h4>
-<h4><strong>核心发现：</strong>消融一个锁定到 GraphCast 计算网格的特征，会增大全球位势高度误差，尽管该特征缺乏传统物理语义。抑制与对流和低层涡度相关的特征会削弱预测的热带气旋加深（增强期间中心气压下降），而放大这些特征可降低强度误差；通过特征缩放放大对流特征，在七个风暴上实现中位数 51% 的误差降低。</h4>
-<h4><strong>结论：</strong>这些结果将可解释的物理关联与因果效用区分开，并确立稀疏特征作为审计和干预学习天气动力学的实验坐标。</h4>
+<h2><strong>Deep Learning for Physicists: From Linear Regression to Reasoning Models（面向物理学家的深度学习：从线性回归到推理模型）</strong></h2>
+<h4>该讲义基于作者2023/24与2024/25学年在伦敦玛丽女王大学数学科学学院开设的神经网络与深度学习入门课程。作者以物理学家视角，尽量用物理直觉而非繁重形式化解释概念，适合有物理或数学背景、希望自包含入门现代机器学习的读者。</h4>
+<h4>内容从最大似然、最小二乘、线性回归和（随机）梯度下降出发，涵盖神经网络、反向传播、梯度消失、批归一化与层归一化、过拟合与正则化、对抗样本及核方法。</h4>
+<h4>后半部分转向自然语言处理：词嵌入、循环网络与LSTM、注意力机制与Transformer、大语言模型，包括缩放定律、GPT发展史、指令微调、基于人类反馈的强化学习、幻觉、对齐伪装、思维链推理和测试时扩展；对大语言模型的强调源于学生请求。</h4>
+<h4>讲义面向英国体系三、四年级学生，并因跨院系选课而假定极少先修知识，甚至从矩阵乘法讲起，熟悉者可跳过。作者不主张原创性，目标是提供连贯、直观的学习路径；内容截至2025年春季，但所强调的基本思想短期内不易过时。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>AutoMaster: Autonomous Post-Training by Making the Same Model a Better Teacher（AutoMaster：让同一模型成为更好的教师，实现自主后训练）</strong></h2>
-
-<h4><strong>核心问题：</strong>仅以任务成功作为后训练信号并不充分，无法明确应强化哪些行为。即使教师模型的成功轨迹也可能包含无依据假设、低效重复或表面化验证等问题。</h4>
-
-<h4><strong>方法提出：</strong>论文提出 Skill-FT（Skill-Guided Fine-Tuning，技能引导微调），利用自然语言技能抑制教师 rollout 中的不良习惯，并激发原本代表性不足的有效行为，再基于生成的轨迹微调目标模型。进一步提出 AutoMaster 自主后训练系统，由 LLM agent 通过轨迹分析、技能设计、数据选择，以及 rollout 与目标模型评估反馈来开发这些干预措施。</h4>
-
-<h4><strong>主要结果：</strong>在 Terminal、Search 和软件工程任务中，使用 4B 与 9B 目标模型，并在教师、任务池、训练集规模和 SFT 配方固定的条件下，AutoMaster 相比基于无引导成功教师轨迹的 Vanilla SFT，平均性能提升 1.42–8.99 个百分点。消融与轨迹分析表明，行为塑造可使固定模型成为更有效的教师。</h4>
-
-<h4><strong>关键发现：</strong>在全部六种设置中，SFT 期间保留技能指令比移除技能指令获得更高的平均性能；尽管评估时不存在技能指令，且监督输出相同。这表明将技能上下文保留为训练示范的一部分，有助于模型更好地内化行为。</h4>
+<h2><b>Hilbert States for Decision-Making under Partial Observability（部分可观测下的决策希尔伯特状态）</b></h2>
+<h4>针对部分可观测场景下，即使已知系统动力学，决策仍会因信息限制存在本质局限——不同物理状态可能生成相同观测历史，却对应最优动作不同的问题，本文围绕三个核心问题展开研究：决策何时无法达到全状态最优、何种信息能完整保留基于观测的最优决策、有限数据学习如何影响决策可靠性。</h4>
+<h4>研究核心结论如下：其一，通过条件动作偏好刻画决策模糊性，提出零遗憾判定准则，明确正概率区域内冲突的唯一最优动作在存在均匀正成本差时的下界，推导出二值动作的精确遗憾公式，同时论证仅物理状态模糊并不必然引发决策损失。其二，针对平面内两类动作、终端目标平方成本的特定场景，推导出条件期望成本差的精确内积表示，提出无需重构隐藏状态即可保留观测最优动作的希尔伯特状态；在非退化历史与目标变化条件下，该状态的三维形式是所有精确双线性成本对比表示中的最小形式。其三，通过目标投影误差、动作边界与目标几何特征，将有限数据下的状态误差与额外决策遗憾相关联。</h4>
+<h4>物理仿真验证了信息受限导致的遗憾、精确动作保留特性及二阶矩的作用；真实SAR留出实验证实，基于掩码图像可实现可行的目标条件决策，有限数据评估则揭示了决策可靠性的目标依赖性。整体研究明确了不可约信息损失、精确表示的充分性，以及学习过程引发的额外遗憾三者间的边界。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>A Verifier from the Past: Test-Time Compute for Time Series Foundation Models（来自过去的验证器：时间序列基础模型的测试时计算）</strong></h2>
-
-<h4><strong>核心问题：</strong>测试时计算（TTC）能让语言模型通过额外推理生成、验证并选择候选输出，但这一方法无法直接迁移到时间序列预测，因为预测器必须满足因果性，不能利用未来信息来评分候选。</h4>
-
-<h4><strong>方法：</strong>论文提出 Backtest-Gated Augmentation Averaging（BGAA），一种面向时间序列预测的 TTC 算法。它利用序列自身历史构建因果验证器，通过滚动原点回测对上下文的结构化视图进行评分，丢弃表现不如未变换上下文的视图，并对幸存视图的预测分布进行平均。</h4>
-
-<h4><strong>效果：</strong>BGAA 在所有测试的 TSFM-benchmark 组合上均带来提升：GIFT-Eval 上 MASE 降低 0.5–1.0%，fev-bench 上降低 1.3–5.0%，BOOM 上降低 1.7–5.9%；其中 313M 模型结合 TTC 后，性能超过同系列 1B 和 2.5B 模型。</h4>
-
-<h4><strong>机制发现：</strong>有用的视图具有结构化且依赖模型的效果，这与“先验传输”解释一致。</h4>
-
-<h4><strong>关键差距：</strong>在 53 个可交叉拟合的 GIFT-Eval 配置上，部署策略仅提升 0.4–1.3% CRPS；若为每个数据集配置选择最佳视图，可提升 1.4–4.1%；若为每个测试窗口分别选择最佳视图，可提升 17–19%。这表明主要剩余挑战是<strong>窗口级视图选择</strong>。</h4>
+<h2><strong>Identity World Model: Recognizing People in an Imagined Latent World（身份世界模型：在想象潜在世界中识别人）</strong></h2>
+<h4><strong>核心问题：</strong>现有全身人体识别方法容易受真实世界变化影响，因为它们将身份绑定到服装、纹理、姿态、视角等瞬态线索上。稳健的识别器不应只是学会忽略这些线索，而应想象当这些条件变化时，人的身份表征会如何改变。</h4>
+<h4><strong>核心方法：</strong>提出 IDWorld 身份世界模型。类似于潜在世界模型预测动作后场景特征，IDWorld 预测人在条件变化下的表征。它通过单次前向传播，在共享规范条件（如相同服装、固定视角、裸轮廓）下想象反事实特征，且无需渲染任何像素。</h4>
+<h4><strong>关键优势：</strong>与像素级显式想象相比，潜在想象在保持几乎相同精度的同时速度提升超过 11 倍，达到每帧 5.9 ms。由于不同想象条件各有优势，IDWorld 对每个 probe-gallery 对进行自适应加权融合。</h4>
+<h4><strong>实验结果：</strong>IDWorld 在 CCPG 和 CCGR-MINI 上达到 state-of-the-art，在 MEVID 上优于对比方法，在 CASIA-B* 和 SUSTech1K 上泛化最佳，并在 CCVID 上取得最佳 mAP。结果表明，身份世界模型为稳健识别提供了一条简单而有效的路径。代码将发布。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>EEG2MCU: Sensing-to-Execution Co-Design for Wearable EEG Inference（面向可穿戴脑电推理的感知到执行协同设计）</strong></h2>
-<h4>可穿戴脑电推理不仅受模型规模限制，还受制于必须先行处理高维输入的通道相关感知前端。本文提出 EEG2MCU——一种从感知到执行的协同设计框架，将电极数量视为可通过任务感知蒙太奇选择优化的硬件设计变量。</h4>
-<h4>EEG2MCU 采用紧凑的时频表示，仅生成每个首层瓦片所需的 INT8 区域，避免完整输入物化；并通过 halo 复用及面向 Flash、SRAM 和紧耦合存储器的访问感知放置，进一步减少冗余生成与数据搬移。</h4>
-<h4>在 Cortex-M7 MCU 上，EEG2MCU 将峰值 SRAM 较基线降低 11.38 倍，其中从 62 电极到 19 电极的蒙太奇选择贡献 1.71 倍降低；同时将延迟降低 2.57 倍、能耗降低 2.48 倍，并保留完整蒙太奇精度的 94%–96%，证明了在严格嵌入式资源约束下实现实用高维脑电推理的可行性。</h4>
+<h2><strong>Democratizing Cross-Project Knowledge for Transforming Water Governance and Climate Resilience: an Agentic AI Ecosystem（赋能跨项目知识以变革水治理与气候韧性：一个智能体AI生态系统）</strong></h2>
+<h4>欧盟资助项目产出大量交付物、报告和案例研究，但知识分散于不同项目和文档结构中，决策时难以定位相关且具上下文的信息。</h4>
+<h4>本文提出一个智能体AI生态系统：将异构项目文档整合为领域感知知识库，并通过智能体检索增强生成（RAG）流水线提供自适应访问。</h4>
+<h4>方法上，将IMPETUS、NATALIE和InnWater三个欧盟项目的文档重构为层级章节树，并以结构化元数据索引；检索由两个在水与气候领域数据上微调的领域特定嵌入模型支持。知识库之上采用ReAct风格控制器，迭代编排检索动作，在领域集合间分配检索预算并累积证据，直至满足停止准则。</h4>
+<h4>在语料检索基准中，该方法相较单领域嵌入基线将平均倒数排名（MRR）相对提升26.7%，表明其能更一致地检索相关证据，支撑跨项目知识综合与气候韧性决策。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>MoE-Context: Show the Model Only What It Needs（MoE-Context：只给模型它需要的内容）</strong></h2>
-
-<h4><strong>问题与动机：</strong>AI 智能体在每一步都会读取全部历史上下文，而人类并非如此——人只保留当下所需的信息，其余内容以粗略笔记的形式留存，需要时再回忆。MoE-Context 将这一思路引入语言模型。</h4>
-
-<h4><strong>方法：</strong>把上下文切分为若干块（block）。每一步执行前，先用一次快速的“是/否”判断来决定该步骤需要哪些块；未被选中的块压缩为一行式笔记，可随时召回，且不做任何删除。在本文实现的版本中，由同一个模型先做选择、再作答，整个过程只使用一份 key-value 缓存；隐藏块通过掩码（mask）处理，而非真正移除。</h4>
-
-<h4><strong>实验结果：</strong>在笔记本上使用 Qwen3-1.7B 与合成查找任务，仅展示所需块可将准确率从 120 题中的 93 题提升到 119 题；被掩码的块与被删除的块在效果上同样“不可见”。</h4>
-
-<h4><strong>核心发现与局限：</strong>模型自身的块选择能力是最薄弱环节。将一个有监督线性探针（linear probe）写入空闲的输出行，可将其准确率从 120 题中的 80 题提升到 110 题；但简单的关键词检索在该任务上已达到完美，且该探针无法迁移到第二个任务。</h4>
-
-<h4><strong>附加价值：</strong>作者公开报告了上述结果，并给出块切换所支持的两类低成本用法：撤销一次失败的尝试，以及在不新建上下文的情况下运行子智能体（subagent）。</h4>
+<h2><strong>Route Optimization under Port Congestion and Carbon Reduction: An NSGA-II Approach（港口拥堵与碳减排下的航线优化：一种NSGA-II方法）</strong></h2>
+<h4>海运同时面临港口拥堵加剧与碳减排要求趋严的双重挑战：枢纽港大量船舶锚泊会推高单位运输成本，并因辅助发动机空转产生额外CO₂排放。</h4>
+<h4>研究构建多目标航线优化框架，在依赖拥堵的广义成本函数下，综合纳入时间成本、运输成本与碳排放成本；采用变分不等式（VI）模型刻画船舶航线分配的网络均衡，并运用NSGA-II求解三目标优化问题。</h4>
+<h4>以中国沿海集装箱网络进行实证验证（上海为主要拥堵港，宁波舟山为备选港），并对拥堵水平、碳税率和燃油价差开展敏感性分析。</h4>
+<h4>核心结论：（1）当分流成本低于等待成本时，替代港可有效对冲拥堵，分流阈值约为60艘次；（2）80/吨CO₂的碳税可推动清洁燃料采用率超过50%；（3）燃油价格主要影响能源类型选择，而非港口分流决策，表明两类决策维度相互独立。</h4>
+<h4>研究为港口管理部门、监管机构与航运运营商在兼顾经济效率与环境可持续性方面提供可操作的决策支持。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>TacInno: Teaching Vision-Language-Action Models the Contact Dynamics Beyond Vision and Action（TacInno：让视觉-语言-动作模型学习视觉与动作之外的接触动力学）</strong></h2>
-
-<h4><strong>研究问题：</strong>视觉-语言-动作（VLA）模型引入触觉感知后，能够识别视觉上不明显的接触事件，但在接触密集型操作中，触觉输入带来的收益并不稳定，部分视触觉VLA模型对触觉依赖较弱。原因在于许多触觉变化（如夹爪闭合时的凝胶形变）可由视觉观察和执行动作预测。</h4>
-
-<h4><strong>核心方法：</strong>提出TacInno，将视觉观察与执行动作无法解释的接触动力学分离出来，定义为“触觉创新”（tactile innovation），并仅将其作为训练目标使用。</h4>
-
-<h4><strong>模型设计：</strong>TacInno分词器以视觉观察和执行动作为条件，将未来触觉变化压缩为离散代码；策略模型TacInno-VLA学习预测该代码，但在部署阶段不增加任何额外模块。</h4>
-
-<h4><strong>实验结果：</strong>TacInno-VLA在6个仿真任务上平均成功率达87.5%，在4个真实世界任务上平均成功率达70.5%，分别比最强视触觉基线高10.7和9.0个百分点。</h4>
-
-<h4><strong>消融验证：</strong>消融实验验证了视觉与动作条件、多帧编码以及辅助代码预测的贡献。</h4>
-
-<h4><strong>核心结论：</strong>触觉创新可作为接触密集型操作的有效监督信号，使VLA模型学习超越视觉与动作的接触动力学。</h4>
+<h2><strong>Comparing Each Generation with Independent Siblings Gives Video World Model Post-Training a Proper Objective for Outcome Frequencies（将每次生成与独立同源样本比较，为视频世界模型后训练提供面向结果频率的恰当目标）</strong></h2>
+<h4><strong>核心观点：</strong>视频世界模型被用作模拟器时，如果首帧存在多种可能的物理结果，那么模型反复生成时，各结果的出现频率应与数据中的发生频率一致。现有物理后训练将每次生成与唯一记录的未来进行比较，虽能提升单条视频的保真度，但其期望评分对模型分布呈线性，会被“总是生成最可能结果”的策略最大化，从而导致结果频率失配。</h4>
+<h4><strong>方法：</strong>记录结果的对数似然由数据分布最大化；其梯度会依据模型生成该结果的频率的倒数，对“与记录一致”进行加权。在同一历史下，用独立噪声生成的其他样本（siblings）可以估计这一频率。为此，论文提出 SibPO（Sibling-paired Policy Optimization）：利用 siblings 估计截断的逆频率权重，用它加权与记录的一致性；再减去同一权重乘以与 siblings 的一致性。由此，在任意组规模下，期望目标都是结果单元上的严格适当散度。</h4>
+<h4><strong>实验结果：</strong>在 PisaBench 上，SibPO 在四个视频模型中的三个上，将模拟着陆时间的 KS 距离相对其奖励族之外的最强方法降低 9.1–10.2%，且不损害单视频质量；同时将机器人策略成功率的估计误差降低 13%。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>WATERFALL: Workflow for Adaptive Training with Evolutionary Reward Formulation and Automated Learning Loops（面向自适应训练的工作流：进化式奖励构建与自动学习循环）</strong></h2>
-
-<h4><strong>核心问题：</strong>奖励设计仍是强化学习的核心瓶颈，尤其在稀疏奖励、长时程和部分可观测环境中。这类环境要求智能体进行依赖链构建、记忆利用，并区分具有欺骗性的可供性。现有基础模型方法虽能减少人工奖励工程，但通常依赖目标条件、任务描述、专家示范或真实指标，这些假设在部分可观测环境中并不成立。</h4>
-
-<h4><strong>方法提出：</strong>论文将上述问题形式化为严格可观测性约束下的自动奖励发现问题，并提出 WATERFALL——一种基于种群迭代的工作流，用于在 POMDP 环境中自动发现奖励。其关键流程包括：</h4>
-
-<h4>• 通过角色条件生成，合成多样化的程序化奖励候选；</h4>
-
-<h4>• 基于原始视觉 rollout 评估候选行为，利用视觉语言模型裁判的瑞士制进化锦标赛筛选精英；</h4>
-
-<h4>• 利用纵向评估历史，对候选奖励进行迭代变异、升级或剪枝。</h4>
-
-<h4><strong>实验与结果：</strong>WATERFALL 在完全可观测及 reveal-gated 部分可观测环境中评估，覆盖离散与连续任务，并与稀疏奖励强化学习、内在动机和基础模型奖励合成基线比较。结果表明，WATERFALL 无需特权信息即可发现并改进奖励程序，甚至优于保留原生信息优势的基线，在 POMDP 场景中优势最明显。</h4>
-
-<h4><strong>消融与结论：</strong>消融实验证明，视觉证据、锦标赛式选择和迭代改进三者共同重要。论文强调，严格遵循“无特权信息”的约束，是区分自主奖励发现与依赖基准特权信息的奖励塑造的关键。</h4>
+<h2><strong>POKE: Probe Offline, Keep Efficiently for Vision-Language-Action Models（POKE：离线探测、保持高效，面向视觉-语言-动作模型）</strong></h2>
+<h4>视觉 token 剪枝可降低视觉-语言-动作（VLA）模型的推理成本，但基于注意力的评分无法直接衡量 token 对预测动作的影响。本文将“动作敏感度”定义为：将某个 token 替换为该相机均值 token 时，预测动作的一阶变化幅度，并通过一次反向传播估计所有 token 的敏感度。</h4>
+<h4>在线计算敏感度代价较高：在全图（未剪枝）上评分需在每个控制步额外进行一次前向传播；在剪枝图上评分虽更便宜，却会导致“评分图锁定”（scoring-graph lock-in）：被移除的 token 在后续层失去直接路径，得分偏低，因而更难被重新选回。在重放观测上，即使使用随机条件掩码，剪枝图评分仍会重新选中掩码中 59% 的 token，而随机期望仅为 6%；注意力历史也表现出类似偏差。</h4>
+<h4>POKE 离线计算全图动作敏感度，并将其蒸馏到一个参数不足 0.3M 的学生模型。推理时，学生模型无需反向传播，也不依赖历史掩码，即可为当前观测评分，并通过分数引导的多样性选择保留 token。</h4>
+<h4>在 LIBERO 上从 512 个视觉 token 中保留 32 个时，POKE 在 OpenVLA-OFT 上达到 95.2% 成功率，在 π0.5 上达到 90.8%，分别实现 1.85× 和 1.26× 加速；其性能优于基于注意力、多样性和蒸馏的剪枝器，并在 LIBERO-Plus 上优势更明显。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>TuringSpace: Grounding Spatial Intelligence in Action with Interactive CAPTCHAs（TuringSpace：通过交互式CAPTCHA让空间智能扎根于行动）</strong></h2>
-<h4>论文提出TuringSpace：一个由125个交互式CAPTCHA组成的合成网页环境，覆盖五类空间能力，要求模型像人类一样通过点击、拖拽并根据结果自我修正来完成任务。每个任务都是可生成新实例的程序，配有检查器和标准答案，因此也可作为可扩展的训练场。</h4>
-<h4>人类解决率达94.1%，而最佳模型GPT-6 Astra仍有25.9%失败，最佳开源权重模型Kimi K3失败率高达68.0%。分析表明，多数失败源于误读截图；模型推理很少纠正错误判断，反而常幻觉证据来维护错误信念。</h4>
-<h4>为验证空间能力可否学习，作者在此训练场上微调Qwen3.5-9B，成功率从1.6%提升至33.1%，超过Kimi K3，并在七个分布外基准上全部提升，包括在VSI-Bench真实室内视频上提升9.9个百分点。</h4>
-<h4>结论是：将空间智能落地于屏幕行动，能够暴露多模态大语言模型的关键缺陷，并提供可扩展的教学路径；其收益还可迁移到真实世界场景。TuringSpace将公开发布以支持后续研究。</h4>
+<h2><strong>Continual Tool-Space Extension Learning for Multimodal Agents（多模态智能体的持续工具空间扩展学习）</strong></h2>
+<h4>多模态智能体通常只使用裁剪、搜索和代码执行等通用工具，专业视觉模型尚未被纳入其工具空间。将这类新工具接入已训练智能体的难点在于：既要高效学习新工具，又要保留原有工具的使用能力。</h4>
+<h4>论文提出 COTEX——持续工具空间扩展学习，以适配器级别的低开销添加新工具。该方法定位两组参数方向：一组用于触发工具调用并开启多轮推理轨迹，另一组用于决定选择哪个工具。新工具的适配器通过正交约束，仅沿不影响既有工具选择的调用方向更新。</h4>
+<h4>论文还提出一种协议，将专业模型已有的任务特定标注转化为经验证的工具使用轨迹。</h4>
+<h4>在两个代表性智能体和三种专业工具上的实验表明，COTEX 在十项视觉语言基准上取得提升，且现有工具的性能最多仅下降 0.3 个百分点。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>IndustrialKnowEval: A Benchmark for Evaluating Multi-Level Industrial Knowledge in LLMs（IndustrialKnowEval：评估大语言模型中多层级工业知识的基准）</strong></h2>
-<h4>该研究指出现有基准较少评估大语言模型在不同认知需求层次上掌握工业知识的程度，因而提出工业知识与工程问答基准 IndustrialKnowEval（IndKnow）。</h4>
-<h4>IndKnow 包含 43,282 个样本、21 类任务，覆盖航空航天、电力、冶金等 7 个工业领域，并按记忆、理解、推理、工程应用四个认知需求层级组织。企业领域专家与经验丰富的研究人员参与数据集构建和质量控制全过程。</h4>
-<h4>研究对 18 个代表性大语言模型开展实验，并邀请领域专家深度参与评估。基于 IndKnow，作者提出工业认知能力差距（ICCG）指标，用于刻画基础工业知识与高阶推理及应用之间的性能差异，并结合绝对性能分析，以更全面反映模型能力。</h4>
-<h4>该工作旨在支持工业场景下大语言模型的基准评测，推动稳健工业智能发展。代码地址：https://github.com/J4cksonLee/IndKnow</h4>
+<h2><strong>Inertial Video World Models（惯性视频世界模型）</strong></h2>
+<h4 style="font-weight: normal;">物理世界具有惯性：世界从既有状态演化，而非每一时刻重新生成。现有视频世界模型缺少显式的惯性状态演化机制，使运动与结构的连续性只能隐含在视频预测中；自回归推演时反复重建会累积误差，并破坏预测动力学的稳定性。</h4>
+<h4 style="font-weight: normal;">为此提出 <strong>InertialWorld</strong>：将惯性作为自回归预测的结构性先验，跨时间携带已有场景证据，而非每一步重建。核心是 <strong>Inertial Memory（惯性记忆）</strong>，将记忆从被动的预测上下文转变为持续演化的视频状态，包含两种互补表示：稠密欧拉网格保留场景对齐证据；持久拉格朗日载体将局部内容绑定到学习到的规范坐标。</h4>
+<h4 style="font-weight: normal;">每一步中，模型依据动作条件运动传输载体内容，结合传输后的载体与稠密网格预测完整的下一视频状态，并通过学习门控将传输内容与新预测内容融合为下一步记忆。</h4>
+<h4 style="font-weight: normal;">在机器人操作、3D游戏模拟和开放世界导航等多领域实验中，InertialWorld 相比强视频世界模型基线取得了有竞争力的自回归预测性能。代码：<a href="https://github.com/YuanGao-YG/InertialWorld">https://github.com/YuanGao-YG/InertialWorld</a></h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>AGAMOTTO: An AI-Enabled Framework for Time-Critical Tactical Course-of-Action Evaluation and Generation（AGAMOTTO：面向时间紧迫战术行动方案评估与生成的AI赋能框架）</strong></h2>
-<h4>当前指挥控制（C2）平台缺乏集成仿真能力，指挥官难以在实时作战中动态探索行动方案（COA）。</h4>
-<h4>本文介绍AGAMOTTO（Advanced Guidance and Analytics for Military Operations, Tactical Threats, and Outcomes）的研发进展，该工作属于NGC2计划，服务于陆军C2系统现代化（如战术突击套件TAK）。</h4>
-<h4>论文概述系统当前设计、初步发现与后续研究任务，重点说明其如何支撑未来时间受限环境下的战术决策。</h4>
-<h4>系统仍在开发中，但初步开发与结果已证明AGAMOTTO的可行性；早期实验同时揭示了AI工具在作战部署中的潜在收益与实际约束。</h4>
-<h4>研究还总结了经验教训，并提出可行的训练策略，以推动AI生成行动方案在战术场景中落地。</h4>
+<h2><strong>Learning Calibrated and Samplable Predictive Distributions of Surface-Ocean ΔpCO₂ Using Tabular Diffusion Models（使用表格扩散模型学习经过校准且可采样的表层海洋ΔpCO₂预测分布）</strong></h2>
+<h4>海洋吸收约30%的人为CO₂排放，但现场观测在时空上稀疏，使碳汇量化困难；现有机器学习估计多为确定性单值，不确定性通常只能在事后通过残差、集合或预设分布近似。</h4>
+<h4>研究采用Treeffuser——一种以梯度提升树为评分函数的条件扩散模型——基于13个环境、空间和时间预测因子，为每个观测学习ΔpCO₂（海气pCO₂差）的完整条件预测分布，而非仅输出点估计。</h4>
+<h4>在留出的SOCAT测试集上，Treeffuser在评估的不确定性量化方法中取得最低CRPS（8.229 μatm），68%/95%覆盖率最接近名义水平（0.686/0.930），同时点预测性能与确定性XGBoost基线相当（RMSE 18.4 vs. 17.7 μatm；R² 0.77 vs. 0.79）。</h4>
+<h4>结果表明，条件扩散模型可在基本保留点预测能力的同时，提供校准良好的观测级不确定性；其生成样本可用于ΔpCO₂的概率分析，但若要扩展到空间连贯的场重建，还需建模网格单元间的依赖关系，并在空间留出数据上评估。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Know When to Zoom: How Small Is Too Small for Vision-Language Models?（何时该放大：对视觉语言模型而言多小才算太小？）</strong></h2>
-<h4>在线视觉语言模型常因服务端在模型看到图像前缩小或拒绝大图，而漏掉小细节。例如，8000×6000无人机照片中20像素宽的汽车，到达Claude时仅约6像素宽；OpenAI默认直接拒绝该照片。</h4>
-<h4>作者用印刷码“视力测试”和601个真实照片小物体问题，评估4家供应商7个模型的细节保留能力。默认设置下，模型半数概率能识别的最小文字，从小图的≤6像素升至7680×4320照片的预测10–13像素；放大能挽回大量细节。</h4>
-<h4>将每张照片切成最多9块，可使Claude和Gemini准确率提高11.1–14.5个百分点；通过避免拒图，GPT-6.1 Sol从50.7%提升至83.7%。两步放大——模型先指出所需区域——在Gemini上匹配或超过分块，在Claude上差距≤2.5个百分点，且仅用约40%图像token。</h4>
-<h4>细节丢失时，Claude和Gemini约一半情况承认无法判断，但其余失败模式不同：Gemini在43%–48%情况下自信答错，Claude仅5%–9%。</h4>
-<h4>调用前基于细节大小的检查，在Claude和Gemini上错过大部分分块收益；但Claude自身回复是可靠触发：仅在不确定回复后分块，与始终分块差距≤1.4个百分点，并使用62%–70%图像token。</h4>
-<h4>作者据此提出智能体何时应放大的五条规则，并发布视力测试、全部模型回答和代码：https://siddvoh.com/know-when-to-zoom。</h4>
+<h2><strong>PRIO: Pre-trained Representation for Interactive Objects in 4D Worlds（PRIO：面向4D世界中交互式对象的预训练表征）</strong></h2>
+<h4><strong>问题与目标：</strong>3D世界虽可大规模采集、重建和生成，但其中物体通常保持静止，无法对按压、拉动等用户操作产生物理响应。PRIO旨在为交互式4D世界模型提供一种表征，用来描述物体如何运动、变形并实时回应用户操作。</h4>
+<h4><strong>核心方法：</strong>给定静态几何，PRIO通过单次前向推理预测对象特定的构型空间，为拉格朗日力学提供广义坐标，使物理规律和用户操作能够驱动物体运动。由于对象构型在这些坐标下呈线性，动力学所需量可预先计算，后续无需网络推理即可按交互速率运行。</h4>
+<h4><strong>训练与泛化：</strong>PRIO在多样4D轨迹上预训练，学习对象构型先验，可泛化到未见形状；支持网格、点云和3D高斯表示，使重建与生成场景中的对象可交互。</h4>
+<h4><strong>应用与效果：</strong>可用于真实到仿真（real-to-sim）工作流和机器人操作。相较现有4D生成方法，PRIO生成动力学更快，且更忠实地遵循用户操作。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>EgoCaptioner: Towards Comprehensive and Fine-Grained Egocentric Video Captioning（EgoCaptioner：面向全面且细粒度的第一人称视频描述）</strong></h2>
-<h4>针对第一人称视频描述需要细粒度细节与准确时序，但现有多模态大语言模型常遗漏短暂动作、混淆动作顺序或误解佩戴者运动，且现有描述格式难以兼顾详细叙述与精确时间标注的问题，论文提出 EgoCaptioner。</h4>
-<h4>EgoCaptioner 将视频级概览（场景、参与者及佩戴者整体活动）与带时间戳的步骤描述相结合，使叙述能够适应不同感知需求，并在关键时刻给出精确时间标记。</h4>
-<h4>方法上，论文构建由粗到细的标注流水线：先建立事件结构，再扩展步骤描述，从八类第一人称视频来源生成 5 万条训练样本；采用互补奖励分别评估事实准确性与覆盖度、步骤级时间对齐，并惩罚碎片化或冗余叙述，通过 GRPO 引导描述优化；在传感器数据可用时，引入姿态推导的运动事实补充描述参考，以提高事实监督可靠性。</h4>
-<h4>在五个第一人称基准上，EgoCaptioner 在描述质量、基于描述的问答和时间对齐方面取得所评估开源模型中的领先表现；在 PhysCapBench 上超过 Gemini 3.1 Pro，并在 Minerva-Ego 的 caption-to-QA 协议下超过所有评估的专有基线。消融实验支持事实奖励与时间奖励的互补作用，并表明由粗到细标注比单遍标注提供更有效的监督。</h4>
+<h2><strong>Stream of Belief: Eliciting Collective Intelligence through Latent Belief Dynamics（信念之流：通过潜在信念动力学激发集体智能）</strong></h2>
+
+<h4><strong>核心视角：</strong>本文将多智能体推理视为一个寻求隐式信念动力学“集体均衡”的过程，而非单纯的对话或投票聚合。</h4>
+
+<h4><strong>方法提出：</strong>提出 Stream of Belief（SoB，信念之流）框架——各智能体维护连续的潜在信念，并通过“通信”与“反思”迭代精炼这些信念。</h4>
+
+<h4><strong>收敛目标：</strong>为多智能体系统寻找一个集体信念状态，使得进一步通信不再产生有意义的信息传播，即系统在信念层面达到均衡（收敛）。</h4>
+
+<h4><strong>实验结论：</strong>大量实验表明，SoB 在不同任务与不同模型族之间均具备良好的泛化能力。</h4>
+
+<h4><strong>更广意义：</strong>研究结果为“从信念动力学角度扩展多智能体推理”提供了新的视角与路径。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Learning to Interact in Multi-Agent Self-Play for Controllable Autonomous Driving Scenario Generation（在多智能体自博弈中学习交互以实现可控自动驾驶场景生成）</strong></h2>
-<h4>大规模多智能体自博弈能在仿真中有效训练鲁棒驾驶策略，但如何控制模型生成特定且安全关键的边缘场景仍是核心挑战。现有目标条件自博弈框架主要依赖静态地图位置目标，难以稳定产生激进尾随、对抗性加塞等复杂智能体交互，而这些交互对自动驾驶车辆的严格测试至关重要。</h4>
-<h4>为此，论文提出扩展的多智能体自博弈框架，引入智能体相对动态目标；通过以该扩展目标表示对策略进行条件化，实现有针对性的、可控的场景合成。实验表明，该方法能够生成静态目标基线无法模拟的交互式驾驶行为，为自动驾驶测试中的长尾场景生成提供了灵活工具。</h4>
+<h2><strong>Understanding Cross-Modal Inconsistency through Representation Subspaces in Omni Models（从表征子空间理解全模态模型中的跨模态不一致性）</strong></h2>
+<h4><strong>研究问题：</strong>全模态模型在统一语言主干中处理音频、视觉和文本，却常对语义等价的跨模态输入给出不同答案。现有表征层面的分析尚未区分两类信息：一类用于预测模型是否会出现跨模态分歧，另一类是扰动后会改变模型答案的表征。</h4>
+<h4><strong>方法：</strong>作者从答案位置表征中估计低维“答案子空间”，据此把答案相关成分与其余表征分离，并在3个全模态模型和2个多模态推理任务上开展匹配干预实验。</h4>
+<h4><strong>核心发现：</strong>能够预测跨模态不一致的信息主要位于答案子空间之外，集中在一个可复现的二维表征中，且无法由固定的模态偏移解释。扰动答案子空间会显著改变模型预测；扰动该分歧表征，或扰动同维随机子空间，则几乎不影响预测。</h4>
+<h4><strong>关键结论：</strong>跨模态分歧可由模态特定答案表征的错位诱发：仅扰动一个模态的答案子空间即可引发分歧，而对两个模态施加相同扰动则基本保持答案一致。这表明，预测分歧的表征不同于可诱发分歧的答案级表征，线性可解码性并不等同于行为有效性。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Perception into Imagination: Executable Memory for World Models（从感知到想象：世界模型的可执行记忆）</strong></h2>
-
-<h4>物理智能体在目标不可见或接触中断后，仍需利用此前看到或触摸到的信息；而智能体的行动会改变这些记忆事实的含义。为此，论文提出可执行感知记忆（EPM），一种在世界模型想象过程中同时推进显式感知状态与神经潜在动态的框架。</h4>
-
-<h4>EPM 中不断演化的读出信息用于奖励预测、价值估计和策略学习。方法将奖励输入与其对应的状态转移对齐，并在记录动作的开环 rollout 上监督奖励头。</h4>
-
-<h4>在 Memory Maze 13×13 任务中，EPM 在 100 万次交互时达到 30.37 回报；相同演化读出仅用于策略和价值、共享同一感知前端时为 23.37，提升 7.00 [3.80, 10.21]。完整方法还在 9×9 任务和 MiniWorld 中改善控制性能。</h4>
-
-<h4>对“记住但已移出视野的目标到达”进行探测，两种视觉实现均表现出更强的奖励预期。集中注意、触觉恢复和真实触觉帧进一步表明，记忆事实在想象策略训练、运动依赖决策和感官内容保持中具有互补作用。</h4>
-
-<h4>EPM 将持续感知与世界模型预测的后果及学习信号相连接，面向 Physical AI 提供统一框架。</h4>
+<h2><strong>Jetriever: Shifting Agent Memory Retrieval from Similarity to Utility（Jetriever：将智能体记忆检索从相似性转向效用）</strong></h2>
+<h4 style="font-weight:normal;">核心问题与方法：一条记忆能否帮助回答用户问题，往往取决于世界知识，而非表面相似度。Jetriever 用全记忆池效用评分取代相似度检索：给定查询后，它使用由大语言模型衍生的“系统1”决策模型 Jev，为每条已存储记忆评估其“对答案有用”的概率，并直接按该概率对记忆池排序。</h4>
+<h4 style="font-weight:normal;">关键结果：在 InMind 的 125 个间接查询任务中，Jetriever 有 84.8% 的情况将金标准记忆条目排在第 1 位；BM25 为 1.6%，采用用户轮次索引的 MiniLM 为 0.0%。其端到端 Application 指标达到 76.0%，而已发表的检索与记忆系统最高仅为 16.0%。受控 20 题对比进一步区分了“识别隐式证据”与“正确排序”：Jev 和 Qwen3.5-9B 都能在前 50 名中召回 90% 的金标准片段（基于 BERT 的决策模型 Laya 为 30%），但在第 1 名处，Jev 达到 85%，Qwen3.5-9B 降至 40%。</h4>
+<h4 style="font-weight:normal;">扩展验证与结论：在 MemoryAgentBench 按维度比例随机抽取的 60 题上，Jetriever 将四维平均得分从 ReFind 的 44.3% 提升至 55.4%；平均检索成本为每 InMind 查询 0.00834 美元、每 MAB 查询 0.03103 美元。结果表明，有效的效用检索取决于三点：广泛的世界知识、校准良好的排序概率，以及可负担的全池评估。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>A Seismic Foundation Model for Dense Feature Extraction（用于密集特征提取的地震基础模型）</strong></h2>
-<h4>针对高质量地震标注稀缺、现有模型多按单任务分别训练的问题，提出7B参数地震基础模型SeisDFE，用于密集特征提取。</h4>
-<h4>模型基于500余个地震体生成的534万幅2D图像预训练，采用三阶段策略：判别式自监督学习、Gram特征锚定和多分辨率适配，在提升特征判别力的同时保持空间连贯性。</h4>
-<h4>冻结编码器即可支持地震相分类、盐体检测、断层检测和相对地质时间估计；四项任务均优于现有地震基础模型，除断层检测外优于自然图像预训练模型。</h4>
-<h4>稀缺监督下优势最显著：仅用F3数据集两个标注剖面，全数据mIoU较基线提升12–19个百分点；特征可配合任务专用解码器，并扩展至合成到现场迁移及稀疏3D地质体解释。</h4>
-<h4>结果表明，大规模地震预训练能将地质信息组织为可跨解释任务直接复用的密集表示。</h4>
+<h2><strong>What Does Weight-Space Programming Add to Diffusion Editing? Program Construction versus Score-Guided Refinement（权重空间编程为扩散编辑增添了什​​么？程序构建与分数引导细化）</strong></h2>
+<h4>权重空间编程（WSP）使语言模型能够为另一网络构建可执行的权重更新。本研究通过一个接口考察扩散概念编辑：由程序定义训练上下文、保持约束与更新方向，共享数值拟合器负责选择其系数。我们在 Stable Diffusion 1.4 的 24 个 TIMED 测试编辑上，将生成的程序与已发表的编辑器、共享面板手写基线以及预算匹配的传统编辑搜索进行比较。预注册的重写流程相较于强基线并无优势。在探索性比较中，一次性 Astra 程序在全新场景的 VLM 联合成功率上较共享面板基线提升 10.0 个百分点，该指标要求主体存在且整图目标匹配，而 CLIP 相对匹配未显示可检测变化。这些程序围绕受保护的文本状态子空间组织可调方向。随后对 Astra 程序进行探测与重写，使 CLIP 提升 6.2 个百分点，而联合成功率变化为 -9.7。在固定的 144 张图像样本上，五个额外评估器在整图目标匹配下给出相同方向的点估计；主体局部变化的检查则给出较不明确的差异。综上，这些结果识别出完整生成程序中的有用行为，并表明分数引导的修订未必能保留该行为：程序构建与程序修订应作为 WSP 流程中两个独立阶段加以评估。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Network Intrusion Detection Adaptability under Spurious Labels: A Noise-Aware Few-Shot Class-Incremental Learning Framework（虚假标签下的网络入侵检测适应性：一种噪声感知的小样本类增量学习框架）</strong></h2>
-<h4><strong>核心问题：</strong>网络入侵检测系统需在仅有少量标注流量时增量适应新攻击，而现有基于小样本类增量学习（FSCIL）的NIDS对新观测攻击类中的标签噪声高度脆弱。</h4>
-<h4><strong>方法：</strong>提出NAFN噪声感知FSCIL-NIDS框架，降低增量适应中误标数据的影响。其包含噪声检测（识别并移除误标双向流）与特征采样（从干净双向流估计类条件嵌入，用基类统计校准，并重采样合成特征以恢复原始双向流数量）。框架采用RFS教师-学生范式，结合轻量最近邻或逻辑回归分类器及多种预训练与记忆选择策略。</h4>
-<h4><strong>实验结果：</strong>在CSE-CIC-IDS2018、Edge-IIoT和IoT-NID数据集上，NAFN在50%标签噪声下仍能有效保留先验知识并维持较强增量性能；相较未去噪基线，新类F1分数最高提升52%，且时间高效，在跨网络与高噪声增量场景中表现鲁棒。实现已公开以促进可复现性。</h4>
+<h2><strong>Disagree to Prune: Reallocating Visual Tokens Where a Small VLM Dissents（分歧即剪枝：将视觉Token重新分配到小型VLM持异议之处）</strong></h2>
+<h4><strong>核心问题：</strong>视觉Token剪枝通过仅保留部分视觉Token来加速大型视觉语言模型（VLM）。现有方法多致力于改进Token排序，并以相同预算对每个问题只回答一次。强排序下，剪枝通常只损害少数问题，但基于保留Token计算的信号难以感知被移除的信息。</h4>
+<h4><strong>关键发现：</strong>在大多数受剪枝影响的问题上，让一个小型VLM读取完整图像后，其答案会与剪枝后的答案不一致，因为小VLM仍能看到被剪掉的证据。这表明小VLM的分歧可标记剪枝失败。</h4>
+<h4><strong>提出方法：</strong>作者提出PRUDENT：先用约一半视觉Token预算作答，再将节省的Token用于以双倍预算重新回答那些出现分歧的问题。论文分析了这种重答何时有收益，以及为何小VLM应读取完整图像。</h4>
+<h4><strong>实验结果：</strong>在18个基准上，PRUDENT在相同平均视觉Token预算下优于8种现有剪枝方法；预算越紧，优势越明显，并在5种InternVL规模上成立。它在另外两个模型家族中也取得最高平均值。小VLM的分歧可标记全部8种方法的大多数剪枝失败；基于该分歧进行重答，也能改进两个最强方法（即使其使用自身排序）。其他检查器带来类似增益，额外Token被分配到第一遍回答受损之处。</h4>
+<h4><strong>核心结论：</strong>识别哪些剪枝答案值得信任，为视觉Token剪枝提供了超越Token排序的额外杠杆。代码与数据见：https://github.com/LiZaiyuan0619/PRUDENT。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Lost in Read-out: Locating the Image Quality Gap in Vision-Language Models with a Closed-Form Edit（迷失在读出环节：用闭式编辑定位视觉语言模型中的图像质量差距）</strong></h2>
-
-<h4>视觉语言模型（VLMs）常被用作零样本图像质量评估器，但其“好/差”判断与人类意见仅中等一致。核心问题不是模型“看不见”质量，而是“说不出”质量。</h4>
-
-<h4>对五个VLM的逐层探测表明：图像质量可从视觉编码器线性解码，也可从最后一层语言层解码，且解码效果远好于模型答案所体现的水平；约一百个标签即可恢复大部分质量信息。</h4>
-
-<h4>质量差距主要位于最终读出环节，且该读出还部分读取了其他因素：相对人类意见，五个模型都过度奖励色彩丰富度、低估锐度。</h4>
-
-<h4>作者通过干预验证：若问题在读出，则对单个最后层神经元进行闭式编辑，并用多提示一次性拟合，应能缩小差距且不过度。实验结果支持这一判断：在未用于拟合的提示下，该编辑在KonIQ上恢复了86%–100%的差距——即最后层状态上的岭回归头在同一提示下超出模型答案所发现的部分。</h4>
-
-<h4>但该编辑有边界：当差距本身较小时，收益也很小，两个最大模型未达到迁移标准；当岭回归头本身低于模型答案时，编辑会降低分数；且仅当从语言模型中段开始写入时才有效。</h4>
-
-<h4>与无约束微调不同，该编辑不破坏感知问答能力；但它不适用于是/否或评分问题，并会在带有情感色彩的句子之后反转“好—差”对比。代码将公开。</h4>
+<h2><strong>Correspondence-Free Camera Pose Estimation by Matching Moments（通过匹配矩进行无对应相机位姿估计）</strong></h2>
+<h4 style="font-weight: normal;"><strong>问题：</strong>盲透视 n 点（PnP）问题是在 2D 与 3D 点对应关系未知时，估计已标定相机的位姿。</h4>
+<h4 style="font-weight: normal;"><strong>核心发现：</strong>对于完整、无噪声观测，14 个四阶以内的置换不变图像矩，几乎可为任意包含至少 20 个点的 3D 点集唯一确定固定相机位姿。</h4>
+<h4 style="font-weight: normal;"><strong>方法：</strong>提出无需学习的方法 MomentPnP：匹配观测 2D 点与投影 3D 点之间的这些矩，在无对应条件下初始化相机位姿；再用期望最大化（EM）细化位姿与对应权重。</h4>
+<h4 style="font-weight: normal;"><strong>实验结果：</strong>在三个基准测试集上，无论是否含外点，该方法相较最佳学习基线将中位旋转误差降低 5–170 倍；即使外点数量与内点相当，也能恢复准确位姿。在密集 ETH3D 扫描中，随着点集增大，位姿精度提升，即使单个对应关系更难分辨。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Active Feature Acquisition by Distilling an Oracle Teacher（通过蒸馏神谕教师进行主动特征获取）</strong></h2>
-<h4><strong>核心问题：</strong>获取实例的全部特征往往成本高昂，包括金钱、时间延迟或隐私代价。主动特征获取（AFA）通过学习策略，在预算约束下按实例决定获取哪些特征。</h4>
-<h4><strong>方法创新：</strong>现有AFA方法通常优化自构造的效用目标，而非蒸馏显式教师。本文显式构造教师：训练时利用标签和未观测特征值，闭式确定一个神谕教师，按候选特征对下游预测器误差的影响进行排序；OracleImitator再通过软目标模仿，将该排序蒸馏为可部署策略。</h4>
-<h4><strong>实验结果：</strong>在多模态医学诊断和AFABench基准上，OracleImitator在完整预算范围内匹配或优于现有AFA方法，并以不到四分之一的获取成本恢复90%的可达准确率增益。</h4>
-<h4><strong>核心观点：</strong>由于教师是显式算法对象而非隐式优化目标，因此可以直接衡量：受部署时可见信息限制的策略，能够恢复多少教师排序。</h4>
+<h2><strong>How Many Persistent Features Does a Biometric Need? A Law Linking Equal Error Rate to Feature Count and Persistence（生物特征需要多少持久特征？一条将等错误率与特征数量和持久性联系起来的定律）</strong></h2>
+<h4>论文摘要总结：生物特征设计者可控制特征数量及其时间持久性。既有经验研究发现，等错误率（EER）与持久性、所需特征数之间呈线性关系；本文推导了这些规律背后的理论定律。</h4>
+<h4>在 N 个独立标准化高斯特征、测试—重测相关系数为 ρ、采用余弦相似度评分时，Fisher z 变换可将真实与冒名分数转化为两个正态分布，得到 EER=Φ(−½√N·atanhρ)，反解为 N=(2q/atanhρ)²，其中 q=Φ⁻¹(1−EER)；特征间相关时通过有效特征数 N<sub>eff</sub> 纳入。</h4>
+<h4>核心扩展允许持久性在不同比较间变化，并以 Fisher 尺度上的离散度 τ 表示：EER=Φ(−m/(√(τ²+v)+√v))，其中 v=1/(N<sub>eff</sub>−2)。当持久性呈正态离散时，EER 存在下限 Φ(−m/τ)，无论增加多少特征都无法突破。</h4>
+<h4>该简单定律无需拟合参数即可复现已发表模拟和 EER-ICC 关系，并预测 GazeBase 眼动嵌入的 KCC-EER 关系（R²=0.88；GazeBaseVR 为 0.63）。一般形式从真实与冒名分数读取后，在 101 个条件下匹配眼动、击键、ECG 和面部嵌入的 EER，R²=0.98、中位误差 0.6 个百分点；简单定律为 R²=0.87、中位误差 1.9 个百分点。其中 61 个眼动、击键和 ECG 条件用于同一分数上的一致性检验，40 个面部条件使用留出受试者，精度相同。</h4>
+<h4>设计规则：乘积 τ√(N<sub>eff</sub>−2) 可指导设计——当其远低于 1 时，增加特征或去相关收益充分；超过约 3 后收益很小，此时只有更高或更均匀的持久性才能进一步改善。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Replicating and Extending Weight-Space Programming: Frontier LLMs Compile Programs into Weights and Read Input Layers（复现与扩展权重空间编程：前沿大语言模型将程序编译为权重并读取输入层）</strong></h2>
-
-<h4><strong>研究背景：</strong>MIT 研究者近期报告，前沿大语言模型 GPT-6 Astra 能在单次回复中直接写出小型神经网络的权重，也能读取小型网络的原始权重并说出它们被训练来做什么。作者用三天时间对这一结果进行了复现与扩展。</h4>
-
-<h4><strong>发现一：写权重的能力可以复现。</strong>Astra 为《打砖块》（Breakout）生成的网络得分为 514、550、307（MIT 原结果为 517），在两个修改版 Breakout 上表现同样良好；Opus 5.5 也能写出可用的网络，但常因输出 token 耗尽而中断。</h4>
-
-<h4><strong>发现二：真正的新能力是"把程序翻译成权重"。</strong>早期模型能够用代码写出好的策略，这比它们能写出网络权重早了整整一代；模型写出的网络表现得像"编译后的程序"——两个模型各自独立地把 Astra 的 Breakout 网络反编译为 Python 代码，在所有测试状态下动作完全一致。但在手写数字分类任务上，Astra 的网络平均仅得 50%，低于一个简单分类器的 82%。</h4>
-
-<h4><strong>发现三：读权重在很大程度上只是读输入层。</strong>Astra 与 Opus 5.5 几乎能完美判断网络在玩哪款游戏；但在作者自行设计并训练的三种新游戏上，Astra 只能恢复物体在棋盘上的位置，基本无法理解游戏机制。</h4>
-
-<h4><strong>发现四：仅凭权重进行审计可行但流于表面。</strong>在不执行代码的情况下，Astra 对训练期间被投毒的小型语言模型检出率为 10/10，对后续额外训练投毒的模型为 7/10，对恶意适配器为 23/32，但从未识别出触发条件或恶意行为。开放权重模型表现落后。</h4>
-
-<h4><strong>结论：</strong>大语言模型能够读写小型网络，但就目前而言，这实质上相当于"编译人工设计的程序"加上"读取输入层的布局"。作为可解释性工具，它前景可期，但仍处于早期阶段。</h4>
+<h2><strong>Seer: Guiding Small Deep-Research Agents with Shared Decision Models（Seer：利用共享决策模型引导小型深度研究智能体）</strong></h2>
+<h4>深度研究智能体需反复决定搜索、阅读与验证，通常依赖云端大模型提出动作；但隐私与本地控制需求推动端侧部署，而端侧内存和算力有限，更偏好小模型且训练困难。</h4>
+<h4>推理时引导面临三大障碍：通过真实执行探索候选会增加工具调用；提示式自评受智能体自身判断限制；模型特定引导带来重复适配成本。</h4>
+<h4>为此提出 Seer：一种推理时本地引导框架，将智能体的动作提议与学习得到的后果预测、价值估计分离。基于共享的真实研究轨迹语料，离线训练两个可复用模型：工具响应模拟器（学习观测到的调用—响应对）和价值估计器（学习以折扣终端正确性标注的历史）。二者跨智能体复用，无需额外训练。</h4>
+<h4>Seer 仅执行被选动作，并只将真实工具响应写入已提交历史，避免为丢弃候选产生额外工具调用与推理成本。多个深度研究基准上，Seer 显著提升不同语言模型智能体表现：GAIA 上 Qwen3.5-4B 从 13.6% 升至 41.7%，Qwen3.5-9B 从 22.3% 升至 50.5%。</h4>
+<h4>分析表明：更广的候选覆盖可补偿不完美模拟，但预测与评分误差会限制扩大想象搜索的收益；可复用的预测与评估模型能通过额外本地计算增强小型研究智能体，而无需真实执行被丢弃候选。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Exact Bayesian layers via characteristic functions（基于特征函数的精确贝叶斯层）</strong></h2>
-<h4><strong>研究背景：</strong>贝叶斯神经网络能够提供有原则的不确定性估计，但基于蒙特卡洛采样的训练成本较高；无采样变分推断虽使训练更可行，却通常假设输出服从高斯分布，在实际问题中可能不准确。</h4>
-<h4><strong>核心方法：</strong>论文提出 CF-Prop，一种利用特征函数进行不确定性传播的方法，可在不采样的情况下精确计算贝叶斯 ReLU 层的输出分布，并且适用于非高斯情形。</h4>
-<h4><strong>理论优势：</strong>由于 CF-Prop 传播的是特征函数，变分训练目标——证据下界（ELBO）——可对包括高斯、泊松和 Gamma 在内的广泛似然函数进行闭式求解，由此形成高效的变分推断算法 CF-VI。</h4>
-<h4><strong>实验结果：</strong>在 CIFAR-100 上，CF-VI 取得所有测试方法中最低的校准误差，较次优方法改善约 35%；在重尾保险理赔数据集上，CF-VI 能准确捕捉尾部不确定性，而其他无采样方法和蒙特卡洛方法均严重低估该不确定性。</h4>
+<h2><strong>CuRSE-Bench: A Benchmark for Probing Cultural Blind Spots in Text-to-Image Safety Evaluation（CuRSE-Bench：探测文本到图像安全评估中文化盲点的基准）</strong></h2>
+<h4>该论文指出，文本到图像（T2I）安全评估通常只给每个提示或图像分配一个“文化盲”的单一危害标签，导致仅在特定文化中构成危害的内容可能被误判为无害。</h4>
+<h4>作者提出 CultureCraft 智能体框架，用于构造在通用评估标准下看似无害、但在目标文化中具有潜在危害含义的 T2I 提示，并据此构建 CuRSE-Bench：包含 6 个地区、10 类危害维度下的 10,709 条文化特定提示和 2,648 条文化通用对照提示；每条提示均来自预定义且有文献记录危害向量的知识库，并可追溯至至少两个独立来源。</h4>
+<h4>评估采用 6 个地区人格化评审器与一个配对的“文化盲”评审器。结果显示：文化盲评审器会低估文化特定的潜在危害，但在对照提示上与人格化评审器表现一致；而每个人格化评审器主要识别本地区的潜在危害，体现出一种选择性文化盲点，且该盲点仍存在于已部署的审核系统中。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Open-fMIND: A Large-Scale Open-Access fMRI Corpus for Pretraining Brain Foundation Models（用于预训练脑基础模型的大规模开放获取fMRI语料库）</strong></h2>
-<h4>自监督预训练已革新语言与视觉领域，但用于功能磁共振成像（fMRI）时受数据获取限制。现有最大标准化fMRI资源受数据使用协议约束，且采集协议集中于少数类型；OpenNeuro上数千个开放许可数据集则普遍规模小、组织方式异质且未预处理。</h4>
-<h4>Open-fMIND首个版本提供了统一预处理、开放获取的脑区划分fMRI时间序列语料，覆盖322项OpenNeuro研究、11,379名受试者和45,731个功能扫描。每个扫描均经fMRIPrep预处理，并在涵盖14个图谱家族的52个图谱下进行脑区划分，共生成240万条时间序列。</h4>
-<h4>数据以两种形式发布：默认流程去噪后的时间序列（preproc），或fMRIPrep输出及其混杂因素文件（quasiraw）；同时附带功能连接矩阵、每次扫描的来源信息和运动元数据。</h4>
-<h4>Open-fMIND旨在作为自监督脑表征学习的预训练资源。基于该语料库进行预训练，可获得与UK Biobank数据相当的下游任务性能。</h4>
+<h2><strong>SIGNTOK: A Text-Aligned Continuous Pose Tokenizer for Sign Language Generation（SIGNTOK：面向手语生成的文本对齐连续姿态分词器）</strong></h2>
+<h4>文本条件手语生成的效果不仅取决于生成器，还与手语的生成空间密切相关。现有方法多直接在原始姿态空间、量化码空间或面向重建的学习潜在空间中生成手语，研究发现这类空间的表征主要按手语者身份而非语言内容组织：在CSL-Daily数据集上，原始姿态空间中测试样本的最近邻为其他手语者演绎的同句内容的概率仅2%。为解决该问题，本文提出SIGNTOK——一种连续姿态分词器，其潜在空间由三个仅用于训练的辅助头构建：运动学头预测动作动态、句子级头将手语与整体文本对齐、词级头将短时运动窗口与内容词对齐。上述目标共同将同句跨手语者的最近邻匹配率提升至82%。在三个手语基准的实验中，相较于在姿态空间训练，同一生成器在SIGNTOK潜在空间训练后，在6种基准评分器设置的5种中，回译BLEU-4指标均有提升，且关节生成精度相当；同时，在所有基准上，词级对齐的回译得分均高于句子级对齐。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Expertise capture in workplace AI（职场人工智能中的专业能力捕获）</strong></h2>
-
-<h4><strong>核心概念：专业能力捕获</strong></h4>
-<h4>AI助手正日益成为知识工作者思考与工作的组成部分，它在运行中不断积累提示词、范例、记忆与交互历史，而这些内容实质上编码了工作者的专业判断。此类基础设施通常由雇主或平台掌控，作者由此提出“专业能力捕获”这一概念，即把工作者所应用的知识与判断吸收进组织控制下的AI资源之中。</h4>
-
-<h4><strong>分析框架：贡献形式、技术驻留与转化类型</strong></h4>
-<h4>论文构建了由“贡献形式”“技术驻留位置”和“转化类型”组成的三维框架，并指出：一项贡献能在多大程度上被归属、分离与撤销，取决于它驻留于何处、经历了何种转化。这些属性在任何争议发生之前就已由系统设计所固定。</h4>
-
-<h4><strong>关键发现：不对称性的累积</strong></h4>
-<h4>当工作者离职时，组织保留由其判断所塑造的能力，而工作者本人却失去对该能力的访问权。随着贡献从可检视的原始产物转变为衍生品、学习组件与后继系统，这种不对称性会不断加剧。</h4>
-
-<h4><strong>应对措施：让分配在技术上可执行</strong></h4>
-<h4>论文提出三项措施：写入时溯源、可分离贡献的提取，以及可执行的退出程序。它们使各方商定的权益分配在技术上得以落实，同时明确揭示出哪些内容根本无法被分离。</h4>
+<h2><strong>Constructing Dynamic Conversations with Neural Back-channel Generation and Voice-line Scheduling（基于神经后置回应生成与语音线路调度的动态对话构建）</strong></h2>
+<h4>针对游戏行业语音表演中两条语音轨道通常独立录制或合成、缺乏同步的问题，本文提出一种新方法，将双人对话音频的两条语音轨道整合为具有可控后置回应与话轮转换动态的统一对话。该方法利用神经调度器对未同步的双轨道进行序列编排，通过插入或删除停顿、适时引入声音重叠的方式调整两条轨道，形成自然流畅的动态对话；同时提出后置回应预测器，可根据给定对话轮次的音频与内容预测后置回应的合适时机，调度器可整合该预测结果优化编排效果。通过定量比较、与现有技术及朴素基线的定性和感知对比等多维度评估，结果表明，该方法可实现动画师对后置回应及话轮动态的多样性、程度与类型的灵活控制。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><b>Embodied Graph: A Relational World Model for Long-Horizon Tasks（具身图：面向长时程任务的关系世界模型）</b></h2>
-<h4><b>核心问题：</b>长时程具身与Web任务涉及长决策序列和延迟反馈，准确规划至关重要。世界模型通过学习潜在动态并进行想象式规划来应对，但现有方法依赖密集像素级观测，易吸收冗余信息并忽略任务相关实体间关系，导致小误差在长时程想象推演中累积并逐渐破坏预测。</h4>
-<h4><b>关键挑战：</b>论文探索基于稀疏状态抽象的世界模型，需解决两点：一是如何去除冗余信息并形成紧凑状态抽象；二是如何融入关系结构以学习可靠的长时程动态。</h4>
-<h4><b>方法贡献：</b>提出Embodied Graph（具身图），一种支持结构化动态建模与长时程想象的关系状态抽象；并提出Relational World Model（RWM，关系世界模型），直接在图状态上进行想象。RWM包含：任务感知具身图构造器，用于过滤冗余细节并通过在线更新维护图记忆；具身图递归状态空间模型，用于学习节点级潜在动态并捕获节点间依赖。想象出的图状态可预测动作后果并指导决策。</h4>
-<h4><b>实验结果：</b>在Minecraft和Crafter上的实验验证了RWM在具身环境中的有效性；尤其在Minecraft中，RWM是唯一在给定预算内获得钻石的方法。Web交互实验进一步表明，关系状态预测适用于Web智能体的决策过程。</h4>
+<h2><strong>Gradient Boosting with Kolmogorov-Arnold Units for Interpretable Regression beyond Pairwise Interactions（基于Kolmogorov-Arnold单元的梯度提升：超越成对交互的可解释回归）</strong></h2>
+<h4><strong>问题背景：</strong>EBM等可解释表格回归模型通常只保留主效应和成对交互，便于逐部分绘图；但当目标依赖三个及以上输入的联合作用时，这种限制会损失精度，往往只能退回到“黑箱模型+事后解释”。</h4>
+<h4><strong>方法提出：</strong>作者提出MJBoost，一种梯度提升方法，其弱学习器是单个Kolmogorov-Arnold单元 \(g(\sum_p \phi_p(x_p))\)，内外函数均采用带惩罚样条。每个单元通过交替惩罚最小二乘闭式拟合，并以残差的主Hessian方向作为起点；类别输入和缺失输入可直接进入单元。</h4>
+<h4><strong>可解释性：</strong>由于每个单元对每个输入仅通过一个内函数起作用，拟合模型具有精确的函数ANOVA分解，可拆为主效应、成对效应和高阶余项，并由一维卷积计算。</h4>
+<h4><strong>回归实验：</strong>在交互阶数为3至6的合成目标上，MJBoost测试误差最高比EBM低13倍，其分解可将各阶真实方差占比恢复到0.04以内。在OpenML-CTR23的35个回归任务中，21个任务测试RMSE低于EBM，2个高于EBM，几何平均RMSE降低29.1%。这些任务中主效应与成对效应中位数解释0.992的方差，因此数据允许时模型可读作图，不允许时分解可度量高阶部分。</h4>
+<h4><strong>分类扩展：</strong>结合Newton步骤后，同一算法可用于分类：在OpenML-CC18的32个二分类任务上，测试log-loss与EBM相当；在11个多分类任务上，平均log-loss在8个任务上低于EBM、在7个任务上低于调优后的LightGBM。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Call-Efficient ICD-10 Code Prediction via Supervised Candidate Generation and Selective LLM Invocation（通过监督候选生成与选择性调用大语言模型实现低调用成本的ICD-10编码预测）</strong></h2>
-<h4><strong>任务与难点：</strong>从简短临床诊断文本中自动分配ICD-10编码，属于医学文本分类与标准化任务；其主要难点在于诊断短语简短且噪声大、ICD-10标签空间具有层次结构、类别分布严重不均衡。</h4>
-<h4><strong>方法：</strong>提出一种低调用成本的ICD-10编码预测流水线，融合Transformer嵌入、基于树模型的监督候选生成、候选级重排序以及门控式LLM辅助。</h4>
-<h4><strong>评估协议：</strong>采用防泄漏验证协议，基于折外交叉验证预测选择模型与阈值，最终在锁定测试集上报告结果，且测试集与训练集不共享源文件组。</h4>
-<h4><strong>关键结果：</strong>监督条件父码候选生成器在锁定测试集上达到74.32%的Top-1准确率和93.05%的Top-10候选覆盖率；直接零样本GPT-5.6-Sol基线达到81.01%的Top-1准确率，但每条诊断均需调用该大模型。最终可部署系统Pre-LLM fusion的OOF-CV准确率为81.24%，锁定测试准确率为83.19%，仅对31.97%的病例调用LLM；锁定测试错误率从监督父码基线的25.68%降至16.81%，相对降低34.5%。</h4>
-<h4><strong>核心结论：</strong>LLM最有效的作用是对不确定样本进行受控重排序，而非无限制编码或全数据集调用。</h4>
+<h2><strong>AR-WAM: efficient streaming world-action modeling for autonomous driving（AR-WAM：面向自动驾驶的高效流式世界-动作建模）</strong></h2>
+<h4><strong>问题与动机：</strong>自动驾驶既要预测交通演变，又要快速响应新观测。视频基础模型具备预测能力，但重复编码历史与迭代生成视频导致驾驶应用成本高。</h4>
+<h4><strong>方法：</strong>AR-WAM 将自回归时间建模与单次前向的未来条件化结合。其因果视频骨干增量更新视觉上下文、复用历史计算，并以已观测运动条件化未来预测。</h4>
+<h4><strong>核心观点：</strong>从近期观测计算未来特征，可在不迭代生成视频的情况下提升动态交通泛化能力；AR-WAM 一次前向获得该特征并条件化轨迹生成，再通过强化学习直接优化驾驶奖励来改进策略。</h4>
+<h4><strong>结果：</strong>仅用单前视摄像头，AR-WAM 在 NAVSIM-v1 上监督训练后达 91.5 PDMS，强化学习后达 94.0，优于对比的强端到端世界-动作模型；在连续驾驶动态场景中，监督版跨决策保留视觉历史，并优于强世界-动作基线。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Enhancing Active Learning Performance with Initial Data Selection Based on Foundation Models（基于基础模型的初始数据选择提升主动学习性能）</strong></h2>
-
-<h4><strong>研究问题：</strong>在主动目标检测中，初始标注池的选择至关重要，尤其是在标注成本高、资源预算有限的复杂数据集上。本文提出一种主动学习框架，用于优化目标检测任务中主动学习的初始训练周期。</h4>
-
-<h4><strong>核心方法：</strong>该方法不同于传统依赖初始周期不确定性采样的做法，而是利用 YOLO-World 模型进行基于特征的聚类，并依据 objectness 分数精炼图像。其重点是选择特征多样的样本，并优先在基础模型最有信心的区域进行训练，从而帮助模型更好地理解不同类别的对象。后续周期采用基于一致性的采样技术，以保持训练过程的鲁棒性。</h4>
-
-<h4><strong>实验结果：</strong>研究在 Aquarium 和 NWPU VHR-10 两个复杂数据集上评估方法，这些数据集以对象尺寸多样和条件困难著称。在 NWPU 数据集上，基于图像的评估中 mAP50 平均提升 6.6%；图像精炼方法在基于对象的评估中提升约 11%。</h4>
-
-<h4><strong>结论与资源：</strong>结果表明，该方法在模型性能和标注时间方面均有改善，体现了基础模型在主动学习早期周期中的优势。算法实现见：https://github.com/Mhrshd-fllh/ALBoost-FM</h4>
+<h2><strong>Active Feature Acquisition by Distilling an Oracle Teacher（通过蒸馏 Oracle 教师进行主动特征获取）</strong></h2>
+<h4>论文研究主动特征获取（AFA）：逐实例获取全部特征往往成本高昂，可能涉及金钱、时间延迟或隐私代价，因此需要在预算约束下学习“每个实例应获取哪些特征”的策略。现有 AFA 方法多通过优化自构造的效用目标来训练策略，而不是蒸馏一个显式教师。</h4>
+<h4>本文显式构建教师：训练阶段可利用标签与未观测特征值，以闭式方式定义 Oracle 教师，按每个候选特征对下游预测器误差的影响进行排序；OracleImitator 通过软目标模仿将该排序蒸馏为可部署策略。</h4>
+<h4>在多模态医学诊断和 AFABench 基准上，OracleImitator 在各预算范围内匹配或优于现有 AFA 方法，并以低于四分之一的特征获取成本恢复 90% 的可达精度增益。</h4>
+<h4>由于教师是显式算法对象而非隐式优化目标，作者还能直接度量：受部署时可见信息限制的策略能在多大程度上还原该教师的排序。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>LM-based Personalized Travel Planner（基于语言模型的个性化旅行规划器）</strong></h2>
-<h4><strong>核心问题：</strong>有效旅行规划需要整合多源信息、管理多重约束，并匹配用户偏好。LLM虽能实现动态、上下文感知决策，但单智能体模型在复杂多步推理、约束遵循和模块化执行方面仍存在不足。</h4>
-<h4><strong>方法：</strong>提出分层多智能体框架，由监督聊天机器人协调日程验证、用户查询构建、实时数据检索和约束感知行程生成等专用智能体；融合LLM推理、外部API与基于确定性多维评分框架的迭代优化机制，以提升适应性、效率和个性化。</h4>
-<h4><strong>结果：</strong>在TravelPlanner基准上，相较ReAct基线，预算约束规划提升10%，更广泛约束集规划提升25%，个性化规划结果提升45%。</h4>
-<h4><strong>资源：</strong>代码见 https://github.com/nimashaklaa/TravelPlanner_Research</h4></div>
+<h2><strong>From Benchmarks to the Bench: Preference, Correspondence and Selectivity in Bidirectional Drug-Target Screening（从基准到实验台：双向药物-靶点筛选中的偏好、对应性与选择性）</strong></h2>
+<h4>识别已知靶点的活性分子以及现有药物的潜在靶点是药物发现和药物重定位的核心。药物-靶点相互作用（DTI）模型可对海量药物-靶点对进行排序，但受实验能力限制，只能检测少量候选。</h4>
+<h4>研究比较了13个已发布系统在711个FDA批准药物分子结构和614个人源蛋白上的双向推荐。对同一靶点或药物，成对模型给出的Top-10分子和蛋白列表分别在77.8%和70.1%的比较中完全不相交；即使推荐存在重叠，部分系统的一致性也主要反映对相同候选的反复偏好。</h4>
+<h4>基于79个分子和65个激酶的已发表抑制测量，一些系统能富集活性候选，但当推荐匹配到不同药物或靶点时，其命中产出变化很小；另一些系统则丢失更多命中。部分前者在两种药物偏好不同激酶时，也很少能同时正确排序分子和激酶。进一步在相同数据、固定训练目标和不同随机种子下重训同一架构，尽管测试性能相近，在独立筛选目录上的平均成对Top-10重叠仅约2个候选。</h4>
+<h4>研究表明，DTI模型评估应从基准性能推进到检验其预测能否指导药物发现和靶点识别中的有意义实验决策。</h4></div>
