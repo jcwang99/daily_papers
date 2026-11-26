@@ -1,182 +1,157 @@
-<div id="news-summary-container" style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;"><h2><strong>When Do Rankings Beat Signs? Gradient Direction Recovery under Even Nuisance（排名何时优于符号？偶函数干扰下的梯度方向恢复）</strong></h2>
-<h4>该文研究仅依赖序数反馈的比较型优化：基于符号的基线方法孤立评估对称扰动对，只保留对内的符号信息，却丢弃同一排序批次中的跨对次序。论文追问：在存在未知、可微的偶函数型干扰（如二次曲率）时，完整批次排名何时能够可证明地优于对內符号。</h4>
-<h4>核心观点是：反转的跨对比较可在不估计 Hessian 的情况下抵消共享干扰偏移；作者提出几何框架，刻画 Mirror、Reverse、Full 三个嵌套方向集。关键量是相对壳层变化 τ<sub>a</sub>，即半径 a 球面上的干扰范围除以 a‖g‖（g≠0，维度为 d），它决定方向定位能力。</h4>
-<h4>若目标角精度为 ε 弧度，且 τ<sub>a</sub> ≤ cε/√d（c 为小常数），则来自均匀方向的一轮 Reverse 约束可将所有存活方向定位到与梯度夹角不超过 ε，所需评估数为 Õ(d+√(d/ε))，而符号方法为 Θ(d/ε)。该整胞保证无需将变化界作为输入，并在对数因子内匹配下界。相反，对于良条件二次函数且曲率相对梯度尺度无界的情形，即使多轮比较，排名相对符号也不具极小化评估优势。</h4>
-<h4>实验验证了 Full 相对 Reverse 的严格分离；在两个 ridge 任务、联合评估与轮数上限下，尽管 Full 尚未表现出超越反向约束的确定增益，Reverse 始终比调优的 Mirror 与单位归一化 ZO-RankSGD 取得更低的最终间隙。</h4>
+<div id="news-summary-container" style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;"><h2><strong>SALSA: Sampling Adversarial Suffixes from Learned Distributions for LLM Safety Assessment（从学习分布中采样对抗后缀用于大语言模型安全评估）</strong></h2>
+<h4>大型语言模型仍易受越狱攻击：攻击者可在看似良性的提示后追加优化后缀，以绕过安全对齐。现有基于优化的GCG式攻击虽有效，但推理成本高且迁移性差。作者提出SALSA——一种生成式框架，从优化得到的攻击语料中学习越狱后缀分布；训练完成后可高效采样攻击。在开源目标上，其攻击成功率与最先进优化基线相当，同时将每个提示的生成时间从3.46秒降至0.04秒。在黑盒迁移中，它对专有系统仍高度有效：GPT-3.5-Turbo攻击成功率达99%，在更难的GPT-4o上达45%，在相同采样预算下超过最强基线两倍以上。作者进一步解释：当学习到的后缀分布接近优化输出分布时，生成式采样为何能保持高攻击成功率。总体而言，学习对抗后缀分布为持续发现LLM漏洞提供了可扩展且实用的高效基础。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Beyond Attribute-Centric Fairness: Modelling and Mitigating Unified Bias Representation in Omni-modal Large Language Models（超越以属性为中心的公平性：面向全模态大语言模型的统一偏见表示建模与缓解）</strong></h2>
-<h4>全模态大语言模型（OLLMs）兼具多模态理解与生成能力，适用于复杂环境，并有望成为下一代 AI 的重要 backbone；但其内部编码的刻板印象正以更多样形式显现，带来更广泛、更严重的社会影响。</h4>
-<h4>现有去偏方法通常针对每个敏感属性和模态分别设置公平性目标，以降低人口统计相关差异；然而在全模态场景下，这种“以属性为中心”的范式难以用不同公平目标联合处理多样社会偏见，也难以泛化到预定义属性之外。</h4>
-<h4>为此，论文提出 OmniDebias，这是首批面向 OLLMs 促进公平性的方法之一。该方法采用“以偏见为中心”的建模思路，跨属性与模态提取并缓解共享偏见表示，同时保留属性相关知识。</h4>
-<h4>具体而言，方法利用给定属性（如性别）在不同语义语境（如职业）中的激活不一致性，将偏见与合法知识解耦；进一步将多个提取出的偏见整合为共享表示，并构建统一目标，以捕捉不同社会偏见背后的共同结构，并泛化到未见属性。</h4>
-<h4>大量实验表明，通过事后编辑与微调消除统一偏见，可在保持良好效用性的同时，持续提升 OLLMs 在多种属性与模态上的公平性。</h4>
+<h2><strong>RecurSciBench: Benchmarking Recursive Self-Improvement in Data-Driven Scientific Research（RecurSciBench：面向数据驱动科学研究中递归自我改进的基准评测）</strong></h2>
+<h4>基于大语言模型的智能体正推动数据驱动科学研究的自动化。递归自我改进（RSI）使智能体有望通过经验持续提升，但评估其在科学任务间的迁移效果，需要可执行、可科学验证的任务，并独立衡量自我改进带来的增益。</h4>
+<h4>本文提出 RecurSciBench，一个用于评估数据驱动科学研究中 RSI 的可扩展基准。其 RecurSciPipe 框架可从原始数据集自动构建科学建模与数据分析任务，并执行基于运行的验证和科学有效性检查。该基准覆盖四个科学领域、多种数据模态和多样化科学目标。</h4>
+<h4>研究在源任务上进化后，于独立任务上比较四种 RSI 系统的初始状态与进化状态，涵盖同类型、跨类型和跨领域迁移。实验表明：自我改进的收益因智能体系统和科学领域而异；整体正收益可能与个别任务退化并存；即使源领域未出现可测增益，经验仍可跨任务类型迁移并惠及其他领域。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Infer3D: Inverse Generative Modeling Enables Robust 3D Reconstruction（Infer3D：逆向生成建模实现稳健的三维重建）</strong></h2>
-<h4><strong>研究动机：</strong>人类即使面对陌生或极端视角，仍能理解场景的三维结构，认知科学认为这源于自上而下的生成式推理；而当前先进的三维重建网络多依赖摊销式前馈推理，虽然速度快，但在训练分布外（OOD）场景中性能明显下降。</h4>
-<h4><strong>核心方法：</strong>受人类视觉生成性启发，作者提出 Infer3D——一种逆向生成建模框架，通过恢复生成模型的潜变量，使单目输入得到最佳匹配；为防止出现退化的平坦输出，将生成图像先验与冻结的三维提升网络耦合，把优化空间约束到有效且多视图一致的三维流形上。</h4>
-<h4><strong>主要结果：</strong>在多种受控合成与真实世界任务中，Infer3D 的 OOD 重建精度优于在同等或更大数据集上训练的前馈网络。</h4>
-<h4><strong>自适应推理：</strong>类似人类处理困惑刺激时需要更多时间，作者提出自适应推理策略：对模糊的 OOD 样本分配更多测试时计算，同时对分布内输入进行高效路由。</h4>
-<h4><strong>项目网站：</strong>https://amanikiruga.github.io/infer3d-site/</h4>
+<h2><strong>NCPU: Towards Cell-Inspired Spatial Computing（NCPU：迈向细胞启发的空间计算）</strong></h2>
+<h4>该研究训练神经细胞自动机（NCA），通过梯度下降学习局部更新规则，从而计算精确的数字逻辑。简单细胞自动机虽具计算通用性，但其规则通常依赖手工设计。研究中，比特被编码为二维网格上的细胞簇，计算结果需通过中间细胞传播后才能到达输出端。每个任务单独训练一个模型，包括逻辑门、4位与8位行波进位加法器，以及一个初步的8位算术逻辑单元（ALU）。所有逻辑门和加法器模型在10个随机种子中均达到100%的比特正确率；穷举测试显示，4位任务在256个输入对中最多出现1个错误，8位任务在65,536个输入对中最多出现7个错误。仅在最多3位操作数上训练的加法器可泛化到8位。加法器以波的形式传播进位，进位链每比特延迟约3.5步；输出仅在训练时的展开长度范围内保持正确。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Block Search Conditioned on Features for Sequential Quantum Data Encoding（序列量子数据编码中以特征为条件的块搜索）</strong></h2>
-<h4>该论文研究固定量子寄存器中的序列量子数据编码，通过联合选择输入特征与编码块来构建编码流程。每一步均从训练数据中共同选择新特征、操作块、其放置位置及旋转权重，从而扩展 Q-FLAIR 的增量式构建方法。</h4>
-<h4>采用直接损失选择（RAW）后，在五个新的 Bars and Stripes 数据集中，四量子比特上保留了 9 至 12 个特征。在相同最终校准条件下，相对于校准后的 Q-FLAIR 参考，平衡准确率平均提升 5.53 个百分点，二元交叉熵（BCE）平均降低 15.83%，ROC 曲线下面积（AUC）平均提升 7.79%。</h4>
-<h4>预设成功标准在五个数据集中的四个上达成，平均配对差异也达到标准。上述结果是在 32 个操作的共同上限下比较完整流程所得。</h4>
+<h2><strong>EditText: Structure-Aware Generation and Selective Visual Transport for Fine-Grained Text Editing（EditText：面向细粒度文本编辑的结构感知生成与选择性视觉传输）</strong></h2>
+<h4>该论文聚焦细粒度文本编辑：在指定区域准确替换文本，同时保持源文本的字体、颜色、纹理，以及未编辑区域的视觉一致性。作者提出统一框架EditText，将目标字符生成与源图像视觉传输相结合。</h4>
+<h4>模型采用双条件Fill输入：掩码图像和源文本风格参考，二者均与目标图像共享空间参考。掩码图像隐藏原文本并保留未编辑内容作为源画布；风格参考提供外观线索，与目标文本共同指导新字符生成。</h4>
+<h4>论文引入Attention Transport框架，以Source Weight描述条件注意力分配，以Spatial Aggregation Kernel描述内部空间注意力分布。源细节的准确传输依赖注意力强度、条件特征中的细节保留以及空间准确聚合。针对选定的非编辑查询，模型在保持掩码图像总注意力权重的同时，将注意力重新分配到空间对应邻域，从而实现选择性视觉传输。</h4>
+<h4>训练方面，采用多阶段训练，并结合面向局部目标字符结构的Glyph-aware Structural Loss，使模型能够生成准确文本、保持源文本外观并保留未编辑细节。作者还提出TBench基准，覆盖字母、表意文字和阿拉伯数字，用于评估字符更新、外观保持和未编辑细节保持。</h4>
+<h4>在TBench上，EditText取得当前最优的非编辑区域SSIM（0.9769）和全图LPIPS（0.0460）。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<html lang="zh-CN">
-<body>
-<h2><strong>Synergizing Evidence Retrieval and Utilization for Self-Improving Multimodal Scientific Document Reasoning（协同证据检索与利用以自我改进多模态科学文档推理）</strong></h2>
-<h4><strong>问题与动机：</strong>科学文档推理要求智能体获取并整合分布于文本、图像和表格中的证据。检索能够定位相关来源，但可能遗漏互补支持；仅依赖答案级反馈，也无法判断错误究竟源于证据获取还是证据使用。</h4>
-<h4><strong>方法框架：</strong>提出 Retriever–Perceiver–Reasoner 智能体框架。Retriever 在上下文预算约束下顺序选择与来源对齐的证据；Perceiver 根据所选证据和问题构建“问题条件潜在本体”，在共享连续空间中隐式组织多模态证据；Reasoner 结合潜在引导与原始来源，生成有据答案。</h4>
-<h4><strong>训练机制：</strong>通过诊断引导的协同进化训练三个组件：交替更新，并使用共享回答奖励优化；检索潜力反馈（RPF）与潜在效能反馈（LEF）识别需要更好检索或潜在引导的问题，并定向重采样。</h4>
-<h4><strong>实验结果：</strong>在4个基准、7种评估设置下，7B与8B Reasoner 骨干分别取得平均69.9和75.0分，较最强基线分别高4.0和9.1分。</h4>
-</body>
-</html>
+<h2><strong>Towards a Multimodal Aesthetic Agent for Photographic Reference Grading（迈向用于摄影参考调色的多模态美学智能体）</strong></h2>
+<h4>参考引导的摄影调色需要理解用户希望借鉴参考图的哪些色彩与影调特征，并将这些偏好转化为可控编辑。现有纯图像参考方法缺乏基于指令的选择，仅对齐整体外观；像素空间生成编辑器通常输出扁平图像，缺少可编辑参数，限制后续细化。</h4>
+<h4>为此，论文提出 JarvisAura，将摄影调色建模为可编辑参数空间中的结构化决策任务。其核心优势包括：一，提出美学智能体范式，融合视觉属性感知、策略级推理与参数化执行，实现可解释、可控的调色；二，构建统一的“推理到执行”管线，连接美学规划、后端渲染与可编辑参数细化；三，设计三阶段训练策略，包括参数接地的持续预训练、参考接地的监督微调，以及参考对齐的组相对策略优化，利用多维奖励与动态数据推导优化渲染结果。</h4>
+<h4>在 Ref-Bench 上，JarvisAura 在所报告的自动指标中取得最佳成绩，人工评测任务成功率达 74%，较 GPT-Image-2.5 高出 9 个百分点。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>VisAlloc: Allocating Visual Supervision for On-Policy Self-Distillation（VisAlloc：为在线策略自蒸馏分配视觉监督）</strong></h2>
-<h4>针对多模态大模型视觉推理中的在线策略自蒸馏（OPSD），现有方法默认所有样本都能同等受益于特权视觉指导，且统一 token 监督会稀释视觉 grounding 信号。</h4>
-<h4>VisAlloc 提出双层框架：样本级视觉过滤与 token 级反事实重加权。样本级采用固定配对教师过滤器，仅保留“基于证据中心正裁剪可答对、空间位移负裁剪答错”的样本。</h4>
-<h4>Token 级由两个 EMA 教师对同一学生生成回答打分，以绝对对数概率差衡量视角敏感性；额外监督仅作用于被敏感性或教师分布分歧选中的 token，并经过共享冻结先验、模板 bigram、学生-教师散度等门控。逆频率重分配保持每个 micro-batch 内额外权重总量不变，正教师仍是唯一蒸馏目标；推理仅需全图学生模型。</h4>
-<h4>在 8 个基准上，4B 与 9B 模型宏平均分别达 81.44 和 84.92，较 Vision-OPD 复现分别提升 0.97 和 0.52 分。代码：https://github.com/Kaelyn01/VisAlloc</h4>
+<h2><strong>Path-probability gradients for optimizing force fields against dynamical observables（针对动力学可观测量优化力场的路径概率梯度）</strong></h2>
+<h4>机器学习力场会继承用于生成训练数据的电子结构方法的误差；利用实验测量对力场进行精修，是突破这一限制的直接途径。然而，针对动力学可观测量进行精修仍然困难，因为对混沌分子轨迹求导会产生不稳定梯度。</h4>
+<h4>本文提出 PathGrad：该方法不直接对轨迹求导，而是对朗之万路径概率求导。所得梯度估计器可由热噪声和力导数实时累积，并且随着轨迹长度增加，其方差仍保持稳定。</h4>
+<h4>作者用有限差分计算验证了该梯度估计器，并将其用于基于实验扩散系数和结构约束微调熔融铜势与水势。对于水，联合优化扩散系数和氧-氧径向分布函数，还改善了未纳入优化目标的剪切粘度和旋转弛豫预测。</h4>
+<h4>在单一温度下进行对齐，也能改善多个动力学可观测量的表观活化能，使其温度依赖性更接近实验。此外，优化后的势相对于独立的高级别量子化学参考具有更小的力误差，表明与实验对齐不仅拟合目标，还提升了势能面的保真度。</h4>
+<h4>因此，PathGrad 建立了一个将实验可观测量直接纳入力场优化的通用框架。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Uneven gains in protein-RNA affinity and mutation-effect prediction（蛋白质-RNA亲和力与突变效应预测中的不均衡收益）</strong></h2><h4>准确的匹配亲和力决定突变效应，但聚合亲和力预测的增益向平均效应、排序和局部精度转移时可能并不均衡。研究使用方法特异性匹配群体评估了11个方法家族。</h4><h4>在受控CoPRA中，绝对亲和力平均绝对误差从1.2898降至1.1431 pKd；在来自20个家族的220个突变对中，其产生更强响应并提高平均效应精度，但排序增益不确定，且平均中心局部误差未下降。</h4><h4>在独立外部测试中（来自3个源匹配家族的24个定量对），3个家族的绝对和普通突变效应误差均下降；平均中心局部误差从0.4198降至0.3761 pKd，其中2个家族改善、1个家族误差升高。误差分解将增益定位在landscape means。</h4><h4>PRA-Pred特征追踪、固定权重M2-PRNet输入控制和匹配监督干预识别出对突变响应的特定限制。结果表明，需要联合评估平均效应、排序和定量局部变异。</h4>
+<h2><strong>Polynomial-Time Learning of Random Automata from One Label per Word（从每个词一个标签中多项式时间学习随机自动机）</strong></h2>
+<h4>本文研究一个二元确定性有限自动机：其 2n 条转移从 n 个状态中独立且均匀地选取。学习器观察长度为 m 的独立均匀词，每个词仅带有一个表示接受与否的比特标签。对于任意固定 β&gt;0，作者给出一个多项式时间算法，该算法在一个概率为 o(n^{-β}) 的转移表集合之外均有效。</h4>
+<h4>对剩余每个转移表、任意起始状态和接受集，预测器在新鲜的长度为 m 的均匀词上错误率至多 ε；该保证在训练样本和学习器随机选择上以至少 1-γ 的概率成立。其样本量和运行时间均为 n、m、1/ε 与 log(2/γ) 的多项式，且多项式次数仅依赖 β。</h4>
+<h4>核心方法是：尽管每个词只揭示一个输出，但通过比较两个连续历史长度上的标签矩，可以估计同一隐藏状态下两个延续的带符号输出乘积的期望。</h4>
+<h4>论文还反驳了 Fish 和 Reyzin 关于相遇时间的猜想 4：对于在转移表抽取前固定的两个不同状态以及任意固定 c&gt;0，长度为 ⌊cn⌋ 的词使这两个状态到达不同状态的比例依概率收敛到 e^{-c}。在典型转移表上，将该比例降至 1/n 渐近需要 n log n 个字母。部分证明步骤已在 Lean 中形式化。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>CaDO: Formal Verification-Guided Multi-Agent Framework for Causal Dataset Repair and Generation（CaDO：形式化验证引导的多智能体因果数据集修复与生成框架）</strong></h2>
-<h4>针对因果推理数据集普遍存在的错误标注与结构不平衡问题，本文提出 CaDO——一种用于自动化诊断和修复因果推理数据集的多智能体框架。该框架包含三个阶段：首先，Formalizer Agent 将自然语言问题转化为形式化因果查询，以减少语义偏差，使检索与验证更明确、可处理；其次，采用双层诊断机制，由独立 Critic Agents 识别样本级错误，并分析查询类型覆盖与标签分布，以检测数据集级结构不平衡；最后，基于形式化因果语义的可复用修复算子纠正错误样本，同时由 Explorer 与 Expander Agent 协作生成多样且语义一致的新样本。</h4>
-<h4>实验表明，CaDO 在 18 个实验设置中的 16 个显著优于五种数据清洗基线中的最强方法，下游模型准确率最高提升 9.1%；其标记样本中至少 95% 存在缺陷，且在 CLadder 上相比基于大语言模型的评判器错误修改正确标签的情况减少 92.2%，验证了其有效性与可靠性。代码和数据已公开。</h4>
+<h2><strong>U-Statistics-Powered LLM Reasoning（U统计量驱动的大语言模型推理）</strong></h2>
+<h4><strong>摘要总结：</strong>GRPO自DeepSeek提出后已被广泛用于训练大型推理模型与智能体，并衍生出多种变体；但组大小这一关键超参数仍主要依赖试错选择。本文利用GRPO策略梯度的U统计量结构，将组大小选择转化为经典的方差比估计问题。针对分母较小时朴素插件估计不稳定的问题，提出考虑分母估计不确定性的悲观比率估计器，并刻画其在三种样本量情形下的统计性质。</h4>
+<h4><strong>核心结论：</strong>在Reasoning Gym合成任务以及数学推理、代码生成真实基准上，采用基于Jackknife的悲观规则进行自适应组大小选择，可降低策略梯度的均方误差，并在仅增加少量计算成本的情况下优于固定组大小基线。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><b>LusoClin: A Synthetic Clinical Note Dataset for Medical Information Retrieval in European Portuguese（LusoClin：用于欧洲葡萄牙语医学信息检索的合成临床笔记数据集）</b></h2>
-<h4><b>研究背景与问题：</b>大规模临床文本对医学信息检索研究至关重要，可支持临床笔记检索、患者队列识别和领域自适应检索模型等任务；但真实临床笔记受隐私法规限制通常难以获取，尤其制约了欧洲葡萄牙语等低资源语言的研究进展。</h4>
-<h4><b>核心贡献：</b>本文提出并公开发布 LusoClin，一个欧洲葡萄牙语合成临床笔记数据集，旨在支持隐私保护条件下的临床文本检索研究。</h4>
-<h4><b>数据构建方法：</b>LusoClin 通过对真实临床数据进行预处理，使用量化低秩适配（QLoRA）微调开源 Llama 3.2（3B）指令微调模型，并采用基于提示的临床笔记生成方法构建；同时使用基于 BERT 的模型自动标注临床实体，以支持语义索引和临床搜索。</h4>
-<h4><b>评估与结论：</b>研究从效用、保真度、多样性和隐私性方面，结合自动指标与人工评估对 LusoClin 进行评价。结果表明，该数据集能够捕捉临床相关语言模式，并可支持临床文档检索和领域特定模型适配等下游信息检索应用；但标注者通常仍能区分合成笔记与真实笔记，且部分医学不一致问题仍然存在。</h4>
+<h2><b>MemAnchorWorld: A Sparse World Model with Horizon-Conditioned Memory Retrieval for Autonomous Driving（MemAnchorWorld：一种面向自动驾驶、基于预测视界条件记忆检索的稀疏世界模型）</b></h2>
+<h4>现有用于4D语义占据预测的稀疏世界模型通过少量演化查询表示场景，可高效预测未来几何与语义，但其长时程预测对历史时序证据的利用存在瓶颈：历史信息被隐式承载于场景状态中，误差会随连续预测步骤传播累积，导致几何与语义偏差。</h4>
+<h4>为此，论文提出MemAnchorWorld，一种显式检索相关历史几何与语义证据的稀疏占据世界模型。受冯·雷斯托夫效应启发，设计预测时间条件驱动的层次化双路径记忆锚点检索机制；该机制依据历史信息的有效时效与语义兼容性，将查询级候选选择与点级记忆锚点检索结合，为不同预测时刻的稀疏点提供历史证据。</h4>
+<h4>为更好利用记忆锚点与现有特征，引入由任务和预测时间联合门控的点级残差适配器，分别控制对语义、占据置信度与空间位置的残差修正。</h4>
+<h4>在Occ3D-nuScenes上，MemAnchorWorld在1–3秒预测视界内取得平均mIoU 13.55%与平均IoU 22.84%，两项指标均达到当前最优。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>ProtoBridge-CLIP: Observation-Masked Finding Prototypes for Medical Image–Report Representation Learning（ProtoBridge-CLIP：面向医学图像—报告表示学习的观察掩码发现原型）</strong></h2>
+<h2><strong>Degree-bounded Satisfiability of Local MPNNs with Sum Aggregation is NEXPTIME-hard（采用求和聚合的局部MPNN的度有界可满足性是NEXPTIME难的）</strong></h2><h4>论文证明：对于采用局部求和聚合与ReLU激活的消息传递神经网络（MPNN）M，以及以一元编码给出的度上界d，判定是否存在一个带有理数节点标签、度至多d且被M接受的带点图（G,v），该问题是NEXPTIME难的；即使固定度上界为d=3，该困难性仍然成立。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><strong>ET: Efficient Transfer from Softmax to Hybrid Attention（ET：从Softmax到混合注意力的高效迁移）</strong></h2>
+<h4><strong>问题与目标：</strong>将预训练Softmax Transformer转换为高效注意力常导致显著性能下降，而恢复性能通常依赖昂贵的微调。论文提出ET（Efficient Transfer）框架，以极低优化成本实现高保真注意力转换。</h4>
+<h4><strong>核心方法：</strong>ET结合精确局部注意力、共享键Softmax注意力、均值锚定的无扫描全局线性校正以及自适应门控，使序列长度复杂度达到线性。为保留预训练知识，ET冻结预训练权重，仅利用少量无标签样本，通过交替最小二乘校准新引入参数，无需梯度更新。</h4>
+<h4><strong>主要结果：</strong>在ImageNet-1K上，ET在DeiT-S与DeiT-B上分别达到79.64%和81.55%的Top-1准确率，与Softmax教师模型差距在0.25个百分点以内。在768×768分辨率下，ET在可比推理FLOPs下比T⁵高3.59个百分点，且无需基于梯度的微调。在DiT-XL/2上，ET仅用250次LoRA更新达到FID-50K 2.59；在Stable Diffusion 3.5 Medium上，ET在1K分辨率下匹配教师GenEval分数，仅需0.73 A100 GPU小时的无梯度转换，并实现1.39倍推理加速。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><strong>FN-Prune: Training-Free Expert Pruning with Finite RMSNorm Perturbations（FN-Prune：基于有限RMSNorm扰动的免训练专家剪枝）</strong></h2>
+<h4><strong>核心问题：</strong>专家剪枝可降低混合专家语言模型的显存占用，但模型质量能否保留取决于移除哪些专家。基于频率和幅度的评分方法孤立衡量专家，忽略了归一化如何消耗专家贡献：减去一个专家会同时改变残差流方向以及剩余部分的缩放。</h4>
+<h4><strong>方法提出：</strong>作者提出FN-Prune，一种免训练剪枝准则。该方法在保持原始路由和权重固定的条件下，比较减去每个路由加权专家贡献前后下一层RMSNorm输出，并以一次遍历在所有校准token上平均平方差。</h4>
+<h4><strong>剪枝与推理：</strong>低分专家按每层统一比例被物理删除，推理时在幸存专家中重新路由。</h4>
+<h4><strong>实验结果：</strong>在移除50%专家时，FN-Prune在Qwen3、ERNIE和OLMoE上的WikiText-2困惑度低于已发表最佳方法，其中OLMoE降低32%。在相同预算下，GSM8K准确率在Qwen3和ERNIE上分别比最佳已发表方法提升7.5和7.0个百分点；多项选择任务的增益仍取决于具体任务。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><strong>Motion Conditioned World Modeling for Embodied Visual Tracking（面向具身视觉跟踪的运动条件世界建模）</strong></h2>
 
-<h4>放射学报告可区分已确认发现、明确否定与未提及概念，但传统全局图像—报告对比学习常将不同证据状态压缩为单一研究级目标。为此，作者提出 ProtoBridge-CLIP，将对称全局图像—报告对齐、观察掩码发现监督以及针对已确认报告概念的软关系目标相结合；文本衍生的发现原型与局部视觉 token 对齐，而不确定和未提及概念则被排除在直接发现标签之外。</h4>
+<h4><strong>研究问题：</strong>世界模型通过预测未来环境状态支持具身决策。但在具身视觉跟踪中，目标运动的不确定性与机器人运动引起的视角变化共同影响视觉观测，使未来状态预测极具挑战。</h4>
 
-<h4>该框架在 3 个 CT 基准和 5 个胸片基准上评估，并开展组件消融、配对与临床检索、定位、扰动鲁棒性、校准及逐发现分析。ProtoBridge-CLIP 在 CT-RATE、RAD-ChestCT 和 INSPECT 上的 macro-AUROC 分别为 73.6%、66.5% 和 68.8%；在 ChestXray14、CheXpert、PadChest、RSNA 和 SIIM-ACR 上分别为 80.2%、91.4%、78.5%、86.5% 和 90.8%。</h4>
+<h4><strong>核心方法：</strong>提出“运动条件世界建模”（Motion-Conditioned World Modeling），将预测的目标运动分布与机器人自运动共同引入潜在状态转换过程。</h4>
 
-<h4>相对匹配的仅全局对照，发现目标与关系目标在各评估数据集上均带来一致增益。结果表明，在医学图像—文本表示学习中区别对待已观察与未观察报告概念具有实际价值。</h4>
-<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>MedImgAnnotator: batch wise medical image annotation and preprocessing tool（MedImgAnnotator：批量医学图像标注与预处理工具）</strong></h2>
-<h4>该研究旨在开发一种简单、快速、半自动化的批量标注工具 MedImgAnnotator，以解决现有公开标注工具操作复杂、耗时且不支持批处理的问题。工具集成了编辑工具、图像-掩膜配对逻辑、预处理功能、目标检测工具和插件管理系统。</h4>
-<h4>性能评估基于开发者及12名用户使用开源MR和CT扫描数据，主要指标为有效标注时间和易用性。结果表明，MedImgAnnotator将有效标注时间从公开工具平均206.5±32.87秒降至59秒；12名用户评估的Wilcoxon符号秩检验显示，有效标注时间和更高易用性评分的P值分别为0.032和0.008，说明其显著缩短标注时间并提升易用性。</h4>
-<h4>该工具已被MICCAI 2026 CARE Challenge肝脏分割最佳性能获胜者用于从6412例MRI体积中标注肝脏掩膜，并支持不同模态扫描及不同身体区域感兴趣区域的标注，体现出跨模态、跨区域的适用性。</h4>
-<h4>MedImgAnnotator可显著减少大型影像队列的有效标注时间，提供可执行文件和Python脚本。访问链接：https://ewunateassaye.github.io/developed-tools/medimgannotator.html</h4>
-<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Surface Cues Over Structure: Probing LLM Behavior on Brain Connectivity Graphs（表面线索优先于结构：探究大语言模型在脑连接图上的行为）</strong></h2>
-<h4><strong>研究背景：</strong>静息态功能磁共振成像（rs-fMRI）可构建脑功能连接图并用于神经疾病分析；大语言模型（LLM）正越来越多地与此类表示结合，但其究竟是真正基于连接结构进行推理，还是仅响应可能触发习得先验的表层线索，仍不明确。</h4>
-<h4><strong>研究方法：</strong>论文以注意缺陷多动障碍（ADHD）诊断为例，基于静息态功能连接开展受控研究，逐项隔离因素，考察LLM预测脑连接图的驱动来源；研究覆盖6个模型，从小型开放权重LLM到专有模型。</h4>
-<h4><strong>核心发现：</strong>结果几乎不支持模型预测稳定地基于受试者特异性连接。脑区名称、数值格式和提示框架会改变预测，却未提升ADHD与对照的区分能力；对临床意义区域与随机区域进行图扰动，对预测的影响无显著差异；模型给出的理由与其引用的数值相矛盾，对所提供的连接证据解释不一致。</h4>
-<h4><strong>结论：</strong>在各探针中，预测更多跟随模型内置类别偏置和提示的表层形式，而非受试者连接结构，因而对当前LLM与脑数据整合工作的前提提出质疑。</h4>
-<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>TangentPDE: Learning Local Operator Responses with Sparse Finite-Difference Supervision（TangentPDE：利用稀疏有限差分监督学习局部算子响应）</strong></h2>
-<h4><strong>问题：</strong>神经PDE算子通常通过状态重建优化，主要约束观测输入处的算子值，难以充分刻画算子对局部扰动的敏感性；更忠实的近似不仅需要状态预测准确，还需要局部扰动方向上的变化正确。</h4>
-<h4><strong>方法：</strong>提出TangentPDE，利用有限差分近似方向导数，并基于参考求解器在稀疏成对输入上的状态输出构造任务相关有限步响应；目标联合约束状态保真、响应方向对齐和响应幅度校准，从而同时学习算子值及其局部变化。响应标签仅由成对输入状态输出构造，无需显式导数标签、线性化或伴随PDE求解、完整雅可比，也适用于无导数接口的非线性求解器。</h4>
-<h4><strong>机制与验证：</strong>进一步提出选择性执行的适配机制，增强有限差分监督下的局部算子表示；通过预算匹配和对应扰动控制，隔离关系监督效应与额外状态观测或数据量增加带来的提升。TangentPDE是即插即用训练框架，可集成多种神经算子骨干。</h4>
-<h4><strong>实验结果：</strong>在4类PDE系统和20种任务-骨干设置中，TangentPDE在18种设置降低三随机种子平均状态误差，并在18种设置降低Rollout@20误差；有限步响应的内在增益在DiffReact上最强，在其他任务和骨干上则依赖具体设置。</h4>
-<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>RegionAgent: Two-Stage Preference Optimization for Regional Image Restoration（用于区域图像恢复的两阶段偏好优化）</strong></h2>
-<h4>针对非均匀耦合退化图像中不同区域需要不同恢复能力的问题，现有方法采用全局统一操作，易忽略区域差异，导致恢复不完整甚至损伤图像内容；同时，同一退化区域常需连续恢复动作，早期动作可能改变残余退化特征或引入伪影，影响后续恢复。为此，提出自适应恢复框架RegionAgent，通过两阶段偏好学习训练视觉语言模型（VLM），在每次迭代生成区域特定的恢复动作：首先采用步骤级直接偏好优化（DPO），基于即时恢复反馈得到的偏好，仅监督动作对中的差异部分，使VLM选择适合当前区域的动作；随后采用轨迹级DPO，基于完整轨迹得分得到的偏好，监督轨迹对中唯一不同的动作，以考虑当前动作对后续恢复的影响。由于传统图像对数据不直接提供区域恢复决策偏好，构建了包含1万动作对和2万轨迹对的区域恢复偏好数据集用于两阶段VLM训练。多数据集实验表明，该方法在混合与单一退化下均具有强恢复性能；消融研究进一步验证两阶段偏好学习能有效提升恢复质量。</h4>
-<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>AI agents can redesign engineering parts with more than a thousand CAD parameters and nonlinear simulations（AI智能体可利用上千个CAD参数与非线性仿真重新设计工程零件）</strong></h2>
-<h4><strong>核心问题：</strong>仿真驱动的真实工程零件设计必须同时满足三个条件：①求解次数少（三维零件非线性有限元仿真耗时数小时）；②设计空间大（CAD模型包含数百至数千个参数）；③改进往往需要“重新设计”，即协调调整零件比例，而非仅对表面做局部打磨。现有自动优化器最多只能满足其中两项：经典贝叶斯或无导数优化器需人工将设计降维至少数参数，且求解次数远超预算；工业形状优化器虽每周期一次求解即可移动所有网格表面节点，但只能小步局部打磨，难以实现重新设计。</h4>
-<h4><strong>方法：</strong>研究检验通用大语言模型（LLM）能否将自身知识与仿真结果结合，同时满足上述三个条件。GPT-6 Astra 通过约1650个值的CAD几何参数化，在仅15次仿真预算下重新设计镁支架；每个候选方案均在CAD中构建、划分网格，并进行大变形塑性与接触仿真，LLM读取每次求解的完整结果。</h4>
-<h4><strong>结果：</strong>在该预算内，GPT-6 Astra 将目标指标——支架弯曲处应变的高百分位数——降低32%；相同预算下，工业形状优化器 Tosca 仅将原始设计改善约十分之一后便停止提升。另一项更早的 GPT-6 Astra 设计在同一目标上降低25%，并在包含压握与损伤的独立高保真全部署模型中验证：完整流程后应变比原始设计低14%，最易损伤位置失效更晚，完全扩张时损伤降低63%。</h4>
-<h4><strong>结论：</strong>LLM能够将学习到的知识与仿真数据相结合，调整超过一千个设计参数，并获得具有真实改进的有效设计。</h4>
-<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>CurvDelta: Low-Curvature Delta Modeling For Surgical Learning and Unlearning（CurvDelta：用于精准学习与遗忘的低曲率增量建模）</strong></h2>
-<h4>核心问题：适配大语言模型时，关键挑战是能力保持——模型在完成目标适配的同时，可能损害通用能力。CurvDelta 将“保持约束”直接纳入模型更新的参数化过程中，以缓解这一权衡。</h4>
-<h4>方法要点：CurvDelta 通过分析预适配模型附近保持约束的局部几何结构，构造低曲率空间，使参数更新对保持损失近似不变。为适用于大语言模型，作者利用 Kronecker 因子化近似曲率（K-FAC）与因子化投影，使低曲率空间的构建更可扩展、更实用。</h4>
-<h4>模型变体：作者进一步提出 CurvLoRA，这是在相同保持几何下的低秩适配变体，旨在实现更高效的适配。两种方法均适用于能力学习与选择性遗忘等保持约束下的适配任务。</h4>
-<h4>实验结论：在数学推理、代码生成与知识遗忘任务上，方法在数学推理和代码生成中取得有竞争力的下游性能，同时更好地保持通用能力，相较基线呈现更有利的“获取—保留”权衡；在 TOFU 与 MUSE 的知识遗忘任务中，相较基线更好地平衡定向遗忘与知识保留，保留性能接近从头重训参考。</h4>
-<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Statistical Inference with Ill-Conditioned Random Weight Neural Network Sieves（病态随机权重神经网络筛的统计推断）</strong></h2>
-<h4><strong>核心问题：</strong>随机权重神经网络（RWNN）仅随机生成并固定隐层参数，只估计输出系数；条件于采样参数时，其回归是一个具有随机近似空间的线性筛问题。研究表明，随着维数增长，此类随机筛无法保持一致良态。</h4>
-<h4><strong>理论发现：</strong>对于满足多项式覆盖与Lipschitz条件的参数化特征族，总体协方差矩阵特征值具有由参数空间覆盖几何决定的多项式上界，导致最小特征值趋于零；论文据此建立显式处理病态性的近似、估计与推断理论。</h4>
-<h4><strong>估计结果：</strong>在β-Hölder源条件下，获得快于Monte-Carlo的L²近似率，以及基于分层抽样的新L∞近似界；并基于岭有效维数、谱条件和杠杆稳定性条件，给出岭正则最小二乘的改进一致性保证。</h4>
-<h4><strong>推断结果：</strong>允许总体协方差矩阵最小特征值趋于零，建立线性泛函方向的渐近线性与高斯极限；非退化性具有方向性，由岭归一化Rayleigh商刻画，并通过Riesz表示推广到光滑泛函；证明岭调整方差估计的一致性，从而实现可行的学生化推断。</h4>
-<h4><strong>实验意义：</strong>数值实验展示随机特征条件数的恶化，以及相应估计与推断程序的有限样本表现。</h4>
-<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>TRESS: A Fixed-Size History Representation for Irregular Time Series Forecasting（TRESS：面向不规则时间序列预测的固定大小历史表示）</strong></h2>
-<h4>针对不规则时间序列中“固定数量的近期观测可能在不同变量上跨越数分钟到数天，而更早测量仍能揭示最新值是否异常”的问题，论文提出 TRESS（Timestamped Recent Events and Statistical Summaries，带时间戳的近期事件与统计摘要）预测模型。其核心是保留每个变量最新观测的原始时间，并汇总变量的完整历史；在给定变量集和事件预算下，该表示大小不随记录增长而改变。模型通过查询条件事件提升模块，依据观测年龄和预测时域对相对最新值的偏差加权；再由通道特定解码器结合历史统计和跨变量共享摘要，预测对最新值的修正。实验表明，每个变量仅保留 8 至 16 个观测时，TRESS 在四个基准上取得最低平均测试 MSE 和 MAE；一次编码历史可服务 32 个连续查询时间，使四个数据集上的 CPU 推理时间缩短 2.12–2.60 倍。代码见 https://github.com/SSMa913/NICLab-TRESS。</h4>
-<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Communicate the Change: Efficient Expert Parallelism via Activation Compression（传递变化：通过激活压缩实现高效专家并行）</strong></h2>
-<h4>针对大规模稀疏混合专家（MoE）模型在专家并行推理中，因“向激活专家分发隐藏状态”和“合并专家输出”两个同步集合通信步骤而受限于互连带宽的问题，论文提出 EchoMoE。其核心观察是 Transformer 块对残差流的更新是增量的，因此以较早层隐藏状态作为参考，仅同步传输当前状态与参考状态之间的压缩差值，并周期性刷新参考状态，从而降低延迟关键路径上的通信量，且不显著增加计算开销。</h4>
-<h4>EchoMoE 是一种可改造现有 MoE 模型的轻量架构修改，所需训练 token 比完整预训练少约 8500 倍。实验表明，它将节点间通信量降低 58%，吞吐提升 22.6%，在 18 个基准上平均性能损失控制在 3.8 个百分点以内；在带宽受限以太网下推理吞吐最高提升 2.38 倍，为广域分布式推理铺路，并可容忍通信表示的量化而无明显质量损失。作者还发布了适用于预训练 MoE 模型的高效实现及 vLLM 推理集成。</h4>
-<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Neural variational Skyrmions as a topological benchmark: emergent symmetry, precision energies and KAN--MLP comparison（神经变分斯格明子作为拓扑基准：涌现对称性、精确能量与KAN--MLP比较）</strong></h2>
-<h4>论文提出将三维Skyrme模型作为神经变分方法的拓扑基准，并在不预设对称性拟设的情况下，高精度构造了重子数B=1至4的完全三维Skyrmion。</h4>
-<h4>对于B=2、3、4，松弛过程从具有随机位置和取向、不含对称性信息的B个单位电荷团块出发，但已知的环面形、四面体形和立方形Skyrmion仍能自发涌现；所得变分能量略低于已发表参考值。</h4>
-<h4>该神经方法在保持拓扑电荷方面表现出高精度，最高精度解中拓扑电荷与B的偏差至多约为10^-6；数值方法还通过了Derrick维里关系、Faddeev--Bogomolny界、独立求积与分辨率扫描等物理约束测试和验证。</h4>
-<h4>作者在超过一千次训练中比较了Kolmogorov--Arnold网络（KAN）与多层感知机（MLP），涵盖是否采用有理映射拟设的情形。默认设置下KAN明显更优，但调优MLP的激活函数和学习率后，大部分差距消失；固定epoch预算下KAN更具参数效率和稳健性，而固定实际耗时下调优激活函数的MLP至少同样表现良好。</h4>
-<h4>论文还论证连续梯度下降无法平滑改变神经场的拓扑扇区，从而解释了神经变分求解器中观察到的拓扑冻结现象。该结果为难解经典拓扑孤子的AI智能体基准奠定研究基础，并推动AI辅助孤子物理发展。</h4>
-<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Angular Conditional Distillation: Overcoming Classifier Geometry Mismatch（角度条件蒸馏：克服分类器几何失配）</strong></h2>
+<h4><strong>关键模块：</strong>设计Geometry–Progress模块，通过共享运动模式与路径条件化的进度分布，联合建模几何路径与单步移动距离，从而同时捕捉路径选择与运动进度中的不确定性，并保留二者之间的依赖关系。</h4>
 
-<h4><strong>核心问题：</strong>分类器输出是知识蒸馏（KD）中基础且通用的知识接口，但标准 logit 目标会将可迁移的语义关系与依赖网络结构的参数化伪影混在一起，造成“分类器几何失配”，使直接知识迁移不可靠。</h4>
+<h4><strong>几何基础：</strong>利用动作诱导的坐标变换，将预测路径表达在下一时刻机器人坐标系中，为未来视觉状态预测提供具有几何依据的条件。</h4>
 
-<h4><strong>方法提出：</strong>论文提出角度条件蒸馏（ACD）。其中，角度坐标接口（ACI）用角坐标重建学生分类器，抑制幅度与偏置影响，提供几何兼容空间；尺度不变条件蒸馏（SICD）标准化输出，仅迁移条件性的非目标关系，过滤不可迁移的绝对置信度。</h4>
+<h4><strong>监督机制：</strong>通过条件转换分支，以未来视觉特征重建监督运动预测器，将显式运动表示与后续观测建立联系；模型联合采用运动似然、特征重建与专家动作监督进行优化，使跟踪策略能够融合视觉上下文与预测性运动线索。</h4>
 
-<h4><strong>核心观点：</strong>ACI 定义“迁移到哪里”，SICD 定义“迁移什么”，二者共同解决分类器几何失配下的可靠知识迁移问题。</h4>
+<h4><strong>实验结果：</strong>在三个具身跟踪基准上，采用轻量级0.5B骨干网络，模型在跟踪性能与跨环境泛化能力上均取得提升。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><strong>CAPER: PartGround and PlanRefine for Reliable Manual-Guided Robotic Assembly Planning（CAPER：用于可靠手册引导机器人装配规划的部件接地与计划精炼）</strong></h2>
+<h4><strong>问题：</strong>在机器人任务规划中，视觉语言模型（VLMs）虽能从现有手册推导装配流程，并可能正确理解单个装配动作，但常会混淆具体零件身份、预测不支持的 Part ID，或在不同装配步骤中产生不一致的零件。</h4>
+<h4><strong>方法：</strong>提出 CAPER（Capacity-Aware Part-grounding and Evidence Refinement，容量感知的部件接地与证据精炼），一个手册引导的机器人装配框架，使 VLMs 通过 PartGround 和 PlanRefine 两个模块生成装配流程。PartGround 将步骤级手册证据与产品特定库存及零件参考信息对齐，以识别精确的 Part ID 和数量，把自由形式的硬件预测转化为证据引导的分配，并用共享的 Assembly IR 表示。PlanRefine 依据有限库存审计 PartGround 分配，移除置信度最低的分配；不确定的身份案例在 Assembly IR 中标记待审。</h4>
+<h4><strong>结果：</strong>在 IKEA Assembly in the Wild（IAW）数据集上评估，CAPER 达到 83.33% 的有限库存一致性率，并实现零观察到的库存外 Part-ID 出现。在计划层面，PlanRefine 消除了所有观察到的库存超用配对（9 → 0）和多余单位（51 → 0）。总体表明，PartGround 与 PlanRefine 提升了零件可靠性，同时增强了有限库存一致性和局部预测准确率。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><strong>Gated Concept Adapters: Layer-Wise Concept Bottlenecks for Auditable Text Understanding（门控概念适配器：面向可审计文本理解的分层概念瓶颈）</strong></h2>
+<h4><strong>摘要总结：</strong>该论文提出 Gated Concept Adapters（GCA，门控概念适配器），一种分层概念瓶颈框架：在预训练 Transformer 的选定层输出上附加带门控的低维概念读出适配器，将 token 表示映射为概念激活，经学习门控过滤后池化为层级摘要，并作为概念中介接口输入预测头。其概念维度可通过使用统计、特征 n-gram、事后概念命名和定向概念干预进行检查。</h4>
+<h4><strong>评估与发现：</strong>作者在细粒度情感分类、毒性检测、主题分类和受控动词填空压力测试上评估 GCA。在情感与安全相关分类中，GCA 学到冗余较低、对干预敏感的概念表示，同时保持有用预测性能；在毒性检测上接近无约束 ModernBERT 基线，并支持概念级检查、定向干预和轻量事后控制。GoEmotions 上端到端概念模型相较无约束 RoBERTa 有 macro-F1 损失，但任务初始化冻结变体显著缩小差距；AG News 上与近期概念基线保持竞争力；Qwen 动词填空实验揭示概念中介全词表预测的局限。</h4>
+<h4><strong>核心观点：</strong>GCA 为可审计文本理解提供神经概念接口，优先考虑透明性、诊断与干预，而非无约束精度最大化。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><strong>CriticJEPA: World Models Are Better Critics Than Optimizers（CriticJEPA：世界模型是比优化器更好的评判器）</strong></h2>
+<h4>视觉世界模型通过预测动作结果支持目标导向规划。基于梯度的规划器通过优化动作来降低预测目标代价，但当执行效果不再提升后，持续优化会利用预测误差；比较不同方案需要具有信息量的相对评分，而改进方案还需要可靠的更新方向。</h4>
+<h4>精确状态执行表明：冻结的分层世界模型能够对目标条件候选方案进行排序，即使其对长时间梯度搜索输出之间的排序已不再有信息量。有效规划应将目标导向候选与能够区分其结果优劣的预测相结合。</h4>
+<h4>为此提出 CriticJEPA：从无奖励轨迹中学习目标条件流提案，并在每个层级利用冻结世界模型展开来选择和评估候选；前向选择构成完整规划器，短锚定更新可在选择前细化候选。在视觉导航与操作任务中，CriticJEPA 以少量规划计算提升成功率，并能在独立训练模型、不同层级深度和未见任务之间迁移共享设置，同时保持世界模型所有权重冻结。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><strong>Scoring What Matters: Exact Feedback Reduction for Language Model Comparison（评分关键所在：语言模型比较中的精确反馈缩减）</strong></h2>
+<h4>论文针对语言模型检查点比较中“为对性能差异无贡献的响应打分”造成评估浪费的问题，提出与采样器无关的 Contrast-Aware Feedback Acquisition（CAFA）方法：在获取反馈前识别所需评分，将相同评分输入分组并聚合其报告系数，从而在普通缓存之外进一步删除查询，同时保持完整评分结果不变。对于固定响应库和无其他限制的标量评分器，作者刻画了精确恢复样本均值（单独或与样本协方差联合）所需的充要查询集。实验显示，在受控更新中，CAFA 对 Qwen2.5-1.5B-Instruct 和 SmolLM2-1.7B-Instruct 在缓存后剩余评分输入分别减少 55.8% 和 90.1%（四次生成重复平均）；在三条在线 GRPO 轨迹中，Independent Star sampling with CAFA 在共同经验精度阈值（RMS MCSE ≤ 0.04）下，生成加反馈成本比带缓存的独立自回归采样低 46.1%–51.3%。该比较为固定预算网格上已完成运行的事后比较；全部 504 个评估报告单元均以数值精度复现完整评分的均值与协方差。作者还提供模块化实现，支持现有响应库、版本化缓存和外部评分器。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><strong>Seldon TFM family: Seldon-Mini, Seldon and Seldon+（Seldon表格基础模型家族：Seldon-Mini、Seldon与Seldon+）</strong></h2>
+<h4>本文提出Seldon表格基础模型家族。分类器Seldon+在包含124个分类数据集的TabBench及其缺失值变体上，于15个模型中排名第一；在作者自行运行的公开基准中，BeyondArena IID分类与TabBench-Bio排名第一，TabArena分类排名第二。</h4>
+<h4>开放权重模型Seldon-Mini（27M参数）和Seldon（213M参数）均位于TabArena的Elo对推理时间帕累托前沿，即没有条目同时更准确且更快。在TabArena的109个榜单条目中，Seldon排名第四、Seldon-Mini排名第七；在BeyondArena IID赛道42个条目中，Seldon排名第二。</h4>
+<h4>Seldon-Mini与Seldon支持分类和回归，架构类似Kumo-Tabular、TabFM和TabPFN-3.5，且仅使用合成表格训练。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><strong>OmniAct: One Policy, One Million Embodiments（OmniAct：一个策略，百万种具身形态）</strong></h2>
+<h4 style="font-weight: normal;">核心问题与思路：单一策略控制多样机器人，既要跨具身迁移任务知识，也要根据每个机器人的能力调整行为。现有方法多依赖共享动作表示，但这类表示未必能体现机器人形态差异应如何影响操作策略。OmniAct 是一种跨具身操作策略，直接以特定场景中机器人的运动学为条件，生成具身特定行为。</h4>
+<h4 style="font-weight: normal;">方法要点：该策略用运动学图表示机器人关节位置、运动轴及连接关系，并与视觉观测关联，使策略能够考虑自身具身与场景中物体、表面的关系。采用流匹配策略预测每个节点的相对关节运动，从而支持不同自由度和运动学构型机器人的控制。</h4>
+<h4 style="font-weight: normal;">训练与评估：为大规模学习物理结构如何塑造行为，作者程序化设计并筛选一百万种物理可行机器人具身，开发算法在仿真中为所有具身生成机器人轨迹，并在多样仿真操作任务上训练。在 2,000 个具身-场景留出评估回合中，OmniAct 成功率为 63.0%，对比 pi 0.5 的 17.8% 和最强基线的 57.9%；在 GPT-6 Astra 评估过的任务族上达到 64.7%，高于 GPT-6 Astra 的 41.1%；在先前未见的真实机器人上，成功率接近次优方法 MolmoAct2 的两倍。</h4>
+<h4 style="font-weight: normal;">核心发现：除任务成功率外，OmniAct 还学到不同的操作策略，能够利用不同形态的能力并适应其限制。项目地址：https://omniact.github.io/</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><strong>Roboclock: A Unified Benchmark for Time-Aware Robotic Intelligence（RoboClock：面向时间感知机器人智能的统一基准）</strong></h2>
+<h4>该摘要指出，时间是机器人智能的基本维度：即使动作在物理上正确，若超出有效时间窗口、事件响应过慢或未达吞吐要求，机器人仍会失败。现有机器人基准主要关注空间正确性与逻辑任务完成，忽视真实应用中的时间约束。为此，作者提出 RoboClock 统一基准，覆盖五个应用领域、60 个任务，并围绕时间窗口、事件响应和吞吐量三类时间约束构建任务。该基准还引入延迟对齐评估协议，在模型推理与控制接口延迟期间持续推进环境时间，并结合时间敏感指标进行评估。对 30 多种方法的评估显示，表现最佳的训练型 VLA 即使在 Easy 级任务上时间成功率也仅 8.3%，泛化与迁移仍存在持续挑战。结论揭示当前机器人系统在物理能力、时间推理与执行延迟联合优化方面的根本局限。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><strong>Verify then Steer: Progress Hallucination-Aware Recovery for Continuous Vision-and-Language Navigation（验证后引导：面向连续视觉语言导航的进度幻觉感知恢复）</strong></h2>
+<h4>该论文研究视觉语言导航（VLN）中智能体在测试阶段偏离路线后难以恢复的问题。作者从“指令进度”角度提出“进度幻觉”现象：智能体把偏离路线的观察误判为任务进展证据，导致内部指令进度超前于实际任务阶段，从而阻碍其依据早期子指令完成恢复。</h4>
+<h4>为此，论文提出 PHAR（Progress Hallucination-Aware Recovery）测试时恢复框架，遵循“先验证、后引导”范式。验证器通过检查视觉语言模型（VLM）的残差流表示，识别轨迹中跨模态证据的不匹配，并利用分裂共形校准控制误报；当触发警报时，引导模块使用上下文多臂老虎机自适应选择指令进度的回退程度，以实现在线恢复。</h4>
+<h4>在 R2R-CE 和 RxR-CE 上的大量实验表明，该框架能够在测试阶段提升多种先进视觉语言导航方法的可靠性，核心贡献是显式建模并缓解“进度幻觉”，从而增强路线偏差后的恢复能力。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><strong>Learning Agent States for Latent Action Modeling（为潜在动作建模学习智能体状态）</strong></h2>
 
-<h4><strong>实验结果：</strong>大量实验表明，ACD 相比现有 KD 方法达到最先进性能；作为通用即插即用替代方案，它可持续改进现有蒸馏流程，且无需特征适配器或额外推理成本。代码见：https://github.com/laniusnan/ACD。</h4>
-<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>EgoLAM: Learning Latent Actions from Hand and Head Motion（EgoLAM：从手部和头部运动学习潜在动作）</strong></h2>
-<h4>EgoLAM 针对自我中心视频中帧间变化同时包含手部操作与相机/头部运动的问题，提出将手腕实测运动作为动作码监督信号，并把相机运动单独输入前向模型；即使佩戴者转身推杯，训练目标仍描述手部如何推动物体。动作编码器在每个手部周围池化物体槽，手腕平移与旋转可在共同参考系中从动作码解码，提取动作码仅需两帧 RGB。评估涵盖 LARYBench 分类与回归、冻结动作码保留手腕运动信息量及其对合成视角/光照变化的响应。EgoLAM 在八个评估模型中手部运动解码得分最高；在三个 LIBERO 套件上，以其动作码预训练并在专家示范上微调的策略平均成功率达 79.38%，分别高于专家行为克隆 28.73 个百分点、高于各套件中最强其他潜在动作模型平均 9.76 个百分点。</h4>
-<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>RAG in a Trenchcoat: When Minimal Memory Is Enough for Agentic Systems, and When It Isn't（披着风衣的RAG：极简记忆何时足以支撑智能体系统，何时不足）</strong></h2>
-<h4>智能体记忆研究已叠加抽取、替换更新、反思和图合成等机制，但作者发现：在测试的记忆基准中，这些复杂原语几乎都无法抵消其成本。为此提出 BRIDGE——一种刻意极简的 RAG 记忆：链式观察笔记、BM25 与余弦相似度的混合检索、按时间顺序渲染。</h4>
-<h4>BRIDGE 在 LongMemEval-S 和 BEAM 上与先前 SOTA 在 bootstrap 置信区间内持平；在 EverMemBench 上，于匹配 reader 条件下比最佳记忆基线高 5.7–6.3 分。每次查询约消耗 5–7K reader prompt token，每次摄入或查询仅需一次 LLM 调用。</h4>
-<h4>核心观点：标准基准测的是“记忆检索了什么”，而非“记忆使智能体行动时能做什么”。为检验后者，作者引入五个对抗性探针：规则应用 +/−、模式归纳风格/程序、动态多轮；生成时由跨供应商验证链评判，每个查询只能通过应用从未明说的已记忆规则或模式来解决。</h4>
-<h4>在 5 个探针 × 20 个场景中，没有架构普遍胜出：原子事实抽取器 LangMem 在规则应用上胜出，BRIDGE 的块摘要记忆在模式归纳上胜出。该结论跨四个领域、三名评分者和三类 reader 家族成立。</h4>
-<h4>两者各自失败的原因无法被召回基准看见：原子事实抽取器丢弃了示范模式的形式；块摘要记忆虽检索到规则，但 reader 不据此行动，而更突出地呈现规则可大幅缩小这一差距。</h4>
-<h4>结论：区分记忆设计的不是它检索什么，而是它使智能体能做什么；这才是智能体记忆应被评估的核心。</h4>
-<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Vanguard: Knowing When to Trust the Draft in Speculative Vision-Language Agents（Vanguard：在推测式视觉语言智能体中知道何时信任草稿）</strong></h2>
+<h4><strong>核心背景：</strong>潜在动作模型（LAMs）通过帧对推断与潜在条件预测，从无标签视频中学习类动作潜在表示，可用于策略和世界模型预训练。但潜在表示需要解释的内容取决于动作推断与转移预测所用的表示空间；若该空间将智能体不断变化的物理状态与背景、持久外观等视觉上下文纠缠，推断出的潜在动作会编码与智能体动作无关的信息。</h4>
 
-<h4><strong>核心问题：</strong>视觉语言智能体在浏览网页、操作手机和家居行动前都需逐步推理，每一步都等待大模型会造成高延迟与高成本。步骤级推测由小模型起草每步，仅在草稿被拒时调用大模型，但其效果取决于判断器；仅读取步骤文本的判断器无法判断该步骤是否匹配当前屏幕。</h4>
+<h4><strong>方法提出：</strong>论文提出 <strong>Agent-State LAM</strong>，联合学习紧凑的智能体状态表示，以及建模其状态转移的潜在动作。该紧凑状态将稠密视觉特征聚合到共享空间，同时用于动作推断和前向预测，从而减少视觉上下文对潜在动作的干扰。</h4>
 
-<h4><strong>关键发现：</strong>小模型少量采样中常包含正确步骤，其正确率可与大模型相当，且正确步骤并不总相同；结合屏幕截图检查后，小模型草稿不仅更便宜，甚至可能更好。</h4>
+<h4><strong>关键机制：</strong>引入<strong>空间匹配时间判别（SMTD）</strong>，训练状态通过冻结局部视觉特征进行空间灵活匹配，以区分源帧与邻近帧。SMTD 不比较全局帧表示，而是强调每个帧在空间位置上的最强局部特征匹配。该评分使背景和持久智能体外观即便发生位移仍可跨帧匹配，降低这些共享线索对识别源帧的信息量，鼓励表示聚焦智能体不断变化的物理状态。</h4>
 
-<h4><strong>方法：</strong>提出 Vanguard，一种无需训练的 judge，不改变草稿模型和目标模型。通用决策模型结合截图，在一次前向传播中为每个候选步骤给出“正确”的概率；最佳候选若超过阈值则保留，否则由大模型重写该步骤。</h4>
-
-<h4><strong>实验结果：</strong>在网页、移动端和具身智能体中，2B 草稿经 Vanguard 判断后至少与 8B 目标模型同样准确，并在 Mind2Web 和 EB-ALFRED 上显著更准确，同时目标模型只重写少数步骤；可完成更多闭环 episode。与另一模型家族的 27B 目标模型组合时，方法更快且更准确。Vanguard 是所比较的智能体任务 judge 中最准确者；在网页和移动任务中依赖截图，其校准阈值可迁移到未见网站；跨模型家族时，其相对目标模型的增益随草稿 pass@4 相对目标准确率的提高而增大。Vanguard 还可与 token 级推测解码组合，在数学任务上匹配已训练的过程奖励模型，使推测从“节省大模型计算”进一步变为“提升大模型表现”。</h4>
+<h4><strong>实验结论：</strong>在干扰控制任务和六个真实机器人视频数据集上，Agent-State LAM 在动作恢复、下游控制和世界模型预测方面均取得改进。代码与检查点已公开：https://github.com/Mid-Push/Agent-State-LAM。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>ChronoDossier: Long-Form Personas as Temporal Memory Representations（ChronoDossier：长篇幅人物档案作为时间记忆表示）</strong></h2>
-<h4><strong>核心问题：</strong>长时程智能体需从存储记录中恢复人物随事实变化的状态，可靠回答取决于事实如何被记录、检索并呈现给读者。论文将长篇人物档案视为已知潜在状态的记忆表示，由不变身份及与人生阶段相关的事实、惯例和决策规则时间线构成。</h4>
-<h4><strong>基准构建：</strong>提出 ChronoDossier 基准，包含311份1k–10k词的合成档案，由7个生成器依据带日期时间线生成；内在指标评估记录与预期状态的一致性，外在指标用5个阅读器在32人物 GPT-5.1 面板上测试状态恢复，并按长度平衡（每条件520个评分轮次）。链接的状态、记录、证据包和答案支持对构建与证据交付进行测试。</h4>
-<h4><strong>关键发现：</strong>上下文压力控制中，标签范围写入输入消除了检测到的越界锚复制；在分阶段档案上编写的冻结问题迁移到同状态的一次通过档案时可靠性下降。匹配证据控制中，整节证据可修复29/32 GPT-5.1和25/30 Sonnet 4.6被标记为“打包”的失败，而答案形成失败仅修复2/8和1/8。归因采用独立的基于键与无键支持度量，并保留模型分歧。</h4>
-<h4><strong>局限与意义：</strong>长度仍与人物和问题构成混杂，观察到的桶间差异扩大依赖摘录构建。该基准支持针对已知事实的离线评估，但不涵盖从交互中获取记忆及用真实用户验证。</h4>
+<h2><strong>Verified Proof Refactoring with Codex and Qwen（利用 Codex 与 Qwen 进行可验证证明重构）</strong></h2>
+<h4>本文对现有 Lean 4 证明进行重构，以缩短源码长度并降低检查成本，同时保持定理陈述不变，并确保跨 Lean 版本兼容。系统由本地部署的 Qwen 模型通过开源 Codex CLI 检查源码、检索声明并测试证明替换方案；仅当替换能改进目标且 Lean 在所有必需版本上接受时，宿主才保留该替换。随后通过确定性的 CPU 处理进一步优化已验证证明。在 Lean Refactor Arena 的 60 个问题上，模型搜索取得 82.07 的本地平均综合得分，清理后提升至 82.18；最终证明通过全部 127 项必需的“证明—版本”检查，并在 VeriCodeGen 的 Lean Refactor Arena 开源 LLM 赛道中排名第一。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>ARG-Avatar: Animation-Rendering Guidance for Efficient Feedforward Avatar Reconstruction（动画-渲染引导的高效前馈虚拟形象重建）</strong></h2>
-<h4>从图像重建可动画的3D人体虚拟形象对游戏和增强现实等应用至关重要。前馈方法可将推理时间缩短至数秒，但近期方法往往依赖扩大模型容量、训练数据和计算量。</h4>
-<h4>本文提出ARG-Avatar，一个仅含6800万可训练参数的高效前馈框架，却达到SOTA重建质量，并质疑上述规模化是否必要。</h4>
-<h4>核心观点：3D动画与渲染本身已提供强几何对应关系，而现有方法多试图从数据中学习这些对应。为此，作者设计前景虚拟形象坐标RoPE注意力（FACRoPE）和中间令牌渲染（ITR）流程，引导虚拟形象令牌关注其对应图像块。</h4>
-<h4>多数据集实验表明，在使用两张及以上输入图像时，ARG-Avatar持续优于先前方法。与LHM++相比，其可训练参数约少9倍、训练序列数约少4.8倍、训练计算约少14倍，运行速度快6倍，并在分布外NeuMan基准上取得2.7 dB的PSNR提升。</h4>
+<h2><strong>Meta-Amortized Cognitive Modeling（元摊销认知建模）</strong></h2>
+<h4><strong>核心问题：</strong>认知建模高度迭代，研究者需随理论发展和数据积累反复修改模型结构、参数化、协变量与实验设计；现有基于神经网络的摊销贝叶斯推断虽能快速估计单个模型，但每次修改都需要重新模拟和训练。</h4>
+<h4><strong>核心方法：</strong>提出 CogFormerV2 元摊销框架，使研究者可用单一网络指定、修改并拟合认知模型，一次性在整个模型空间中共享摊销。</h4>
+<h4><strong>关键结果：</strong>单块 GPU 约一天训练后，可在覆盖二元、多选和连续决策，且参数集、协变量结构、试验次数与污染水平各异的超过 146 亿个模型配置上，输出准确且良好校准的后验。</h4>
+<h4><strong>扩展与应用：</strong>可拟合不同行为任务的实证数据，并通过持续学习与表示迁移扩展到新模型；以开源交互应用发布，为认知建模中的元摊销推断提供可复用基础设施，并有望加速大规模计算建模工作流。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Test-Time Symmetrization: Scaling Laws for Model-Agnostic Learning under Structure（测试时对称化：结构下模型无关学习的缩放定律）</strong></h2>
-<h4>现有测试时扩展定律主要研究固定提示下的重复采样；但许多任务存在同一问题的多种等价表示（如图节点编号、程序变量名），语言模型可能因输入重写而改变答案。</h4>
-<h4>本文提出测试时对称化：对输入进行重写并前向计算，再在重写群 \(G\) 上聚合答案。理论证明：仅从单一表示重复采样或解码无法替代重写；只需 \(O(\log |G|)\) 次随机重写即可恢复全部 \(|G|\) 种重写的信息，且同一组重写可同时近似不同模型、解码规则和采样推理轨迹，该对数缩放一般最优。</h4>
-<h4>实验在 Qwen2.5-7B、Phi-4-mini、Llama-3.1-8B、Qwen2.5-14B 上进行，覆盖链式思维推理、图推理、逻辑演绎和多选题问答。结果表明：在相同前向次数下，当模型答案依赖输入写法时，将计算用于输入重写显著优于对原提示重复采样；所需重写数随可能重写数对数增长，符合理论预测。</h4>
-<h4>研究提供了在推理阶段强制对称性的原则性方法，即模型无关对称化，适用于无法将对称性内置到模型中的场景。</h4>
+<h2><strong>Attestation is All You Need: Toward a Zero-Trust Architecture for HPC AI Agents（认证即所需：面向高性能计算AI智能体的零信任架构）</strong></h2>
+<h4>AI智能体正开始在高性能计算（HPC）环境中自动化数据分析、编排与仿真控制，但也引入了现有集群防御未覆盖的安全问题：被劫持的授权智能体。攻击者可通过提示注入、共享数据投毒、工具失陷或多智能体协同来颠覆智能体，并借合法的加密LLM API流量外泄敏感数据。</h4>
+<h4>为此，论文提出以行为认证作为运行时防御，并设计系统AEGIS：编译任务衍生的行为约束，基于eBPF系统调用拦截监控智能体行为，将证据与约束配置文件核验，跨智能体关联行为，并触发Slurm级隔离。</h4>
+<h4>在真实认证路径上，AEGIS在1秒检测间隔下以亚秒级中位延迟检测出全部四类已实现攻击，验证器开销较低；受控实验显示其覆盖完整攻击套件，检测效果优于代表性基线，且在评估的良性工作流中未观察到误报。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Better Rankers, Worse Retrievers: The Hidden Cost of RL Post-Training in Generative Recommendation（更好的排序器，更差的检索器：生成式推荐中强化学习后训练的隐藏代价）</strong></h2>
-<h4>生成式推荐通过语言模型解码用户下一物品的语义 ID；在监督微调（SFT）后使用强化学习（RL）进行后训练已成为常见做法。现有收益多体现在前 10 个结果上，但实际部署中模型需向排序器或奖励模型提供数百个候选。</h4>
-<h4>论文揭示 RL 后训练的隐藏代价：它提升了列表顶部准确率（小 K 的 hit@K），但在所研究的五个数据集上均降低了候选列表召回率（数百量级 K 的 hit@K），即模型成为“更好的排序器、更差的检索器”。</h4>
-<h4>受控实验将损失归因于 RL 对采样候选（rollout）分配的负优势。根因是每个用户仅记录一个下一物品，RL 将其他候选视为错误；但这些候选常是模型最合理的替代项，也常是相似历史用户的下一物品。惩罚它们会压低相似用户实际选择，并使其从候选列表消失。</h4>
-<h4>诊断直接指向补救方案：out-of-rollout anchoring（rollout 外锚定），即增加一个损失项，保持 SFT 模型对 rollout 外物品的排序。该方法在五个数据集上保持顶部收益并将召回恢复至 SFT 水平，且适用于其他 RL 配置。据作者所知，这是对该召回损失的首个系统研究：测量损失、识别原因，并证明原因明确后简单补救即可奏效。</h4>
+<h2><strong>Can AI Design a Better nnU-Net? A Hypothesis-Driven Architecture Discovery Loop from Failures to Design Rules（AI能否设计更好的nnU-Net？从失败到设计规则的假设驱动架构发现循环）</strong></h2>
+<h4>现有神经架构搜索和LLM驱动演化常将评估简化为单一适应度分数，从而丢弃可解释设计成败的失败信息。本文提出假设驱动的架构发现循环：由LLM智能体诊断结构化错误模式，提出可证伪假设，在冻结的nnU-Net流程下进行反事实对照测试，并将验证有效的机制提炼为可执行的“触发—动作”规则。</h4>
+<h4>经过八轮搜索，该循环发现两条3D医学图像分割设计原则：一是将计算从高分辨率解码器重新分配到中编码器，在降低成本的同时保留薄解剖结构边界；二是采用支持受限区域对比（support-confined region contrast）处理嵌套解剖腔室之间的错误，并由解剖结构依赖的触发器决定规则何时适用。</h4>
+<h4>基于上述原则得到LeanNeXt：相对nnU-Net为0.78 MACs、0.92训练步时间，在KiTS23四折交叉验证上提升1.63 Dice点；进一步得到触发器路由的LeanNeXt+，在全部15个CT/MRI设置上优于nnU-Net，并在15个基准中的12个上超过参数量大3.3倍的ResEnc-M，而其参数量仅为后者的0.30。与随机采样、一次性LLM生成和按分数选择智能体搜索相比，该循环表明失败分析能够产生可跨模态复用的设计规则。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>EverydayBench: Evaluating Satisfactory Completion of Live User-Facing Digital Work（评估真实用户面向的在线数字工作的满意完成情况）</strong></h2>
-<h4><strong>核心问题：</strong>日常数字任务（如选品、旅行规划、调研和内容创作）要求AI智能体交付有用成果，而非仅检索网页信息；但在实时网络上评估这些成果很困难，因为同一请求可能有多个有效结果，且网页信息变化会改变结果的有效性。</h4>
-<h4><strong>基准设计：</strong>提出 EverydayBench，包含77个人工编写任务，覆盖日常生活与工作的8个领域；任务在执行前设定成功标准，但不规定答案或工作流，允许智能体自主选择成果。</h4>
-<h4><strong>评估方法：</strong>在固定成功标准下，结合三类评估：（1）对显式约束进行确定性检查；（2）在评估时检索智能体引用的网页并核验其主张；（3）基于评分细则评估最终交付物质量。并通过人工判断、固定证据下重复评分和受控证据接地失败来验证该协议。</h4>
-<h4><strong>主要结果：</strong>在23种已报告的智能体-模型配置中，Claude Opus 5.5 与 Claude Fable 5.1 以54.55%的最高严格通过率并列；GPT-6 Sol 的努力程度扫描从低努力的29.87%升至最大努力的45.45%。可靠性因任务类型差异明显：GPT-5.6 Sol 擅长查找，Fable 5.1 擅长规划，Opus 5.5 与 Fable 5.1 在比较任务上并列，GPT-6 Astra 与 Sonnet 5.5 在定制交付物上并列。</h4>
-<h4><strong>结论：</strong>为日常用户请求交付完整、证据充分且可用的成果仍具显著难度，这些发现凸显了该场景的挑战性。</h4>
+<h2><strong>RubikSQL-HB: Agentic Text-to-SQL with Knowledge in the Loop（RubikSQL-HB：知识在环的智能体式文本到SQL）</strong></h2>
+<h4>论文提出 RubikSQL-HB：数据库智能体不能只依赖模式结构，还需在推理不同阶段利用业务含义、存储值和参考查询等知识。系统基于 HeavenBase 平台构建可查询、数据库特定的知识工作区，并在智能体构建与探究答案过程中持续提供知识接口；候选智能体将知识访问与 SQL 构建、执行交替进行，下游 Judge 也可复用同一接口调查候选分歧。两阶段示例接口将“发现参考问题”与“扩展其 SQL”分离。</h4>
+<h4>在 BIRD Mini-Dev 500 题评测中，完整流程执行准确率为 75.2%，高于首选候选选择的 71.2% 和执行多数投票的 70.4%，79.0% 的问题存在正确候选。原始知识条件（也会在没有已构建工作区的情况下重新生成候选）低 3.0 个百分点；借助工具与修订的裁决相较选择基线贡献了主要增益。执行探针记录显示持续调查可解决候选分歧，归档运行显示语义修订能恢复原始候选池中缺失的答案，版本化开发研究进一步表明重复纠正可转化为可复用执行检查。</h4>
+<h4>核心观点是：可查询知识支持智能体构建有用备选方案，证据感知裁决将这些备选方案连接到最终答案；将知识保持在环中，使智能体能在推理发展中获取相关观察，从而提升决策质量。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>EchoAlign: Echocardiography foundation model with multilevel report alignment（EchoAlign：具有多级报告对齐的超声心动图基础模型）</strong></h2>
-<h4>超声心动图用于评估心脏结构与功能。临床医生会结合多个标准视图阅读检查，并按心脏结构报告各视图中的可见发现。AI基础模型可从临床报告学习分析这些检查，减少标注负担并支持临床解读。</h4>
-<h4>现有模型通常将每个视频与完整临床报告配对，其中包含该视图未显示的结构和发现。这种不匹配会使模型把发现与偶然或虚假信号关联，而非视觉证据，从而限制准确性、解剖定位和临床信任。</h4>
-<h4>为此，作者提出EchoAlign，一个基于159个临床中心287万段超声心动图视频和图像开发的视觉语言基础模型。EchoAlign将每个心脏结构、视频和研究与报告文本对齐，并用可见性矩阵将监督限制在实际显示相应结构的视图上。</h4>
-<h4>研究在来自25个以上临床中心的10个未见外部数据集、47万测试视频上，与5个公开基础模型比较。EchoAlign分类平均AUROC最高，为0.890（95% CI：0.881–0.897）；严重程度分级平均二次加权kappa最高，为0.530（95% CI：0.511–0.544）。在62项临床发现上，单一模型即可完成发现检测、严重程度分级、测量估计和心脏结构分割。</h4></div>
+<h2><strong>FigmaEval: A Benchmark for Evaluating AI Agents in Professional UI Design（FigmaEval：评估专业UI设计中AI智能体的基准）</strong></h2><h4>该论文提出 FigmaEval，用于评估 AI 智能体在专业 UI 设计任务中的能力。由于设计任务开放且缺乏唯一标准答案，现有评估面临挑战。FigmaEval 包含 84 个任务和 783 个界面，均来自真实 Figma 设计文件，并采用“约束规范、开放方案”范式：统一任务要求与设计资源，但允许智能体自主决定布局、视觉层级、组件组合和视觉呈现。为超越参考相似度评估设计质量，作者构建了覆盖六个维度的 22 条专家评估准则，并引入由专业设计师进行盲测成对比较的人类评估竞技场。在统一的 Figma 智能体设置下评估 11 个模型后发现，基于准则的评估与人类偏好高度一致，同时不同模型在设计实践和质量—效率权衡上存在明显差异。FigmaEval 为系统评估专业 UI 设计能力、理解当前 AI 智能体的优势与局限提供了框架。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><strong>AIChipBench: Benchmarking LLM Agents for Automated AI Accelerator Design（AIChipBench：面向自动化 AI 加速器设计的 LLM 智能体基准测试）</strong></h2>
+<h4>论文关注 LLM 编码智能体正确设计 AI 硬件所需的能力。语言模型解码器在解码步之间保存状态；在硬件中，错误的状态更新可能让当前 token 输出正确，却在若干 token 后破坏输出，因此设计可能通过输出测试但仍然是错误的。</h4>
+<h4>AIChipBench 要求智能体用可综合的 RTL 代码实现量化的 Qwen3.5、Gemma 3、Gemma 4 和 Llama 3.2 解码器，并以可执行的整数参考模型为准，该参考规定了每个解码步的输出和存储状态。智能体在固定预算下用公开测试调试；冻结后的设计在留出 token 序列、复位、内存停顿和综合等条件下评分；第二赛道要求在面积几乎不变的情况下加速正确设计。</h4>
+<h4>在四个编码智能体的 9,136 次尝试中，难点在于存储状态。匹配研究显示，指出首个状态不匹配的反馈在全部 12 个智能体—任务单元中，将接受率较仅输出反馈提高 25.0 至 46.9 个百分点，并将每个被接受设计所需的智能体工时减半。在新序列和新条件下重新评分时，69 个被接受设计中有 45 个在其测试所需的 32 步内失败；超过三分之一的加速正确设计尝试未能得到加速设计。</h4>
+<h4>总体得分将 Sol 5.6 和 Fable 5.1 排在 Astra 6 和 Opus 5.5 之上，且两个实例半区在全部 200 次随机划分中均给出这一顺序。结论是：硬件智能体需要能暴露存储状态的调试反馈，其基准测试也需要远超开发用例的最终测试。</h4>
+<hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
+<h2><strong>C3H: Compression-to-Consensus Criteria Hijacking in Multimodal LLM Recommender Systems（C3H：多模态大语言模型推荐系统中的“压缩到共识”准则劫持）</strong></h2>
+<h4>多模态大语言模型（MLLM）正推动推荐系统向内容感知决策系统演进。传统观点认为，多模态压缩可过滤噪声信号，跨模态融合与共识可抑制不一致异常，从而增强系统对内容操纵的鲁棒性。</h4>
+<h4>本文挑战这一假设，指出压缩与跨模态共识会引入“压缩到共识”（C2C）偏置：压缩后仍显著、且在多个模态中获得一致支持的信号，会在候选比较中产生不成比例的影响力，形成可被利用的内容操纵方向。</h4>
+<h4>为此，作者提出C3H，一种新的推理时攻击。它不依赖噪声扰动或训练时投毒，而是通过调整目标项的多模态内容，使其对齐推荐系统隐含表达的决策准则，从而提升目标项曝光。</h4>
+<h4>实验表明，C3H能显著提高目标项曝光，同时保持整体推荐效用。代码已开源。</h4></div>
