@@ -1,157 +1,59 @@
-<div id="news-summary-container" style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;"><h2><strong>SALSA: Sampling Adversarial Suffixes from Learned Distributions for LLM Safety Assessment（从学习分布中采样对抗后缀用于大语言模型安全评估）</strong></h2>
-<h4>大型语言模型仍易受越狱攻击：攻击者可在看似良性的提示后追加优化后缀，以绕过安全对齐。现有基于优化的GCG式攻击虽有效，但推理成本高且迁移性差。作者提出SALSA——一种生成式框架，从优化得到的攻击语料中学习越狱后缀分布；训练完成后可高效采样攻击。在开源目标上，其攻击成功率与最先进优化基线相当，同时将每个提示的生成时间从3.46秒降至0.04秒。在黑盒迁移中，它对专有系统仍高度有效：GPT-3.5-Turbo攻击成功率达99%，在更难的GPT-4o上达45%，在相同采样预算下超过最强基线两倍以上。作者进一步解释：当学习到的后缀分布接近优化输出分布时，生成式采样为何能保持高攻击成功率。总体而言，学习对抗后缀分布为持续发现LLM漏洞提供了可扩展且实用的高效基础。</h4>
+<div id="news-summary-container" style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>RecurSciBench: Benchmarking Recursive Self-Improvement in Data-Driven Scientific Research（RecurSciBench：面向数据驱动科学研究中递归自我改进的基准评测）</strong></h2>
-<h4>基于大语言模型的智能体正推动数据驱动科学研究的自动化。递归自我改进（RSI）使智能体有望通过经验持续提升，但评估其在科学任务间的迁移效果，需要可执行、可科学验证的任务，并独立衡量自我改进带来的增益。</h4>
-<h4>本文提出 RecurSciBench，一个用于评估数据驱动科学研究中 RSI 的可扩展基准。其 RecurSciPipe 框架可从原始数据集自动构建科学建模与数据分析任务，并执行基于运行的验证和科学有效性检查。该基准覆盖四个科学领域、多种数据模态和多样化科学目标。</h4>
-<h4>研究在源任务上进化后，于独立任务上比较四种 RSI 系统的初始状态与进化状态，涵盖同类型、跨类型和跨领域迁移。实验表明：自我改进的收益因智能体系统和科学领域而异；整体正收益可能与个别任务退化并存；即使源领域未出现可测增益，经验仍可跨任务类型迁移并惠及其他领域。</h4>
+本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>NCPU: Towards Cell-Inspired Spatial Computing（NCPU：迈向细胞启发的空间计算）</strong></h2>
-<h4>该研究训练神经细胞自动机（NCA），通过梯度下降学习局部更新规则，从而计算精确的数字逻辑。简单细胞自动机虽具计算通用性，但其规则通常依赖手工设计。研究中，比特被编码为二维网格上的细胞簇，计算结果需通过中间细胞传播后才能到达输出端。每个任务单独训练一个模型，包括逻辑门、4位与8位行波进位加法器，以及一个初步的8位算术逻辑单元（ALU）。所有逻辑门和加法器模型在10个随机种子中均达到100%的比特正确率；穷举测试显示，4位任务在256个输入对中最多出现1个错误，8位任务在65,536个输入对中最多出现7个错误。仅在最多3位操作数上训练的加法器可泛化到8位。加法器以波的形式传播进位，进位链每比特延迟约3.5步；输出仅在训练时的展开长度范围内保持正确。</h4>
+本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>EditText: Structure-Aware Generation and Selective Visual Transport for Fine-Grained Text Editing（EditText：面向细粒度文本编辑的结构感知生成与选择性视觉传输）</strong></h2>
-<h4>该论文聚焦细粒度文本编辑：在指定区域准确替换文本，同时保持源文本的字体、颜色、纹理，以及未编辑区域的视觉一致性。作者提出统一框架EditText，将目标字符生成与源图像视觉传输相结合。</h4>
-<h4>模型采用双条件Fill输入：掩码图像和源文本风格参考，二者均与目标图像共享空间参考。掩码图像隐藏原文本并保留未编辑内容作为源画布；风格参考提供外观线索，与目标文本共同指导新字符生成。</h4>
-<h4>论文引入Attention Transport框架，以Source Weight描述条件注意力分配，以Spatial Aggregation Kernel描述内部空间注意力分布。源细节的准确传输依赖注意力强度、条件特征中的细节保留以及空间准确聚合。针对选定的非编辑查询，模型在保持掩码图像总注意力权重的同时，将注意力重新分配到空间对应邻域，从而实现选择性视觉传输。</h4>
-<h4>训练方面，采用多阶段训练，并结合面向局部目标字符结构的Glyph-aware Structural Loss，使模型能够生成准确文本、保持源文本外观并保留未编辑细节。作者还提出TBench基准，覆盖字母、表意文字和阿拉伯数字，用于评估字符更新、外观保持和未编辑细节保持。</h4>
-<h4>在TBench上，EditText取得当前最优的非编辑区域SSIM（0.9769）和全图LPIPS（0.0460）。</h4>
+本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Towards a Multimodal Aesthetic Agent for Photographic Reference Grading（迈向用于摄影参考调色的多模态美学智能体）</strong></h2>
-<h4>参考引导的摄影调色需要理解用户希望借鉴参考图的哪些色彩与影调特征，并将这些偏好转化为可控编辑。现有纯图像参考方法缺乏基于指令的选择，仅对齐整体外观；像素空间生成编辑器通常输出扁平图像，缺少可编辑参数，限制后续细化。</h4>
-<h4>为此，论文提出 JarvisAura，将摄影调色建模为可编辑参数空间中的结构化决策任务。其核心优势包括：一，提出美学智能体范式，融合视觉属性感知、策略级推理与参数化执行，实现可解释、可控的调色；二，构建统一的“推理到执行”管线，连接美学规划、后端渲染与可编辑参数细化；三，设计三阶段训练策略，包括参数接地的持续预训练、参考接地的监督微调，以及参考对齐的组相对策略优化，利用多维奖励与动态数据推导优化渲染结果。</h4>
-<h4>在 Ref-Bench 上，JarvisAura 在所报告的自动指标中取得最佳成绩，人工评测任务成功率达 74%，较 GPT-Image-2.5 高出 9 个百分点。</h4>
+本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Path-probability gradients for optimizing force fields against dynamical observables（针对动力学可观测量优化力场的路径概率梯度）</strong></h2>
-<h4>机器学习力场会继承用于生成训练数据的电子结构方法的误差；利用实验测量对力场进行精修，是突破这一限制的直接途径。然而，针对动力学可观测量进行精修仍然困难，因为对混沌分子轨迹求导会产生不稳定梯度。</h4>
-<h4>本文提出 PathGrad：该方法不直接对轨迹求导，而是对朗之万路径概率求导。所得梯度估计器可由热噪声和力导数实时累积，并且随着轨迹长度增加，其方差仍保持稳定。</h4>
-<h4>作者用有限差分计算验证了该梯度估计器，并将其用于基于实验扩散系数和结构约束微调熔融铜势与水势。对于水，联合优化扩散系数和氧-氧径向分布函数，还改善了未纳入优化目标的剪切粘度和旋转弛豫预测。</h4>
-<h4>在单一温度下进行对齐，也能改善多个动力学可观测量的表观活化能，使其温度依赖性更接近实验。此外，优化后的势相对于独立的高级别量子化学参考具有更小的力误差，表明与实验对齐不仅拟合目标，还提升了势能面的保真度。</h4>
-<h4>因此，PathGrad 建立了一个将实验可观测量直接纳入力场优化的通用框架。</h4>
+本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Polynomial-Time Learning of Random Automata from One Label per Word（从每个词一个标签中多项式时间学习随机自动机）</strong></h2>
-<h4>本文研究一个二元确定性有限自动机：其 2n 条转移从 n 个状态中独立且均匀地选取。学习器观察长度为 m 的独立均匀词，每个词仅带有一个表示接受与否的比特标签。对于任意固定 β&gt;0，作者给出一个多项式时间算法，该算法在一个概率为 o(n^{-β}) 的转移表集合之外均有效。</h4>
-<h4>对剩余每个转移表、任意起始状态和接受集，预测器在新鲜的长度为 m 的均匀词上错误率至多 ε；该保证在训练样本和学习器随机选择上以至少 1-γ 的概率成立。其样本量和运行时间均为 n、m、1/ε 与 log(2/γ) 的多项式，且多项式次数仅依赖 β。</h4>
-<h4>核心方法是：尽管每个词只揭示一个输出，但通过比较两个连续历史长度上的标签矩，可以估计同一隐藏状态下两个延续的带符号输出乘积的期望。</h4>
-<h4>论文还反驳了 Fish 和 Reyzin 关于相遇时间的猜想 4：对于在转移表抽取前固定的两个不同状态以及任意固定 c&gt;0，长度为 ⌊cn⌋ 的词使这两个状态到达不同状态的比例依概率收敛到 e^{-c}。在典型转移表上，将该比例降至 1/n 渐近需要 n log n 个字母。部分证明步骤已在 Lean 中形式化。</h4>
+本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>U-Statistics-Powered LLM Reasoning（U统计量驱动的大语言模型推理）</strong></h2>
-<h4><strong>摘要总结：</strong>GRPO自DeepSeek提出后已被广泛用于训练大型推理模型与智能体，并衍生出多种变体；但组大小这一关键超参数仍主要依赖试错选择。本文利用GRPO策略梯度的U统计量结构，将组大小选择转化为经典的方差比估计问题。针对分母较小时朴素插件估计不稳定的问题，提出考虑分母估计不确定性的悲观比率估计器，并刻画其在三种样本量情形下的统计性质。</h4>
-<h4><strong>核心结论：</strong>在Reasoning Gym合成任务以及数学推理、代码生成真实基准上，采用基于Jackknife的悲观规则进行自适应组大小选择，可降低策略梯度的均方误差，并在仅增加少量计算成本的情况下优于固定组大小基线。</h4>
+本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><b>MemAnchorWorld: A Sparse World Model with Horizon-Conditioned Memory Retrieval for Autonomous Driving（MemAnchorWorld：一种面向自动驾驶、基于预测视界条件记忆检索的稀疏世界模型）</b></h2>
-<h4>现有用于4D语义占据预测的稀疏世界模型通过少量演化查询表示场景，可高效预测未来几何与语义，但其长时程预测对历史时序证据的利用存在瓶颈：历史信息被隐式承载于场景状态中，误差会随连续预测步骤传播累积，导致几何与语义偏差。</h4>
-<h4>为此，论文提出MemAnchorWorld，一种显式检索相关历史几何与语义证据的稀疏占据世界模型。受冯·雷斯托夫效应启发，设计预测时间条件驱动的层次化双路径记忆锚点检索机制；该机制依据历史信息的有效时效与语义兼容性，将查询级候选选择与点级记忆锚点检索结合，为不同预测时刻的稀疏点提供历史证据。</h4>
-<h4>为更好利用记忆锚点与现有特征，引入由任务和预测时间联合门控的点级残差适配器，分别控制对语义、占据置信度与空间位置的残差修正。</h4>
-<h4>在Occ3D-nuScenes上，MemAnchorWorld在1–3秒预测视界内取得平均mIoU 13.55%与平均IoU 22.84%，两项指标均达到当前最优。</h4>
+本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Degree-bounded Satisfiability of Local MPNNs with Sum Aggregation is NEXPTIME-hard（采用求和聚合的局部MPNN的度有界可满足性是NEXPTIME难的）</strong></h2><h4>论文证明：对于采用局部求和聚合与ReLU激活的消息传递神经网络（MPNN）M，以及以一元编码给出的度上界d，判定是否存在一个带有理数节点标签、度至多d且被M接受的带点图（G,v），该问题是NEXPTIME难的；即使固定度上界为d=3，该困难性仍然成立。</h4>
+本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>ET: Efficient Transfer from Softmax to Hybrid Attention（ET：从Softmax到混合注意力的高效迁移）</strong></h2>
-<h4><strong>问题与目标：</strong>将预训练Softmax Transformer转换为高效注意力常导致显著性能下降，而恢复性能通常依赖昂贵的微调。论文提出ET（Efficient Transfer）框架，以极低优化成本实现高保真注意力转换。</h4>
-<h4><strong>核心方法：</strong>ET结合精确局部注意力、共享键Softmax注意力、均值锚定的无扫描全局线性校正以及自适应门控，使序列长度复杂度达到线性。为保留预训练知识，ET冻结预训练权重，仅利用少量无标签样本，通过交替最小二乘校准新引入参数，无需梯度更新。</h4>
-<h4><strong>主要结果：</strong>在ImageNet-1K上，ET在DeiT-S与DeiT-B上分别达到79.64%和81.55%的Top-1准确率，与Softmax教师模型差距在0.25个百分点以内。在768×768分辨率下，ET在可比推理FLOPs下比T⁵高3.59个百分点，且无需基于梯度的微调。在DiT-XL/2上，ET仅用250次LoRA更新达到FID-50K 2.59；在Stable Diffusion 3.5 Medium上，ET在1K分辨率下匹配教师GenEval分数，仅需0.73 A100 GPU小时的无梯度转换，并实现1.39倍推理加速。</h4>
+本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>FN-Prune: Training-Free Expert Pruning with Finite RMSNorm Perturbations（FN-Prune：基于有限RMSNorm扰动的免训练专家剪枝）</strong></h2>
-<h4><strong>核心问题：</strong>专家剪枝可降低混合专家语言模型的显存占用，但模型质量能否保留取决于移除哪些专家。基于频率和幅度的评分方法孤立衡量专家，忽略了归一化如何消耗专家贡献：减去一个专家会同时改变残差流方向以及剩余部分的缩放。</h4>
-<h4><strong>方法提出：</strong>作者提出FN-Prune，一种免训练剪枝准则。该方法在保持原始路由和权重固定的条件下，比较减去每个路由加权专家贡献前后下一层RMSNorm输出，并以一次遍历在所有校准token上平均平方差。</h4>
-<h4><strong>剪枝与推理：</strong>低分专家按每层统一比例被物理删除，推理时在幸存专家中重新路由。</h4>
-<h4><strong>实验结果：</strong>在移除50%专家时，FN-Prune在Qwen3、ERNIE和OLMoE上的WikiText-2困惑度低于已发表最佳方法，其中OLMoE降低32%。在相同预算下，GSM8K准确率在Qwen3和ERNIE上分别比最佳已发表方法提升7.5和7.0个百分点；多项选择任务的增益仍取决于具体任务。</h4>
+本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Motion Conditioned World Modeling for Embodied Visual Tracking（面向具身视觉跟踪的运动条件世界建模）</strong></h2>
-
-<h4><strong>研究问题：</strong>世界模型通过预测未来环境状态支持具身决策。但在具身视觉跟踪中，目标运动的不确定性与机器人运动引起的视角变化共同影响视觉观测，使未来状态预测极具挑战。</h4>
-
-<h4><strong>核心方法：</strong>提出“运动条件世界建模”（Motion-Conditioned World Modeling），将预测的目标运动分布与机器人自运动共同引入潜在状态转换过程。</h4>
-
-<h4><strong>关键模块：</strong>设计Geometry–Progress模块，通过共享运动模式与路径条件化的进度分布，联合建模几何路径与单步移动距离，从而同时捕捉路径选择与运动进度中的不确定性，并保留二者之间的依赖关系。</h4>
-
-<h4><strong>几何基础：</strong>利用动作诱导的坐标变换，将预测路径表达在下一时刻机器人坐标系中，为未来视觉状态预测提供具有几何依据的条件。</h4>
-
-<h4><strong>监督机制：</strong>通过条件转换分支，以未来视觉特征重建监督运动预测器，将显式运动表示与后续观测建立联系；模型联合采用运动似然、特征重建与专家动作监督进行优化，使跟踪策略能够融合视觉上下文与预测性运动线索。</h4>
-
-<h4><strong>实验结果：</strong>在三个具身跟踪基准上，采用轻量级0.5B骨干网络，模型在跟踪性能与跨环境泛化能力上均取得提升。</h4>
+本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>CAPER: PartGround and PlanRefine for Reliable Manual-Guided Robotic Assembly Planning（CAPER：用于可靠手册引导机器人装配规划的部件接地与计划精炼）</strong></h2>
-<h4><strong>问题：</strong>在机器人任务规划中，视觉语言模型（VLMs）虽能从现有手册推导装配流程，并可能正确理解单个装配动作，但常会混淆具体零件身份、预测不支持的 Part ID，或在不同装配步骤中产生不一致的零件。</h4>
-<h4><strong>方法：</strong>提出 CAPER（Capacity-Aware Part-grounding and Evidence Refinement，容量感知的部件接地与证据精炼），一个手册引导的机器人装配框架，使 VLMs 通过 PartGround 和 PlanRefine 两个模块生成装配流程。PartGround 将步骤级手册证据与产品特定库存及零件参考信息对齐，以识别精确的 Part ID 和数量，把自由形式的硬件预测转化为证据引导的分配，并用共享的 Assembly IR 表示。PlanRefine 依据有限库存审计 PartGround 分配，移除置信度最低的分配；不确定的身份案例在 Assembly IR 中标记待审。</h4>
-<h4><strong>结果：</strong>在 IKEA Assembly in the Wild（IAW）数据集上评估，CAPER 达到 83.33% 的有限库存一致性率，并实现零观察到的库存外 Part-ID 出现。在计划层面，PlanRefine 消除了所有观察到的库存超用配对（9 → 0）和多余单位（51 → 0）。总体表明，PartGround 与 PlanRefine 提升了零件可靠性，同时增强了有限库存一致性和局部预测准确率。</h4>
+本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Gated Concept Adapters: Layer-Wise Concept Bottlenecks for Auditable Text Understanding（门控概念适配器：面向可审计文本理解的分层概念瓶颈）</strong></h2>
-<h4><strong>摘要总结：</strong>该论文提出 Gated Concept Adapters（GCA，门控概念适配器），一种分层概念瓶颈框架：在预训练 Transformer 的选定层输出上附加带门控的低维概念读出适配器，将 token 表示映射为概念激活，经学习门控过滤后池化为层级摘要，并作为概念中介接口输入预测头。其概念维度可通过使用统计、特征 n-gram、事后概念命名和定向概念干预进行检查。</h4>
-<h4><strong>评估与发现：</strong>作者在细粒度情感分类、毒性检测、主题分类和受控动词填空压力测试上评估 GCA。在情感与安全相关分类中，GCA 学到冗余较低、对干预敏感的概念表示，同时保持有用预测性能；在毒性检测上接近无约束 ModernBERT 基线，并支持概念级检查、定向干预和轻量事后控制。GoEmotions 上端到端概念模型相较无约束 RoBERTa 有 macro-F1 损失，但任务初始化冻结变体显著缩小差距；AG News 上与近期概念基线保持竞争力；Qwen 动词填空实验揭示概念中介全词表预测的局限。</h4>
-<h4><strong>核心观点：</strong>GCA 为可审计文本理解提供神经概念接口，优先考虑透明性、诊断与干预，而非无约束精度最大化。</h4>
+本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>CriticJEPA: World Models Are Better Critics Than Optimizers（CriticJEPA：世界模型是比优化器更好的评判器）</strong></h2>
-<h4>视觉世界模型通过预测动作结果支持目标导向规划。基于梯度的规划器通过优化动作来降低预测目标代价，但当执行效果不再提升后，持续优化会利用预测误差；比较不同方案需要具有信息量的相对评分，而改进方案还需要可靠的更新方向。</h4>
-<h4>精确状态执行表明：冻结的分层世界模型能够对目标条件候选方案进行排序，即使其对长时间梯度搜索输出之间的排序已不再有信息量。有效规划应将目标导向候选与能够区分其结果优劣的预测相结合。</h4>
-<h4>为此提出 CriticJEPA：从无奖励轨迹中学习目标条件流提案，并在每个层级利用冻结世界模型展开来选择和评估候选；前向选择构成完整规划器，短锚定更新可在选择前细化候选。在视觉导航与操作任务中，CriticJEPA 以少量规划计算提升成功率，并能在独立训练模型、不同层级深度和未见任务之间迁移共享设置，同时保持世界模型所有权重冻结。</h4>
+本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Scoring What Matters: Exact Feedback Reduction for Language Model Comparison（评分关键所在：语言模型比较中的精确反馈缩减）</strong></h2>
-<h4>论文针对语言模型检查点比较中“为对性能差异无贡献的响应打分”造成评估浪费的问题，提出与采样器无关的 Contrast-Aware Feedback Acquisition（CAFA）方法：在获取反馈前识别所需评分，将相同评分输入分组并聚合其报告系数，从而在普通缓存之外进一步删除查询，同时保持完整评分结果不变。对于固定响应库和无其他限制的标量评分器，作者刻画了精确恢复样本均值（单独或与样本协方差联合）所需的充要查询集。实验显示，在受控更新中，CAFA 对 Qwen2.5-1.5B-Instruct 和 SmolLM2-1.7B-Instruct 在缓存后剩余评分输入分别减少 55.8% 和 90.1%（四次生成重复平均）；在三条在线 GRPO 轨迹中，Independent Star sampling with CAFA 在共同经验精度阈值（RMS MCSE ≤ 0.04）下，生成加反馈成本比带缓存的独立自回归采样低 46.1%–51.3%。该比较为固定预算网格上已完成运行的事后比较；全部 504 个评估报告单元均以数值精度复现完整评分的均值与协方差。作者还提供模块化实现，支持现有响应库、版本化缓存和外部评分器。</h4>
+本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Seldon TFM family: Seldon-Mini, Seldon and Seldon+（Seldon表格基础模型家族：Seldon-Mini、Seldon与Seldon+）</strong></h2>
-<h4>本文提出Seldon表格基础模型家族。分类器Seldon+在包含124个分类数据集的TabBench及其缺失值变体上，于15个模型中排名第一；在作者自行运行的公开基准中，BeyondArena IID分类与TabBench-Bio排名第一，TabArena分类排名第二。</h4>
-<h4>开放权重模型Seldon-Mini（27M参数）和Seldon（213M参数）均位于TabArena的Elo对推理时间帕累托前沿，即没有条目同时更准确且更快。在TabArena的109个榜单条目中，Seldon排名第四、Seldon-Mini排名第七；在BeyondArena IID赛道42个条目中，Seldon排名第二。</h4>
-<h4>Seldon-Mini与Seldon支持分类和回归，架构类似Kumo-Tabular、TabFM和TabPFN-3.5，且仅使用合成表格训练。</h4>
+本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>OmniAct: One Policy, One Million Embodiments（OmniAct：一个策略，百万种具身形态）</strong></h2>
-<h4 style="font-weight: normal;">核心问题与思路：单一策略控制多样机器人，既要跨具身迁移任务知识，也要根据每个机器人的能力调整行为。现有方法多依赖共享动作表示，但这类表示未必能体现机器人形态差异应如何影响操作策略。OmniAct 是一种跨具身操作策略，直接以特定场景中机器人的运动学为条件，生成具身特定行为。</h4>
-<h4 style="font-weight: normal;">方法要点：该策略用运动学图表示机器人关节位置、运动轴及连接关系，并与视觉观测关联，使策略能够考虑自身具身与场景中物体、表面的关系。采用流匹配策略预测每个节点的相对关节运动，从而支持不同自由度和运动学构型机器人的控制。</h4>
-<h4 style="font-weight: normal;">训练与评估：为大规模学习物理结构如何塑造行为，作者程序化设计并筛选一百万种物理可行机器人具身，开发算法在仿真中为所有具身生成机器人轨迹，并在多样仿真操作任务上训练。在 2,000 个具身-场景留出评估回合中，OmniAct 成功率为 63.0%，对比 pi 0.5 的 17.8% 和最强基线的 57.9%；在 GPT-6 Astra 评估过的任务族上达到 64.7%，高于 GPT-6 Astra 的 41.1%；在先前未见的真实机器人上，成功率接近次优方法 MolmoAct2 的两倍。</h4>
-<h4 style="font-weight: normal;">核心发现：除任务成功率外，OmniAct 还学到不同的操作策略，能够利用不同形态的能力并适应其限制。项目地址：https://omniact.github.io/</h4>
+本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Roboclock: A Unified Benchmark for Time-Aware Robotic Intelligence（RoboClock：面向时间感知机器人智能的统一基准）</strong></h2>
-<h4>该摘要指出，时间是机器人智能的基本维度：即使动作在物理上正确，若超出有效时间窗口、事件响应过慢或未达吞吐要求，机器人仍会失败。现有机器人基准主要关注空间正确性与逻辑任务完成，忽视真实应用中的时间约束。为此，作者提出 RoboClock 统一基准，覆盖五个应用领域、60 个任务，并围绕时间窗口、事件响应和吞吐量三类时间约束构建任务。该基准还引入延迟对齐评估协议，在模型推理与控制接口延迟期间持续推进环境时间，并结合时间敏感指标进行评估。对 30 多种方法的评估显示，表现最佳的训练型 VLA 即使在 Easy 级任务上时间成功率也仅 8.3%，泛化与迁移仍存在持续挑战。结论揭示当前机器人系统在物理能力、时间推理与执行延迟联合优化方面的根本局限。</h4>
+本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Verify then Steer: Progress Hallucination-Aware Recovery for Continuous Vision-and-Language Navigation（验证后引导：面向连续视觉语言导航的进度幻觉感知恢复）</strong></h2>
-<h4>该论文研究视觉语言导航（VLN）中智能体在测试阶段偏离路线后难以恢复的问题。作者从“指令进度”角度提出“进度幻觉”现象：智能体把偏离路线的观察误判为任务进展证据，导致内部指令进度超前于实际任务阶段，从而阻碍其依据早期子指令完成恢复。</h4>
-<h4>为此，论文提出 PHAR（Progress Hallucination-Aware Recovery）测试时恢复框架，遵循“先验证、后引导”范式。验证器通过检查视觉语言模型（VLM）的残差流表示，识别轨迹中跨模态证据的不匹配，并利用分裂共形校准控制误报；当触发警报时，引导模块使用上下文多臂老虎机自适应选择指令进度的回退程度，以实现在线恢复。</h4>
-<h4>在 R2R-CE 和 RxR-CE 上的大量实验表明，该框架能够在测试阶段提升多种先进视觉语言导航方法的可靠性，核心贡献是显式建模并缓解“进度幻觉”，从而增强路线偏差后的恢复能力。</h4>
+本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Learning Agent States for Latent Action Modeling（为潜在动作建模学习智能体状态）</strong></h2>
-
-<h4><strong>核心背景：</strong>潜在动作模型（LAMs）通过帧对推断与潜在条件预测，从无标签视频中学习类动作潜在表示，可用于策略和世界模型预训练。但潜在表示需要解释的内容取决于动作推断与转移预测所用的表示空间；若该空间将智能体不断变化的物理状态与背景、持久外观等视觉上下文纠缠，推断出的潜在动作会编码与智能体动作无关的信息。</h4>
-
-<h4><strong>方法提出：</strong>论文提出 <strong>Agent-State LAM</strong>，联合学习紧凑的智能体状态表示，以及建模其状态转移的潜在动作。该紧凑状态将稠密视觉特征聚合到共享空间，同时用于动作推断和前向预测，从而减少视觉上下文对潜在动作的干扰。</h4>
-
-<h4><strong>关键机制：</strong>引入<strong>空间匹配时间判别（SMTD）</strong>，训练状态通过冻结局部视觉特征进行空间灵活匹配，以区分源帧与邻近帧。SMTD 不比较全局帧表示，而是强调每个帧在空间位置上的最强局部特征匹配。该评分使背景和持久智能体外观即便发生位移仍可跨帧匹配，降低这些共享线索对识别源帧的信息量，鼓励表示聚焦智能体不断变化的物理状态。</h4>
-
-<h4><strong>实验结论：</strong>在干扰控制任务和六个真实机器人视频数据集上，Agent-State LAM 在动作恢复、下游控制和世界模型预测方面均取得改进。代码与检查点已公开：https://github.com/Mid-Push/Agent-State-LAM。</h4>
+本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Verified Proof Refactoring with Codex and Qwen（利用 Codex 与 Qwen 进行可验证证明重构）</strong></h2>
-<h4>本文对现有 Lean 4 证明进行重构，以缩短源码长度并降低检查成本，同时保持定理陈述不变，并确保跨 Lean 版本兼容。系统由本地部署的 Qwen 模型通过开源 Codex CLI 检查源码、检索声明并测试证明替换方案；仅当替换能改进目标且 Lean 在所有必需版本上接受时，宿主才保留该替换。随后通过确定性的 CPU 处理进一步优化已验证证明。在 Lean Refactor Arena 的 60 个问题上，模型搜索取得 82.07 的本地平均综合得分，清理后提升至 82.18；最终证明通过全部 127 项必需的“证明—版本”检查，并在 VeriCodeGen 的 Lean Refactor Arena 开源 LLM 赛道中排名第一。</h4>
+本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Meta-Amortized Cognitive Modeling（元摊销认知建模）</strong></h2>
-<h4><strong>核心问题：</strong>认知建模高度迭代，研究者需随理论发展和数据积累反复修改模型结构、参数化、协变量与实验设计；现有基于神经网络的摊销贝叶斯推断虽能快速估计单个模型，但每次修改都需要重新模拟和训练。</h4>
-<h4><strong>核心方法：</strong>提出 CogFormerV2 元摊销框架，使研究者可用单一网络指定、修改并拟合认知模型，一次性在整个模型空间中共享摊销。</h4>
-<h4><strong>关键结果：</strong>单块 GPU 约一天训练后，可在覆盖二元、多选和连续决策，且参数集、协变量结构、试验次数与污染水平各异的超过 146 亿个模型配置上，输出准确且良好校准的后验。</h4>
-<h4><strong>扩展与应用：</strong>可拟合不同行为任务的实证数据，并通过持续学习与表示迁移扩展到新模型；以开源交互应用发布，为认知建模中的元摊销推断提供可复用基础设施，并有望加速大规模计算建模工作流。</h4>
+本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Attestation is All You Need: Toward a Zero-Trust Architecture for HPC AI Agents（认证即所需：面向高性能计算AI智能体的零信任架构）</strong></h2>
-<h4>AI智能体正开始在高性能计算（HPC）环境中自动化数据分析、编排与仿真控制，但也引入了现有集群防御未覆盖的安全问题：被劫持的授权智能体。攻击者可通过提示注入、共享数据投毒、工具失陷或多智能体协同来颠覆智能体，并借合法的加密LLM API流量外泄敏感数据。</h4>
-<h4>为此，论文提出以行为认证作为运行时防御，并设计系统AEGIS：编译任务衍生的行为约束，基于eBPF系统调用拦截监控智能体行为，将证据与约束配置文件核验，跨智能体关联行为，并触发Slurm级隔离。</h4>
-<h4>在真实认证路径上，AEGIS在1秒检测间隔下以亚秒级中位延迟检测出全部四类已实现攻击，验证器开销较低；受控实验显示其覆盖完整攻击套件，检测效果优于代表性基线，且在评估的良性工作流中未观察到误报。</h4>
+本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>Can AI Design a Better nnU-Net? A Hypothesis-Driven Architecture Discovery Loop from Failures to Design Rules（AI能否设计更好的nnU-Net？从失败到设计规则的假设驱动架构发现循环）</strong></h2>
-<h4>现有神经架构搜索和LLM驱动演化常将评估简化为单一适应度分数，从而丢弃可解释设计成败的失败信息。本文提出假设驱动的架构发现循环：由LLM智能体诊断结构化错误模式，提出可证伪假设，在冻结的nnU-Net流程下进行反事实对照测试，并将验证有效的机制提炼为可执行的“触发—动作”规则。</h4>
-<h4>经过八轮搜索，该循环发现两条3D医学图像分割设计原则：一是将计算从高分辨率解码器重新分配到中编码器，在降低成本的同时保留薄解剖结构边界；二是采用支持受限区域对比（support-confined region contrast）处理嵌套解剖腔室之间的错误，并由解剖结构依赖的触发器决定规则何时适用。</h4>
-<h4>基于上述原则得到LeanNeXt：相对nnU-Net为0.78 MACs、0.92训练步时间，在KiTS23四折交叉验证上提升1.63 Dice点；进一步得到触发器路由的LeanNeXt+，在全部15个CT/MRI设置上优于nnU-Net，并在15个基准中的12个上超过参数量大3.3倍的ResEnc-M，而其参数量仅为后者的0.30。与随机采样、一次性LLM生成和按分数选择智能体搜索相比，该循环表明失败分析能够产生可跨模态复用的设计规则。</h4>
+本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>RubikSQL-HB: Agentic Text-to-SQL with Knowledge in the Loop（RubikSQL-HB：知识在环的智能体式文本到SQL）</strong></h2>
-<h4>论文提出 RubikSQL-HB：数据库智能体不能只依赖模式结构，还需在推理不同阶段利用业务含义、存储值和参考查询等知识。系统基于 HeavenBase 平台构建可查询、数据库特定的知识工作区，并在智能体构建与探究答案过程中持续提供知识接口；候选智能体将知识访问与 SQL 构建、执行交替进行，下游 Judge 也可复用同一接口调查候选分歧。两阶段示例接口将“发现参考问题”与“扩展其 SQL”分离。</h4>
-<h4>在 BIRD Mini-Dev 500 题评测中，完整流程执行准确率为 75.2%，高于首选候选选择的 71.2% 和执行多数投票的 70.4%，79.0% 的问题存在正确候选。原始知识条件（也会在没有已构建工作区的情况下重新生成候选）低 3.0 个百分点；借助工具与修订的裁决相较选择基线贡献了主要增益。执行探针记录显示持续调查可解决候选分歧，归档运行显示语义修订能恢复原始候选池中缺失的答案，版本化开发研究进一步表明重复纠正可转化为可复用执行检查。</h4>
-<h4>核心观点是：可查询知识支持智能体构建有用备选方案，证据感知裁决将这些备选方案连接到最终答案；将知识保持在环中，使智能体能在推理发展中获取相关观察，从而提升决策质量。</h4>
+本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>FigmaEval: A Benchmark for Evaluating AI Agents in Professional UI Design（FigmaEval：评估专业UI设计中AI智能体的基准）</strong></h2><h4>该论文提出 FigmaEval，用于评估 AI 智能体在专业 UI 设计任务中的能力。由于设计任务开放且缺乏唯一标准答案，现有评估面临挑战。FigmaEval 包含 84 个任务和 783 个界面，均来自真实 Figma 设计文件，并采用“约束规范、开放方案”范式：统一任务要求与设计资源，但允许智能体自主决定布局、视觉层级、组件组合和视觉呈现。为超越参考相似度评估设计质量，作者构建了覆盖六个维度的 22 条专家评估准则，并引入由专业设计师进行盲测成对比较的人类评估竞技场。在统一的 Figma 智能体设置下评估 11 个模型后发现，基于准则的评估与人类偏好高度一致，同时不同模型在设计实践和质量—效率权衡上存在明显差异。FigmaEval 为系统评估专业 UI 设计能力、理解当前 AI 智能体的优势与局限提供了框架。</h4>
+本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>AIChipBench: Benchmarking LLM Agents for Automated AI Accelerator Design（AIChipBench：面向自动化 AI 加速器设计的 LLM 智能体基准测试）</strong></h2>
-<h4>论文关注 LLM 编码智能体正确设计 AI 硬件所需的能力。语言模型解码器在解码步之间保存状态；在硬件中，错误的状态更新可能让当前 token 输出正确，却在若干 token 后破坏输出，因此设计可能通过输出测试但仍然是错误的。</h4>
-<h4>AIChipBench 要求智能体用可综合的 RTL 代码实现量化的 Qwen3.5、Gemma 3、Gemma 4 和 Llama 3.2 解码器，并以可执行的整数参考模型为准，该参考规定了每个解码步的输出和存储状态。智能体在固定预算下用公开测试调试；冻结后的设计在留出 token 序列、复位、内存停顿和综合等条件下评分；第二赛道要求在面积几乎不变的情况下加速正确设计。</h4>
-<h4>在四个编码智能体的 9,136 次尝试中，难点在于存储状态。匹配研究显示，指出首个状态不匹配的反馈在全部 12 个智能体—任务单元中，将接受率较仅输出反馈提高 25.0 至 46.9 个百分点，并将每个被接受设计所需的智能体工时减半。在新序列和新条件下重新评分时，69 个被接受设计中有 45 个在其测试所需的 32 步内失败；超过三分之一的加速正确设计尝试未能得到加速设计。</h4>
-<h4>总体得分将 Sol 5.6 和 Fable 5.1 排在 Astra 6 和 Opus 5.5 之上，且两个实例半区在全部 200 次随机划分中均给出这一顺序。结论是：硬件智能体需要能暴露存储状态的调试反馈，其基准测试也需要远超开发用例的最终测试。</h4>
+本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-<h2><strong>C3H: Compression-to-Consensus Criteria Hijacking in Multimodal LLM Recommender Systems（C3H：多模态大语言模型推荐系统中的“压缩到共识”准则劫持）</strong></h2>
-<h4>多模态大语言模型（MLLM）正推动推荐系统向内容感知决策系统演进。传统观点认为，多模态压缩可过滤噪声信号，跨模态融合与共识可抑制不一致异常，从而增强系统对内容操纵的鲁棒性。</h4>
-<h4>本文挑战这一假设，指出压缩与跨模态共识会引入“压缩到共识”（C2C）偏置：压缩后仍显著、且在多个模态中获得一致支持的信号，会在候选比较中产生不成比例的影响力，形成可被利用的内容操纵方向。</h4>
-<h4>为此，作者提出C3H，一种新的推理时攻击。它不依赖噪声扰动或训练时投毒，而是通过调整目标项的多模态内容，使其对齐推荐系统隐含表达的决策准则，从而提升目标项曝光。</h4>
-<h4>实验表明，C3H能显著提高目标项曝光，同时保持整体推荐效用。代码已开源。</h4></div>
+本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。</div>
