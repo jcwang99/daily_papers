@@ -1,59 +1,172 @@
-<div id="news-summary-container" style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
+<div id="news-summary-container" style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;"><h2><strong>AnyPrune: Optimization-Free Pruning for Any Feedforward 3D Gaussian Splatting Pipeline（AnyPrune：面向任意前馈三维高斯泼溅管线的免优化剪枝）</strong></h2>
+<h4><strong>核心问题：</strong>前馈3D高斯泼溅（3DGS）管线可通过单次前向从图像重建场景，并实时渲染，但生成的高斯数量远多于忠实渲染所需，尤其输入视图较多时，显著增加内存与存储开销。</h4>
+<h4><strong>现有局限：</strong>现有剪枝方法要么需要昂贵的重新优化，违背单次前向目的；要么依赖简单策略，未充分利用可用信息。</h4>
+<h4><strong>方法贡献：</strong>提出 AnyPrune，一种基于 Transformer、免优化的剪枝模块，可叠加于任意前馈3DGS管线。它通过在冻结的目标前馈管线上进行短时单GPU训练，学习并利用管线特定的冗余模式来移除不必要的高斯。</h4>
+<h4><strong>实验结果：</strong>在多种前馈管线、数据集和输入视图数量下，AnyPrune 在多数设置中渲染质量优于现有免优化剪枝方法，并能泛化到未见数据集；在消费级GPU上约5秒剪枝160万高斯场，快于所有合并高斯或重新优化方法。</h4>
+<h4><strong>扩展能力：</strong>可与前馈管线内置剪枝结合，在中等剪枝比例下进一步剪枝，同时保持或提升渲染质量；还能建议场景特定剪枝比例，以保留大部分渲染质量。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
+<h2><strong>Tracking Any Point with Agentic Visual Reasoning（基于智能体视觉推理的任意点跟踪）</strong></h2>
+<h4><strong>核心问题：</strong>通用视觉语言模型已在目标检测、视频识别等领域超越专家视觉模型，但点对应仍具挑战：它超越目标级识别，要求跨观测对同一物理表面点进行像素级定位，即使外观变化或点消失后重新出现。</h4>
+<h4><strong>方法：</strong>提出 AgenTAP，一种基于 VLM 的智能体，直接预测点坐标与可见性，并对视频进行主动推理；它从自身估计出发，自主选择检查内容，利用所得证据验证点身份并细化预测。</h4>
+<h4><strong>结果与贡献：</strong>使用 GPT-6 Astra 时，无需针对点对应任务微调，即在点定位和可见性预测上超越专家视觉模型；进一步利用 AgenTAP 在点消失后重识别物理点并重连碎片化轨迹，构建 EgoTAP-4D——真实长时第一视角视频中的 3D 点轨迹数据集。</h4>
+<h4><strong>意义：</strong>在采样的重现点上，AgenTAP 的预测接近人类一致性；将 EgoTAP-4D 加入 D4RT 训练可提升平均 3D 跟踪性能。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
+<h2><strong>Efficient Data Fusion in Distributionally Robust Optimization（分布鲁棒优化中的高效数据融合）</strong></h2>
+<h4>该论文研究如何融合来自相关但不同群体、隐私保护汇总统计或同一数据互补统计描述等碎片化证据，以支持不确定性下的决策。分布鲁棒优化（DRO）可为每个数据源构造一个模糊集，并对这些模糊集交集内的所有分布进行对冲，从而融合证据；该方法比将各源聚合为单一模糊集更不保守，但计算成本很高。</h4>
+<h4>作者指出，精确重构的计算量随数据源数量指数增长，甚至判断交集是否非空也是 NP-hard 问题。论文证明融合 DRO 存在精确重构形式，其中各模糊集仅通过函数拉格朗日乘子耦合；将乘子限制为仿射决策规则可得到可在各模糊集上分解的上界，该上界对高斯参考分布周围 Wasserstein 球上的二次损失是精确的，并可证明优于 Minkowski 和、混合分布周围球等基于聚合的松弛方法。</h4>
+<h4>这些近似在重要特殊情形下具有有限锥重构形式，并可用次梯度方法处理弱凸损失，从而使融合 DRO 可应用于神经网络训练。</h4>
+<h4>在投资组合、报童模型和二分类实验中，仿射近似在可计算精确值的情形下接近精确值，扩展性显著优于精确方法，并在样本外表现上优于基于聚合的基准方法。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
+<h2><strong>MELODI: Similarity-Identity Decoupling for Lightweight Ranking（MELODI：面向轻量级排序的相似度—身份解耦）</strong></h2>
+<h4>针对延迟受限的候选排序任务，论文提出相似度—身份解耦框架，将“目标—历史兼容性”与“仅目标信息”分离，以兼顾排序效果与轻量化效率。</h4>
+<h4>论文研究池化相似度的两种计算顺序：先相似度后池化（similarity-then-pool）与先池化后相似度（pool-then-similarity），并指出：对每个固定目标，相似度算子在其历史参数上具有线性性，是两种形式等价的充分条件，从而为更廉价的先池化后相似度形式提供依据。</h4>
+<h4>作者将该框架实例化为 MELODI（多头高效轻量身份与相似度解耦算子）。其相似度分支结合目标条件多头历史池化与单个无残差交叉层，且该交叉层对池化历史输入是线性的；身份分支则依具体问题而定。</h4>
+<h4>在公开基准数据集上，MELODI 达到或超过所评估的 target-aware 与 target-agnostic 基线。在两个大规模工业数据集上，其 AUPRC、NDCG 与 recall 等于或高于所评估的 target-aware 基线。处理器测量表明，在大候选数量下，其延迟低于所评估的 candidate-conditioned 基线，并可通过请求局部历史复用进一步降低延迟。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
+<h2><strong>Latent-in-the-Middle: On the Security of Cross-Model Latent Communication in Multi-Agent Systems（潜在通信中间人：多智能体系统中跨模型潜在通信的安全性）</strong></h2>
+<h4>随着大语言模型在异构多智能体系统中协作增多，潜在通信（如跨模型KV缓存传输）能避免重复处理上下文、降低通信与预填充开销；但目标模型会消费并非自身编码的上下文，其安全对齐是否仍然有效成为关键问题。</h4>
+<h4>作者提出Chasm框架，揭示跨模型交接的三类新攻击面：源模型、映射器（mapper）以及交接机制本身。</h4>
+<h4>实验表明，潜在交接会显著削弱安全对齐与提示注入防御：目标模型原生仅遵循0.4%的基准提示注入，经源模型通过映射器迁移后最高遵循44.2%。</h4>
+<h4>在越狱攻击中，仅迁移即可使同模型族内攻击成功率提升最高24.6个百分点，零样本攻击提升最高69.2个百分点；通过映射器进行白盒优化可将攻击成功率提升至92.5%，而同一目标上普通GCG为37.5%。</h4>
+<h4>为缓解这些漏洞，作者提出轻量级目标侧缓存守卫，通过纠正传输缓存恢复目标模型的拒绝行为，显著降低上述攻击效果。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
+<h2><strong>Learning World Models through Contrastive Identification of Actions（通过动作的对比识别学习世界模型）</strong></h2>
+<h4>论文提出对比动作识别（CIA）方法，用于学习潜在世界模型。现有方法仅靠预测无法明确表示应保留哪些动作相关差异；逆动力学虽提供辅助监督，但平方误差动作回归只能通过条件动作均值变化来奖励额外信息。CIA 从基于历史条件的行为提议中采样候选动作，并在其中识别实际执行动作，通过比较同一情境下合理的动作，促使模型学习由下一潜在状态提供、且超出历史信息范围的动作信息。理论上，在精确行为匹配下，CIA 能奖励那些不改变最优逆回归误差的动作信息，并通过受控学习示例验证该区别。实验表明，在五个视觉控制基准上，CIA 在不修改规划器的情况下，取得了高于基础世界模型和回归逆动力学基线的规划器平均成功率。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
+<h2><strong>LookAnything: A Foundation Model for Holistic Gaze Following（LookAnything：面向整体视线跟随的基础模型）</strong></h2>
+<h4>人类注视是理解注意与意图的重要窗口，对社交信号分析、人机交互等应用至关重要。现有方法多依赖高度定制架构和头部裁剪、深度图等辅助输入，容易带来级联误差与推理开销；且通常单域训练、局限于孤立的视线跟随和热图输出，缺乏面向多样交互场景的灵活性与泛化能力。</h4>
+<h4>为此，论文提出 LookAnything 基础模型，统一多种以视线为中心的任务，实现整体视线跟随。该模型受益于大规模多任务与跨域训练，可灵活适应不同设置，生成点、框、热图、语言等多样输出，并支持广泛的视线中心定位、描述与推理。其核心创新是引入可学习视线先验查询，促进视线感知表示学习，从而无需外部辅助输入。</h4>
+<h4>为支撑该范式，作者构建 HoliGaze 综合语料与基准，包含 311K 问答对，覆盖 5 个能力维度和 9 类任务。</h4>
+<h4>实验表明，LookAnything 在整体视线跟随上持续优于 33 个领先视觉语言模型，并在 5 个传统目标检测基准上与专用专家模型保持较强竞争力。未见数据集评估和真实机器人部署进一步验证了其域外泛化能力与真实场景中的灵活适应性。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
+<h2><strong>CoReQ: Condition-Aware Cross-Modal Repair and Quality-Guided Robust Collaborative Perception（条件感知跨模态修复与质量引导的鲁棒协同感知）</strong></h2>
+<h4>多车协同感知可利用不同视角缓解遮挡与感知范围受限问题，但恶劣天气造成的缺失回波和虚假回波会降低单车特征质量，并影响协同检测。</h4>
+<h4>LiDAR提供丰富几何信息，4D Radar具有强天气适应性，两者互补为退化观测下提升感知提供可能；关键在于如何依据当前观测条件调整跨模态修复，以及如何合理融合修复后可靠性仍不同的多车特征。</h4>
+<h4>为此提出CoReQ框架，包含条件感知修复与质量引导协同感知。条件引导双向跨模态修复模块CBCR从点云占用、密度和特征统计中提取车辆级观测条件，并据此调整LiDAR与Radar特征的双向校正。</h4>
+<h4>在融合方面，任务感知质量估计模块TaQE利用EMA教师的分类与定位信息构建监督目标，预测修复特征的空间质量；条件与质量引导融合模块CoQF将质量信息与内容匹配，并结合双方观测条件进行多车特征加权融合。</h4>
+<h4>在V2X-R和V2X-Radar-C上的实验表明，CoReQ在多种观测条件下具有竞争力，雪天条件下V2X-R的AP@0.7显著提升，并在对比的V2X-Radar-C方法中取得最高AP。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
+<h2><strong>MYSTIQUE: Few-Shot Facial Identity Transfer with Performance Preservation（MYSTIQUE：保留表演的少样本面部身份迁移）</strong></h2>
+<h4>视觉特效中的身份迁移需将驱动图像中的人物身份替换为目标人物，同时保留原图的表情、光照、姿态和场景。</h4>
+<h4>由于配对真值稀缺，自重建训练容易让模型走捷径，从驱动图像复制身份线索，导致推理时发生身份泄漏。作者指出，泄漏可经任何读取驱动图像的输入进入。</h4>
+<h4>为此提出基于扩散模型的MYSTIQUE：从目标人物的多张照片提取身份，并通过独立输入流读取表情、光照和场景；采用多阶段训练解耦身份与其他信息。</h4>
+<h4>解耦策略包括：随机块掩码（边界不沿面部轮廓）、自增强（随机改变表情输入中的脸型但保持表情）、人脸随机化（替换表情与光照输入中的人物，真值仍为驱动图像）。推理时将光照输入扭曲到首轮生成的脸型上，以减少光照流中的脸型泄漏。</h4>
+<h4>评估结合人脸识别分数、人类判断及已知形状渲染脸的脸型指标。用户研究表明MYSTIQUE结果更像目标人物，脸型恢复最准确，且随目标照片增多，识别分数提升最大。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
+<h2><strong>Exploratory Midtraining for Robot Policies（机器人策略的探索性中期训练）</strong></h2>
+<h4 style="font-weight: normal;">该研究指出，机器人策略主要依赖人类示范数据，偏重熟练行为，导致支撑自主改进所需的低层行为覆盖不足。作者提出一种“中期训练”方法，用于构建“连接行为覆盖”：覆盖机器人及其环境在挑战状态与可继续推进状态之间的多样低层行为，并考察其对下游适应和在线改进的支撑作用。</h4>
+<h4 style="font-weight: normal;">为此，作者构建β-Data数据集：通过对抗遥操作采集，由人类对手可逆扰动环境，操作员不重置并持续完成任务；随后用自然语言标注轨迹片段的局部结果，并以近期动作历史为条件微调预训练策略。所得策略能持续使用更多低层行为。</h4>
+<h4 style="font-weight: normal;">在仿真操作任务和三个真实机器人平台上，该方法相比标准示范训练具有更好的数据缩放规律、更强的零样本泛化和对额外rollout时间的更有效利用；在线微调时，只需更少rollout即可收集成功经验并达到更高成功率。结果表明，中期训练可同时提升任务执行鲁棒性，并为持续自主改进奠定基础。项目页：https://kshitiz-1225.github.io/exploratory-midtraining-robot-policies/。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
+<h2><strong>Beyond Hard Tokens: Predictive Memory for Multimodal Protein Generation（超越硬标记：面向多模态蛋白质生成的预测记忆）</strong></h2>
+<h4>核心问题：多模态蛋白质语言模型通过迭代掩码解码统一序列与离散结构标记，为联合蛋白质设计提供了有前景的范式。但标准解码器每步仅保留少量新提交的硬标记，其余未解决位点被重置为相同的[MASK]嵌入，形成无记忆状态。在无固定外部锚点的开放式共生成中，这种无状态转换限制单步细化深度，使序列与结构两条轨道缺乏稳定的跨步骤软锚点，导致收敛缓慢或退化性重复崩溃。</h4>
+<h4>方法：作者观察到未提交预测具有显著的时间一致性，而非随机噪声，提出免训练的 Predictive Memory（PredMem）自条件递归，在步骤间传递这些软信念。每步将原始 logits 汇总为各残基的概率加权 Top-k 期望嵌入，并在下一步以仿射方式插值到符合条件的掩码输入中，且不增加去噪器额外成本。</h4>
+<h4>结果与结论：在 DPLM-2、DPLM-2.1 和 ESM3 上，PredMem 将无条件序列-结构共生成成功率分别提升 3.6、17.7 和 48.7 个百分点，同时改善质量-多样性权衡并抑制重复模式崩溃。对照诊断表明，这些收益主要来自无锚跨模态共同进化中的早期轨迹稳定，而非额外计算或简单熵降低，确立了 PredMem 作为多模态离散生成高效推理机制的价值。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
+<h2><strong>Model Weights, Airlocks and Sandboxes: A Call for Technical Validation of Re-identification Tests under the EDPB Anonymisation Guidelines（模型权重、气闸与沙盒：呼吁在EDPB匿名化指南下对再识别测试进行技术验证）</strong></h2>
+<h4>EDPB 02/2026匿名化指南（2026年7月发布征求意见）以“可能访问数据的实体”为参照评估匿名性，将AI模型纳入适用范围并呼吁开展测试，但未规定再识别测试应如何设计与验证，也未说明其结果在多大程度上可作为证据。<br><br>基于对征求意见的回复，作者提出一个以安全处理环境为核心的框架：输出在发布前须经审查（即“气闸”），并区分不同发布形式与三类证据——形式证据、经验证据和间接证据。<br><br>文章提出七个开放问题（每个配有场景），并在三种情境中分析其技术面向：<strong>模型权重发布</strong>（机器学习模型的训练参数）、<strong>气闸审查</strong>，以及<strong>监管沙盒</strong>（监管机构监督开发与测试）。三种情境中的评估都取决于测试结果的可依赖程度，因为一次失败的再识别尝试可能只说明测试本身太弱。<br><br>借鉴其他监管领域的测量实践，作者呼吁将再识别测试作为测量方法加以验证，并明确其<strong>检测限、偏差和不确定性</strong>。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
+<h2><strong>A Mesh for Every Moment（每一时刻的网格）</strong></h2>
+<h4>论文提出 MEMO（a Mesh for Every MOment），可从多台同步相机拍摄的完整动态场景中重建几何，并逐帧提取网格。</h4>
+<h4>现有动态高斯泼溅方法要么仅建模外观，要么只针对由前景掩码分割出的孤立对象；它们均通过 TSDF 融合或泊松重建恢复网格，固定网格限制了可捕获的细节。</h4>
+<h4>MEMO 的核心是受高斯过程启发的逐高斯运动模型：将每个高斯的位置和旋转随时间表示为时间高斯核的组合，使每个高斯在整个序列中始终保持为有效表面元素，并隐式携带动态几何表示，因此可在任意时刻从高斯定义的场中导出网格。</h4>
+<h4>针对真实捕获中常见但常被忽视的大幅快速运动，方法设计了基于轨迹的初始化，以闭式方式将每个高斯的初始轨迹拟合到点轨迹。</h4>
+<h4>在 Blender-Moments（包含 9 个动画场景、每帧均有真值网格的新基准）和两个真实数据集上评估：MEMO 的几何重建精度优于当前先进方法，并在新视角合成和训练时间上保持竞争力。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
+<h2><strong>TopoCryptoEEG: End-to-End Encrypted Framework for Brainprint Authentication（TopoCryptoEEG：用于脑纹认证的端到端加密框架）</strong></h2>
+<h4><strong>问题与风险：</strong>脑纹认证可实现持续身份验证，但EEG数据隐私敏感。现有FLEA方案在“可信客户端”假设下仅保护提取特征；本文从理论和实验证明，若客户端被攻破并可访问明文查询特征与连续认证分数，攻击者经有限次交互即可精确恢复注册模板。</h4>
+<h4><strong>核心方案：</strong>提出TopoCryptoEEG，基于同态加密，在客户端加密预处理后的EEG数据；服务器在密文上完成特征提取、模板匹配、分数计算和阈值中心化。保护范围由“提取特征”扩展到“预处理EEG数据”，并消除被攻击利用的客户端明文特征接口。</h4>
+<h4><strong>效率优化：</strong>设计多窗口拓扑感知编码（MWTE）与线性融合拓扑分支模型（TopoFuse-MLP），在保留EEG空间信息的同时限制乘法深度；结合查询块坐标打包（QPCP）与保留通道的BSGS评估（LP-BSGS）减少密文运算。</h4>
+<h4><strong>实验结果：</strong>在HGD和BCICIV-2a上取得高认证准确率；同态计算在CPU上耗时1–2秒、GPU上约14毫秒；相较EER（IMWUT 2025）基线平均加速超过18倍，支持实用的隐私保护脑纹认证。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
+<h2><strong>EviCraft: Can Minecraft Agents Find What They Cannot See?（EviCraft：Minecraft智能体能否找到它们看不见的东西？）</strong></h2>
+
+<h4>论文指出，在Minecraft这一具身智能体常用测试环境中，<strong>mineBlock</strong>等语义工具会直接从模拟器已加载的世界状态中选择目标，却不进行可见性测试。因此，智能体从未见过的埋藏矿石也可能只需一次工具调用即可获取，而现有分数无法判断智能体是否真正进行了搜索。</h4>
+
+<h4>作者将这一缺失要求形式化为<strong>证据闭包（evidence closure）</strong>：智能体系统的每一个决策，包括工具内部的决策，都只能通过智能体掌握证据的事实来依赖世界状态。EviCraft是一个运行时与基准，在智能体之下强制实现证据闭包，并将“准入规则”设为实验变量：<strong>感知基础模式（G）</strong>只允许视线内或由智能体自身动作返回的信息；<strong>加载状态模式（L）</strong>复现标准工具栈，同时保持智能体、工具和世界固定。</h4>
+
+<h4>在Survival任务中，准入规则的影响超过最强智能体之间的差距：在G模式下，三个中型智能体有32%—40%的运行到达钻石；在L模式下则为76%—94%；且G模式下最强智能体的得分低于L模式下上述任一智能体。进一步实验表明，仅移除视线测试即可弥补93%—96%的分数差距；仅在工具内部加载状态可恢复70%—98%的差距，说明对观测和查询施加保护仍会留下大部分泄漏。在开放式获取任务中，L模式带来的增益主要集中在依赖埋藏资源或怪物的物品上。</h4>
+
+<h4>核心观点是：若缺乏证据闭包，智能体可能借助工具直接访问“不可见”的世界状态，从而高估其搜索与探索能力；EviCraft通过将感知约束作为实验变量，揭示了标准工具栈中的信息泄漏及其对评测结果的影响。代码与基准见：https://github.com/AllenReder/EviCraft</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
+<h2><strong>Learning Neurovascular Codes for EEG-to-fMRI Synthesis（学习用于脑电图到功能磁共振成像合成的神经血管编码）</strong></h2>
+<h4>本文提出 Neurovascular Codes 作为共享 EEG 表示，用于生成 fMRI。方法首先为每个 fMRI 信号训练独立的 EEG 编码器，从同一 EEG 窗口学习目标特异的时域与频谱特征；训练后冻结编码器，并将其拼接隐藏特征投影为共享神经血管码。</h4>
+<h4>以该共享码为条件，随机插值变换可将高斯噪声转换为 fMRI 信号向量，从而对同一 EEG 窗口采样不同响应。研究在 8 个公开同步 EEG-fMRI 数据集上评估，包括 4 个静息态和 4 个任务态数据集，共 61,646 个 volume-level 配对。</h4>
+<h4>在受试者内和留出受试者评估中，模型平均 Pearson 相关较最强编码器基线分别提升 19.1% 和 19.8%，较最强生成器基线分别提升 18.8% 和 47.9%。此外，使用真实 fMRI 训练的受试者识别分类器评估生成信号，本方法在评估生成器中取得最高平均准确率。作者希望该工作为跨模态脑建模带来新机会。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
+<h2><strong>sudo L7: Can Coding Agents Act Like Staff Engineers?（sudo L7：编码智能体能否像资深工程师那样行动？）</strong></h2>
+<h4 style="font-weight: normal;">论文提出 sudo L7 基准，包含 60 个由资深工程师编写的软件工程任务，多来自私有生产代码库，并围绕前沿模型的失败点设计。每个任务将现实但规格不完整的请求，与隐藏的专家撰写的原子评分标准配对，共 1,287 条标准，覆盖从功能正确性到如实报告等八个行为维度。</h4>
+<h4 style="font-weight: normal;">评估采用智能体评分器：读取智能体对话记录，检查并运行其代码，并将测试输出作为证据。一次尝试只有满足最高两个严重级别的全部标准才算通过；而这些门槛标准中超过一半检验的并非功能正确性。</h4>
+<h4 style="font-weight: normal;">截至 2026 年 11 月公开排行榜，19 个模型分别在开发者 harness 或 OpenCode 中运行，每任务三次尝试：Claude Fable 5.2 通过 52.2%，Claude Sonnet 5.5 通过 50.6%，Claude Opus 5.5 通过 46.1%；GPT-6.1 Sol、Claude Fable 5.1 和 GPT-6 Astra 通过 31%–34%，其余 13 个模型最高仅 18.9%。</h4>
+<h4 style="font-weight: normal;">人类标签研究中，三个候选模型评分器与软件工程师在 85%–86% 的标准判定上一致，约等于两名工程师之间的一致率。案例表明，一个缺乏依据的声明即可让原本较强的尝试失败，并体现工程判断的两面：标记隐藏风险与避免不必要工作。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
+<h2><strong>Knowledge-Base Gradient Descent: Self-Structuring Learning through Question Answering（知识库梯度下降：通过问答实现自结构化学习）</strong></h2>
+<h4>论文关注面向大语言模型应用的知识库构建问题：知识库结构决定应用如何检索并连接回答问题所需信息。作者提出“自结构化学习”设定，以问题与期望答案指导构建持久知识库，其可编辑结构可为图模式或关联知识文档的组织方式。为此提出“知识库梯度下降”方法：诊断期望答案与当前知识库回答间的差异，每轮提出结构编辑、重建知识库，并在学习损失下降时采纳该编辑；保留结构在同源其他问题上评估。通过对候选编辑随机化，将编辑带来的损失变化表示为选择该编辑概率的导数，并将相互影响的联合编辑作为单一候选整体评估。Schema Descent 将该方法实例化于图模式。实验表明，在由研究论文合集构成的大型文档上，更新后的知识卡片与图模式在留出生成问题上平均 Answer F1 高于初始结构，且每篇文档的图模式均有提升；在人类问题上，图模式平均 F1 上升而知识卡片下降，说明更新后的结构更服务于其学习所依据的问题类型。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
+<h2><strong>Monte Carlo Tree Search for Classifier Chains（用于分类器链的蒙特卡洛树搜索）</strong></h2>
+<h4>该论文关注多标签分类中精确匹配评估的问题：预测标签集合需与真实标签集合完全一致，这在医学等领域尤为重要，同时还需要置信度估计。</h4>
+<h4>精确匹配依赖对标签间联合概率的估计，即以每个输入实例为条件的标签依赖建模。概率分类器链可提供此类推理，但现有方法要么难以扩展到大量标签，要么通过边缘分布近似联合分布，从而损害精确匹配下的不确定性估计。</h4>
+<h4>为此，作者提出TSCC，利用蒙特卡洛树搜索增强分类器链推理，在标签空间探索与有希望的标签集合预测探索之间实现高效平衡。</h4>
+<h4>结果表明，该方法在预测性能和计算性能方面均具有良好前景。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
+<h2><strong>AI-Assisted Auto-formalization for Trustworthy Scientific Computing: Case Studies and Lessons Learned（面向可信科学计算的AI辅助自动形式化：案例研究与经验教训）</strong></h2>
+<h4><strong>研究背景：</strong>智能体AI工具近期在数学推理中取得进展，通用编码智能体（如Claude Code、Codex）和专用数学智能体（如Aristotle）已被用于形式化费马大定理、Erdős问题及多个IMO级数学问题。但现有工作多集中于纯数学领域，因为其定理陈述相对自包含、数学表示固定，且已有形式化库支持较强。</h4>
+<h4><strong>核心问题：</strong>应用数学面临额外挑战：源材料往往描述计算过程或建模变换，而非声明式定理。本文系统研究科学计算（SC）中的AI辅助自动形式化；科学计算是应用数学的重要领域，对美国能源部应用至关重要。</h4>
+<h4><strong>方法与评估：</strong>通过覆盖科学计算软件栈中不同层级抽象层的案例研究，评估AI智能体能否完成数值证明，并分析其在软件栈各层中何处失败、为何失败。</h4>
+<h4><strong>主要贡献：</strong>提出跨层失败模式分类体系，并分析每一层恢复数学严谨性所需的专家反馈形式；据此总结可复用的证明模式工作流，以及在使用AI智能体时保持数学严谨性的实践指导。</h4>
+<h4><strong>结论：</strong>研究结果刻画了AI辅助形式化在可信科学计算中的实际价值与当前局限。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
+<h2><strong>Auxiliary Clues Aware's Geometry Problem Solving（辅助线索感知的几何问题求解）</strong></h2>
+<h4>几何问题求解（GPS）是检验多模态大语言模型复杂推理能力的重要任务，尤其当解题需要输入图中未给出的辅助构造时。现有显式画图方法存在图像生成质量不稳定和级联错误，而隐式注意力机制主要关注可见元素，难以支持需要额外几何构造的推理。</h4>
+<h4>为解决上述问题，论文提出 AuxCA（Auxiliary-Clues-Aware GRPO）强化学习框架，使模型学习可迁移的辅助构造策略，并在推理时无需显式生成图。该方法引入辅助线索依赖（ACD）量化辅助视觉线索对 token 生成的影响，并通过细粒度优势加权融入 GRPO；同时加入辅助激励奖励，鼓励模型在正确解中有效利用辅助几何线索。</h4>
+<h4>实验表明，AuxCA-8B 优于显式绘图基线 Bagel-Canvas，在依赖辅助构造的平面几何问题上与领先专有模型性能具有竞争力；在解析几何、立体几何及外部基准上的提升进一步说明所学策略可迁移至训练域之外。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
+<h2><strong>Beyond Static Semantics: Instance-Adaptive Vision-Language Alignment for Building Damage Assessment（超越静态语义：面向建筑损伤评估的实例自适应视觉-语言对齐）</strong></h2>
+<h4>针对双时相遥感影像的实例级建筑损伤评估（IBDA），同一损伤等级在不同建筑上可能呈现多样视觉表现。自然语言能够显式描述物理损伤，为离散类别标签提供互补语义线索；但现有视觉-语言方法尚未充分解决损伤语义如何适应局部双时相证据，并作为实例特定参考用于严重程度判别。为此，作者提出LAMIA-IBDA统一视觉-语言框架，逐步将共享损伤语义锚定到局部观测和个体建筑：自适应文本-视觉对齐（ATVA）在可靠性感知注意力监督下，联合上下文化多种损伤描述与双时相视觉特征，实现证据自适应语义交互；动态实例-原型锚定（DIPG）进一步将上下文语义与个体建筑区域关联，构建实例自适应原型以进行细粒度损伤分类；实例级描述偏好还监督融合阶段注意力，将语义适应与实例判别相连接。在xBD和BRIGHT上的大量实验表明，该方法在光学-光学与光学-SAR设置下均达到最先进性能。源代码已公开：https://github.com/Cutensil/LAMIA-IBDA。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
+<h2><strong>G0.7: Scaling Up a Fast World Action Model with Long Context（扩展具备长上下文的快速世界动作模型）</strong></h2>
+<h4>世界动作模型（WAMs）通过联合预测未来相机帧与动作，将预训练视频生成器适配到机器人控制中，并把视频中学到的物理先验迁移到操作策略。但若每个动作前都生成未来帧，测试时推理过慢，难以闭环控制；同时现有策略多受限于较短观测历史。</h4>
+<h4>G0.7 基于 Fast-WAM 的思想：视频预测在训练中塑造策略表征，部署时可跳过未来帧合成。该模型沿两个方向扩展：上下文窗口从单次观测扩展到最长 5 分钟历史；预训练规模扩展到大规模机器人遥操作与人类自我中心（ego）视频语料。</h4>
+<h4>在公开仿真套件和真实机器人部署中，直接动作解码（Fast 模式）与同一检查点的“先想象再行动”（IDM）推理效果相当，但在单张 RTX 5090 上每 16 步动作块仅需 60 ms，比 IDM 快 7.6 倍，并支持无暂停实时分块。性能随预训练数据稳定提升，人类 ego 视频对分布外泛化提升最大。</h4>
+<h4>结果包括：五个仿真基准套件平均得分 70.8；Galaxea R1 Pro 与 R1 Lite 零样本抓放成功率分别为 48% 和 54%；视频条件上下文学习任务中分布内成功率 96.7%、分布外 93.3%；七项真实世界后训练任务平均任务进度 86.9%，涵盖数分钟折盒、饮品制作和产品装袋。项目页：https://www.galaxea-ai.com/model-g07.html</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
+<h2><strong>CypherMAS: Benchmarking Routing Reliability in LLM-Based Multi-Agent Systems（CypherMAS：评测基于大语言模型的多智能体系统路由可靠性）</strong></h2>
+<h4>现有基于大语言模型的多智能体系统评估通常将通信与开放域任务耦合，难以区分失败源自推理错误、工具使用不当、消息丢失还是请求遗忘；也缺少对通信执行过程的隔离评估，以及相对已知最优路径的路由冗余测量。</h4>
+<h4>论文提出 CypherMAS 合成基准，在固定多智能体图结构中隔离通信与路由问题。智能体在链、星、二分或环图中将加密消息路由给持有匹配解码器的远程节点；由于最优路径已知，可测量冗余 LLM 调用并追踪路由失败。</h4>
+<h4>实验覆盖 4B 至 753B 的 11 个开放权重模型，发现：小模型在路由与工具使用上失败；27B 以上稠密模型性能随图直径增加而退化；成功运行所需的 LLM 调用次数超过最低调用次数。</h4>
+<h4>核心结论是：通信可靠性是基于大语言模型的多智能体系统的一个独立扩展瓶颈，CypherMAS 为复杂多智能体系统提供了可控的诊断基准。源码见：https://github.com/Andoree/CypherMAS。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
+<h2><b>Next-Manip: On-Demand Agent-Policy Collaboration for Robotic Manipulation（按需智能体-策略协作的机器人操作）</b></h2>
+<h4>通用机器人操作需要任务推理、失败恢复与精确控制，但有限的操作数据使单一策略难以同时具备这些能力。多模态智能体擅长任务推理与恢复，却缺乏可靠的细粒度控制且推理成本高；学习策略能高效执行细粒度动作，但难以泛化到已学技能之外。二者能力互补，但结合时需随任务需求变化反复决定由谁执行。为此，论文提出 Next-Manip——一种按需智能体-策略协作框架，将执行器分配与昂贵的智能体推理解耦。该框架引入 Agent Invocation Controller（AIC），通过轻量级分类器根据当前执行需求，在策略与智能体之间分配控制权；同时提出 Task Dynamics Context（TDC），将上下文示例中有信息量的操作变化封装为紧凑任务参考，以支持智能体推理和执行器分配。在两个仿真基准和真实世界实验中，Next-Manip 达到最先进性能，并降低了智能体推理成本。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
+<h2><strong>What Does Skill Lift Actually Measure? A Source-Code-Level Audit and Noise-Aware Reanalysis of SkillsBench（技能提升究竟衡量了什么？对SkillsBench的源代码级审计与噪声感知再分析）</strong></h2>
+<h4>该研究质疑SkillsBench中“技能提升”指标的可信性：虽然人类策划的技能平均可使通过率提高约16.6个百分点，但部分任务反而下降，后续研究据此对技能进行门控或剔除。</h4>
+<h4>作者在源代码层面审计该基准，并分析7,554次公开试验，构建1,421个配对的“配置—任务”单元。审计发现两个经控制验证的评分器依赖案例和一个操作定义缺口；这三项任务平均提升达74.6个百分点，而全数据集总体平均提升为18.7个百分点。</h4>
+<h4>审计还发现四项任务包含占位技能目录，且某执行框架在多数运行中额外加入48个内置技能，构成潜在混杂因素。</h4>
+<h4>经多重检验校正的汇总再分析中，没有任何任务级下降达到统计显著。由于每个单元每种条件最多只有三次运行，观察到的负差异极易受运行采样噪声影响；从算术上看，58%的单元本就不可能显示下降。因此，负向单元的原始数量不能证明技能会造成损害。</h4>
+<h4>基于无技能分数的门控策略在日志中似乎提升2—3个百分点，但在打乱条件标签以消除技能效应后仍提升4—7个百分点；在未用于拟合和决策的留出运行上，没有统计显著提升。这表明该门控策略的“提升”可能并非真实技能效应。</h4>
+<h4>作者已公开发布审计账本和分析脚本。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
+<h2><strong>Deneb-Vritra: Descriptions, Edges and Names Examined by Blocking Via Restoring Token Representations and Attention（通过阻断与恢复令牌表示及注意力来检验描述、边和名称）</strong></h2>
+<h4>研究使用421M参数的编码器Laya，在一次前向中回答文本问题：每个选项（名称加描述）配一个标记令牌，并在标记处读取分数。作者确认模型会在名称与描述冲突时跟随名称，并进一步定位该“名称捷径”在网络中的发生位置。</h4>
+<h4>在951个合成问题上，将名称移到另一选项的描述上，模型选择正确名称选项的比例为：发布检查点53%，微调v1为59%，名称随机化微调仅11%。在320项样本中，阻断标记到自身名称令牌的注意力（第14至17层，共28层）可将v1的捷径从67%降至16%（在两个未参与组件选择的模式上为19%），同时原始名称准确率保持90%；阻断标记到问题、其他选项或文本的边则无影响。</h4>
+<h4>没有单个注意力头起决定作用（最大效应为9个百分点）；恢复干净的标记状态可从第16层撤销名称交换。注意力质量按层而非按头跟随该窗口。在5个检查点上重复阻断，发现相似层；在名称随机化模型中，阻断描述边反而使捷径回升至56%至58%，说明名称读取仍存在但被投票压制。标记状态从第0层即可解码名称；单向探针擦除无效且弱于随机编辑。复制名称随机化同源模型的第0至13层或第14至27层到微调模型，分别恢复v1捷径削减的66%和65%（pair A为21%和45%）。12项可评分预注册预测中有9项失败。注意力头扫描覆盖5/5检查点；数据为合成且由LLM标注；仅涉及一种架构。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
+<h2><strong>GeoVLDrive: Geometry-Grounded Vision-Language Reasoning for Autonomous Driving（GeoVLDrive：面向自动驾驶的几何接地视觉语言推理）</strong></h2>
+<h4>针对VLA规划器虽能继承预训练视觉语言模型的语义知识，但其推理很少基于3D场景结构及其时空演化的问题，论文提出GeoVLDrive——一个面向3D时空推理与规划的几何接地VLA框架。</h4>
+<h4>方法核心包括：利用3D基础模型的多层特征，通过门控交叉注意力增强视觉语言主干；采用结构化潜在思维链（CoT），将未来场景几何、关键智能体运动和元动作组织为有序且分别监督的潜在状态；由动作专家基于这些状态和多层场景特征生成轨迹候选，并利用场景接地的交互评分Token进行排序。</h4>
+<h4>论文还提出NAVSIM 3DQA，用于训练和评估度量化的3D空间与运动理解。实验显示，GeoVLDrive在NAVSIM v1取得91.8 PDMS，在NAVSIM v2取得90.9 EPDMS；在NAVSIM 3DQA上，几何接地主干总体得分89.2%，比微调的Qwen3-VL-2B基线高4.6个百分点；在LingoQA上，Lingo-Judge准确率为68.6%。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。
+<h2><strong>RePT: 3D Geometry Emerges from 2D Relational Pretraining（RePT：3D几何从2D关系预训练中涌现）</strong></h2>
+<h4>该研究关注物理几何如何在学习到的表征中组织，而非依赖显式预测3D几何量。作者提出RePT，通过跨视角2D点预测学习不同物理点之间的紧凑关系，探索在无3D预测目标时3D结构能否从2D观测的关系学习中涌现。</h4>
+<h4>关键结果是：学习到的关系空间形成几何组织，其幅度、角度和邻域反映真实3D位移。仅用16个场景拟合的单个线性读出，在39个留出场景上无需重拟合即可恢复位移长度和角度，Pearson相关系数分别为r=0.72和r=0.78。</h4>
+<h4>在ARKitScenes上训练的检查点在ScanNet++上仍保持较强几何组织，显示出泛化能力。控制比较表明，不同点之间的关系预测比匹配同一点的对应学习更能产生强几何组织；这种组织依赖加性关系和自适应场景上下文，而更高的点迁移精度本身并不必然带来更强组织。</h4>
+<h4>总体而言，结果表明3D几何不必作为显式预测目标，而可以涌现为学习2D观测关系的表征结构属性，说明关系预测是学习空间智能所需表征的一条补充路径。</h4>
 <hr style="border: 0; height: 1px; background-color: #eee; margin: 20px 0;">
-本站仅限主流 Coding 客户端/CLI 使用，支持：Codex、Claude Code、OpenCode、Magpie、DeepSeek Harness、ZCode、Pi、Oh My Pi。当前客户端不支持。</div>
+<h2><strong>Rethinking Reasoning Effort Training in Large Language Models: On-Policy Distillation or Reinforcement Learning?（重新思考大语言模型中的推理努力训练：同策略蒸馏还是强化学习？）</strong></h2>
+<h4>本文系统比较强化学习（RL）与同策略蒸馏（OPD）在推理努力训练中的作用，核心发现是：压缩推理长度与分离不同努力层级由不同训练信号驱动。</h4>
+<h4>长度惩罚RL能可靠压缩单一策略，在AIME25上减少70%思考量且不损失准确率，但联合训练多个层级时会导致层级区分坍塌。</h4>
+<h4>多教师OPD能够分离层级：在33个基准上，低、中层级分别比高层级少用58%和43%的思考token，同时高层级较参考策略提升3.1分。</h4>
+<h4>差异根源在训练信号：序列级奖励无法区分层级特定行为与共享行为；OPD则在每个访问状态提供层级特定目标，包括停止决策。</h4>
+<h4>基于此，高层级上的单一token级KL锚点即可在一个RL阶段内学习分离层级；自然语言努力指令可使层级分离从训练初期出现，并在匹配思考长度下达到与多教师OPD竞争的策略表现。</h4>
+<h4>最后，密集目标建立的层级分离仅适用于训练中见过的状态，不能迁移到未见过的智能体任务；在这些任务中努力主要通过交互轮数体现，而序列级奖励诱导的压缩则可迁移。</h4></div>
